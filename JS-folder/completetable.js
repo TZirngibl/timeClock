@@ -70,7 +70,7 @@ $(document).ready(function(){
                             x = this.id;
                             $.ajax({
                                 type: "GET",
-                                url:"edit.php",
+                                url:"Edit/edit.php",
                                 data:{id: x},
                                 success:function(data1)
                                 {
@@ -78,15 +78,14 @@ $(document).ready(function(){
                                     for(var x = 0; x < jsondata.length; x++){
                                         $("#idchange").val(jsondata1[x]['id']);
                                         $("#namechange").val(jsondata1[x]['name']);
+                                        $("#pinchange").val(jsondata1[x]['pin']);
                                         $("#emailchange").val(jsondata1[x]['email']);
-                                        $("#levelchange").val(jsondata1[x]['level']+" (M for Manager / U for Employee)");
-                                        $("#passchange").val(jsondata1[x]['pass']);
-                                        $("#createdatechange").val(jsondata1[x]['create_date']);
-                                        $("#createbychange").val(jsondata1[x]['create_by']);
+                                        $("#deptchange").val(jsondata1[x]['dept']);
+                                        $("#wagechange").val(jsondata1[x]['wage']);
+                                        $("#wage_otchange").val(jsondata1[x]['wage_ot']);
                                     }
                                 }
                             })
-                            $.post('current.php', {postname: "john"}),
                             edit.style.display = "block";
                         }
                 });
@@ -169,7 +168,7 @@ $(document).ready(function(){
                                 x = this.id;
                                 $.ajax({
                                     type: "GET",
-                                    url:"edit.php",
+                                    url:"Edit/edit.php",
                                     data:{id: x},
                                     success:function(data1)
                                     {
@@ -177,10 +176,11 @@ $(document).ready(function(){
                                         for(var x = 0; x < jsondata.length; x++){
                                             $("#idchange").val(jsondata1[x]['id']);
                                             $("#namechange").val(jsondata1[x]['name']);
+                                            $("#pinchange").val(jsondata1[x]['pin']);
                                             $("#emailchange").val(jsondata1[x]['email']);
-                                            $("#passchange").val(jsondata1[x]['pass']);
-                                            $("#createdatechange").val(jsondata1[x]['createdate']);
-                                            $("#createbychange").val(jsondata1[x]['createby']);
+                                            $("#deptchange").val(jsondata1[x]['dept']);
+                                            $("#wagechange").val(jsondata1[x]['wage']);
+                                            $("#wage_otchange").val(jsondata1[x]['wage_ot']);
                                         }
                                     }
                                 })
