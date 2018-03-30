@@ -35,7 +35,6 @@
             </div>
             <ul class="listmenu">
                 <li><button class="button6" type="button" id="managers">Home</button></li>
-                <li><button class="button6" type="button" id="createuser">Create New Employee</button></li>
                 <li><button class="button6" type="button" id="createmanager">Create New Manager</button></li>
                 <li><button class="button6" type="button" id="money">Money</button></li>
                 <li><button class="button6" type="button" id="clockinbtn">Clock In</button></li>
@@ -58,6 +57,9 @@
                 <tbody class="result">
                 </tbody>
             </table>
+                <div id="createbuttons">
+                    <button class="button6" type="button" id="createuser">Create New Employee</button>
+                </div>
             </div><!--yatable-->
 </div>
 </div>

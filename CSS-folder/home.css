@@ -178,6 +178,7 @@ body{
   .tablebtn{
       width: 100%;
       height: auto;
+      margin: 0 auto;
   }
   .close4 {
     color: #aaaaaa;
@@ -221,3 +222,49 @@ body{
     text-decoration: none;
     cursor: pointer;
   }
+
+#clockin{
+    background-color: rgb(49, 112, 49);
+    transition: ease 500ms;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+#clockin:hover{
+    background-color: rgb(76, 167, 76);
+    cursor: pointer;
+}
+#clockout{
+    background-color: rgb(156, 50, 50);
+    transition: ease 500ms;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+#clockout:hover{
+    background-color: rgb(190, 53, 53);
+    cursor: pointer;
+}
+#createbuttons{
+    float: right;
+    display: none;
+}
+.delete{
+    background-color: rgb(112, 23, 23);
+    transition: ease 500ms;
+    margin: 0 auto;
+    padding: 0;
+}
+.edit-user{
+    background-color: rgb(40, 95, 15);
+    transition: ease 500ms;
+    margin: 0 auto;
+    padding: 0;
+}
+.delete:hover{
+    background-color: rgb(153, 32, 32);
+
+}
+.edit-user:hover{
+    background-color: rgb(54, 129, 19);
+}

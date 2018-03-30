@@ -15,6 +15,8 @@ $(document).ready(function(){
         var span = document.getElementsByClassName("close")[0];
         var span2 = document.getElementsByClassName("close2")[0];
         var span3 = document.getElementsByClassName("close3")[0];
+        var span4 = document.getElementsByClassName("close4")[0];
+        var span5 = document.getElementsByClassName("close5")[0];
         // When the user clicks the button, open the modal 
         createmanagerbtn.onclick = function() {
             createmanagermodal.style.display = "block";
@@ -40,6 +42,12 @@ $(document).ready(function(){
         }
         span3.onclick = function() {
             createusermodal.style.display = "none";
+        }
+        span4.onclick = function() {
+            clockinmodal.style.display = "none";
+        }
+        span5.onclick = function() {
+            clockoutmodal.style.display = "none";
         }
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
@@ -71,6 +79,7 @@ $(document).ready(function(){
                 type: "json",
                 success: function(data)
                 {
+                    $("#createbuttons").hide();  
                     var jsondata = JSON.parse(data);
                     //console.log(jsondata);
                     $("#yatable").append('<tr>'

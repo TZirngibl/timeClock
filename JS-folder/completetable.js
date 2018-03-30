@@ -5,16 +5,19 @@ $(document).ready(function(){
         {
             $(".result").empty();
             load_data(search);
+            $("#createbuttons").show();  
         }
         else
         {
             $(".result").empty();
-            loadfulltable();			
+            loadfulltable();
+            $("#createbuttons").show();  			
         }
     });
     $('#managers').click(function(){
         $(".result").empty();
-        $(".search-container").show();                
+        $(".search-container").show();
+        $("#createbuttons").show();                
         loadfulltable();
     });
     loadfulltable();
@@ -27,6 +30,7 @@ $(document).ready(function(){
         success: function(data){
             var jsondata = JSON.parse(data);
             //console.log(jsondata);
+            $("#createbuttons").show();  
             $("#yatable").append('<tr>'
                 +'<th class="column" data-column="column1" data-label="Id">Id</th>'
                 +'<th class="column" data-column="column2" data-label="Name">Name</th>'
