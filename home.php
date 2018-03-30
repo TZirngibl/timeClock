@@ -98,21 +98,27 @@
 <div class="edit_modal" id="edit_modal">
     <div class="emodal">
         <p id="editmodaltoptext">Edit User</p>
-            <form method="post" action="editdata.php" class="editusertext">
-                <input id= "idchange"           type="hidden"       name="id" readonly/>
+            <form method="post" action="edit/editdata.php" class="editusertext">
+                <input id= "idchange"           type="hidden"           name="id"               readonly/>
+                Current Name:          <input id= "namechange"     type="text"      name="oldname"      readonly/> <br/>
+                New Name:              <input                      type="text"      name="newname"      placeholder="Name"/>
+            -----------------------------------------------------------------------------------------------------------------------    
+                Current Pin:           <input id= "pinchange"      type="text"      name="oldpin"       readonly/><br/>
+                New Pin:               <input                      type="text"      name="newpin"       placeholder="PIN(Format ### i.e (000/123)"/>
+            -----------------------------------------------------------------------------------------------------------------------    
+                Current E-mail:        <input id= "emailchange"    type="text"      name="oldemail"     readonly/><br/>
+                New E-mail:            <input                      type="text"      name="newemail"     placeholder="E-mail Address"/>
+            -----------------------------------------------------------------------------------------------------------------------                
+                Current Department:    <input id= "deptchange"     type="text"      name="olddept"      readonly/><br/>
+                New Dept:              <input                      type="text"      name="newdept"      placeholder="Department(Format ###)"/>
+            -----------------------------------------------------------------------------------------------------------------------
+                Current Wage:          <input id= "wagechange"     type="text"      name="oldwage"      readonly/><br/>
+                New Wage:              <input                      type="text"      name="newwage"      placeholder="Hourly wage"/>
+            -----------------------------------------------------------------------------------------------------------------------
+                Current Wage Overtime: <input id= "wage_otchange"  type="text"      name="oldwage_ot"      readonly/><br/>
+                New Wage_ot:           <input                      type="text"      name="newwage_ot"      placeholder="Overtime Wage"/>
                 
-                
-                
-                <input id= "passchange"         type="hidden"       name="oldpass" readonly/>
-                <input id= "createdatechange"   type="hidden"         name="oldcreatedate" readonly/>
-                <input id= "createbychange"     type="hidden"         name="oldcreateby" readonly/></br>
-
-                Current Name:<input id= "namechange"         type="text"         name="oldname" readonly/> <br/>New Name:<input                          type="text"         name="newname"      placeholder="Name"/>
-                Current E-mail:<input id= "emailchange"        type="text"         name="oldemail" readonly/><br/>New E-mail:<input                          type="text"         name="newemail"     placeholder="E-mail Address"/>
-                Current Level:<input id= "levelchange"        type="text"         name="oldlevel" readonly/><br/>New Level(m/u):<input                          type="checkbox"     name="newlevel"     value="manager" class="checkmark"></label>
-                New Password:<input                          type="Password"     name="newpass"      placeholder="Password"/>
-                Confirm New Password:<input                          type="Password"     name="newpass2"     placeholder="Confirm Your Password"/>
-                <input id="save"                type="submit"       name="save"         value="Save Changes"/> 
+                <input id="save"                            type="submit"    name="save"         value="Save Changes"/> 
             </form>
         <span class="close2" href="#">X</span>
     </div>
