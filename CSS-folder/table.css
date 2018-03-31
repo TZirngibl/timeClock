@@ -14,15 +14,17 @@
     background: rgba(70, 70, 70, 0.753);
     cursor: pointer;
 }
+body{
+  font-family: sans-serif;
+}
 .container .tbtn:active{
     color: Black;
     background: rgba(70, 70, 70, 0.753);
     cursor: pointer;
 }
-body {
-    font-family: "Open Sans", sans-serif;
-    line-height: 1.25;
-  }
+tbody{
+  font-family: Arial, Helvetica, sans-serif;
+}
 .container table {
     border: 1px solid #ccc;
     border-collapse: collapse;

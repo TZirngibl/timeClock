@@ -18,10 +18,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" media="screen" href="CSS-folder/button.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="CSS-folder/home.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="CSS-folder/table.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="CSS-folder/register.css" />
+    <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+    $( "#datepicker2" ).datepicker();
+  } );
+  </script>
     
 </head>
 <body>
@@ -53,6 +61,10 @@
                 </div>
             </div>
             <div>
+                <div id = "dates">
+                    <p>Start Date: <input type="text" id="datepicker"></p>
+                    <p>End Date: <input type="text" id="datepicker2"></p>
+                </div>
             <table id="yatable">            
                 <tbody class="result">
                 </tbody>

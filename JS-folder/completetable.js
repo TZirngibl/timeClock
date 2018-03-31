@@ -16,6 +16,7 @@ $(document).ready(function(){
     });
     $('#managers').click(function(){
         $(".result").empty();
+        $("#dates").hide();
         $(".search-container").show();
         $("#createbuttons").show();                
         loadfulltable();

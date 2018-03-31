@@ -242,9 +242,9 @@ body{
     background-color: rgb(190, 53, 53);
     cursor: pointer;
 }
-#createbuttons{
+#createbuttons button{
     float: right;
-    display: none;
+    background-color: rgba(224, 152, 43, 0.753);
 }
 .delete{
     float: left;
@@ -285,4 +285,8 @@ body{
 }
 .deletenofloat:hover{
     background-color: rgb(153, 32, 32);
+}
+#dates p{
+    display: inline;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

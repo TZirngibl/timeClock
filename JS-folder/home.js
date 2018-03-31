@@ -1,5 +1,6 @@
 $(document).ready(function(){
         // Get the modal
+        $("#dates").hide();
         var createmanagermodal = document.getElementById('managermodal_container');
         var createusermodal = document.getElementById('usermodal_container');
         var clockinmodal = document.getElementById('clockinmodal_container');
@@ -79,7 +80,8 @@ $(document).ready(function(){
                 type: "json",
                 success: function(data)
                 {
-                    $("#createbuttons").hide();  
+                    $("#createbuttons").hide();
+                    $("#dates").show();  
                     var jsondata = JSON.parse(data);
                     //console.log(jsondata);
                     $("#yatable").append('<tr>'
