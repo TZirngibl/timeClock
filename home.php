@@ -61,9 +61,11 @@
                 </div>
             </div>
             <div>
+                <!-- !!!!!!!  DATEPICKERS HERE  !!!!!! -->
+                <!-- hoang we need to use this to query results to the employee_hours table. store result in yatable/result div -->
                 <div id = "dates">
                     <p>Start Date: <input type="text" id="datepicker"></p>
-                    <p>End Date: <input type="text" id="datepicker2"></p>
+                    <p>End Date:   <input type="text" id="datepicker2"></p>
                 </div>
             <table id="yatable">            
                 <tbody class="result">
