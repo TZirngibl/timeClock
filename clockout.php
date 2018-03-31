@@ -15,7 +15,7 @@
             // Free result set
             mysqli_free_result($result);
             }
-            $sql2 = "INSERT INTO employee_hours(id, employee_id, status, punch_timestamp) VALUES(null, '$employeeid', 'out', null)";
+            $sql2 = "INSERT INTO employee_hours(id, employee_id, status, punch_timestamp) VALUES(null, '$employeeid', 'out', NOW())";
             mysqli_query($db, $sql2);
         }
         if(empty($_POST['pin'])){

@@ -79,10 +79,9 @@ body{
 .emodal{
     margin: 0 auto;
     margin-top: 75px;
-    display: block;
     box-sizing: border-box;
     width: 45%;
-    height: 62%;
+    height: 58%;
     padding: 15px;
     background-color: rgb(59, 59, 58);
     text-align: center;
@@ -101,7 +100,6 @@ body{
     margin-bottom: 5px;
 }
 .emodal input{
-    display: inline-block;
     font-family: "Roboto", sans-serif;
     outline: 0;
     background: #f2f2f2;
@@ -130,7 +128,6 @@ body{
 }
 .editusertext {
       font-size: 14px;
-      display: inline-block;
       color: white;
       text-align: left;
   }
@@ -267,4 +264,14 @@ body{
 }
 .edit-user:hover{
     background-color: rgb(54, 129, 19);
+}
+#editgrid{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 50px 50px 50px 50px 66px;
+    grid-gap: 1.5em;
+}
+#save{
+    grid-column-start: span 2;
 }

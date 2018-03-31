@@ -3,7 +3,7 @@ button{
     height: 40px;
     background-color: rgb(14, 13, 13);
     color: white;
-    border-style: solid none;
+    border-style: none;
     border-width: 0.5px;
 }
 .button6{

@@ -68,7 +68,7 @@
 </body>
 <!-- The Modal -->
 <div class="modal_container" id="managermodal_container">
-                <div class="modal">
+                <div class="modal" id="managermodalslide">
                     <p id="registerform">Create  New  Manager</p>
                         <form method="post" action="registermanagerdata.php" class="register-form">
                              <input type="text"      name="name"     placeholder="Your Name"/>
@@ -100,27 +100,21 @@
 <div class="edit_modal" id="edit_modal">
     <div class="emodal">
         <p id="editmodaltoptext">Edit User</p>
-            <form method="post" action="edit/editdata.php" class="editusertext">
+            <form method="post" action="edit/editdata.php" class="editusertext" id="editgrid">
                 <input id= "idchange"           type="hidden"           name="id"               readonly/>
-                Current Name:          <input id= "namechange"     type="text"      name="oldname"      readonly/> <br/>
-                New Name:              <input                      type="text"      name="newname"      placeholder="Name"/>
-            -----------------------------------------------------------------------------------------------------------------------    
-                Current Pin:           <input id= "pinchange"      type="text"      name="oldpin"       readonly/><br/>
-                New Pin:               <input                      type="text"      name="newpin"       placeholder="PIN(Format ### i.e (000/123)"/>
-            -----------------------------------------------------------------------------------------------------------------------    
-                Current E-mail:        <input id= "emailchange"    type="text"      name="oldemail"     readonly/><br/>
-                New E-mail:            <input                      type="text"      name="newemail"     placeholder="E-mail Address"/>
-            -----------------------------------------------------------------------------------------------------------------------                
-                Current Department:    <input id= "deptchange"     type="text"      name="olddept"      readonly/><br/>
-                New Dept:              <input                      type="text"      name="newdept"      placeholder="Department(Format ###)"/>
-            -----------------------------------------------------------------------------------------------------------------------
-                Current Wage:          <input id= "wagechange"     type="text"      name="oldwage"      readonly/><br/>
-                New Wage:              <input                      type="text"      name="newwage"      placeholder="Hourly wage"/>
-            -----------------------------------------------------------------------------------------------------------------------
-                Current Wage Overtime: <input id= "wage_otchange"  type="text"      name="oldwage_ot"      readonly/><br/>
-                New Wage_ot:           <input                      type="text"      name="newwage_ot"      placeholder="Overtime Wage"/>
-                
-                <input id="save"                            type="submit"    name="save"         value="Save Changes"/> 
+                <label for="oldname">Current Name:              <input id= "namechange"     type="text"      name="oldname"      readonly/> </label>
+                <label for="newname">New Name:                  <input                      type="text"      name="newname"      placeholder="Name"/>    </label>
+                <label for="oldpin">Current Pin:                <input id= "pinchange"      type="text"      name="oldpin"       readonly/></label>
+                <label for="newpin">New Pin:                    <input                      type="text"      name="newpin"       placeholder="PIN(Format ### i.e (000/123)"/>   </label>
+                <label for="oldemail">Current E-mail:           <input id= "emailchange"    type="text"      name="oldemail"     readonly/></label>
+                <label for="newemail">New E-mail:               <input                      type="text"      name="newemail"     placeholder="E-mail Address"/>      </label>          
+                <label for="olddept">Current Department:        <input id= "deptchange"     type="text"      name="olddept"      readonly/></label>
+                <label for="newdept">New Dept:                  <input                      type="text"      name="newdept"      placeholder="Department(Format ###)"/></label>
+                <label for="oldwage">Current Wage:              <input id= "wagechange"     type="text"      name="oldwage"      readonly/></label>
+                <label for="newwage">New Wage:                  <input                      type="text"      name="newwage"      placeholder="Hourly wage"/></label>
+                <label for="oldwage_ot">Current Overtime Wage:  <input id= "wage_otchange"  type="text"      name="oldwage_ot"      readonly/></label>
+                <label for="newwage_ot">New Overtime Wage:      <input                      type="text"      name="newwage_ot"      placeholder="Overtime Wage"/></label>
+                <input id="save" type="submit" name="save" value="Save Changes"/> 
             </form>
         <span class="close2" href="#">X</span>
     </div>

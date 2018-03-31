@@ -10,12 +10,12 @@
             $result = $db-> query($sql);
             if($result-> num_rows > 0){
                 while($row = $result-> fetch_assoc()){
-                    $employeeid = $row;
+                    $employeeid = $row['id'];
                 }
             // Free result set
             mysqli_free_result($result);
             }
-            $sql2 = "INSERT INTO employee_hours(id, employee_id, status, punch_timestamp) VALUES(null, '$employeeid', 'in', null)";
+            $sql2 = "INSERT INTO employee_hours(id, employee_id, status, punch_timestamp) VALUES(null, '$employeeid', 'in', NOW())";
             mysqli_query($db, $sql2);
         }
         if(empty($_POST['pin'])){

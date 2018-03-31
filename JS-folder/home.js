@@ -18,7 +18,7 @@ $(document).ready(function(){
         var span4 = document.getElementsByClassName("close4")[0];
         var span5 = document.getElementsByClassName("close5")[0];
         // When the user clicks the button, open the modal 
-        createmanagerbtn.onclick = function() {
+        createmanagerbtn.onclick = function() {    
             createmanagermodal.style.display = "block";
         }
         createuserbtn.onclick = function() {
