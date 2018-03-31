@@ -1,0 +1,292 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-image: url("../Art/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.admin{
+    text-align: center;
+}
+.profile-pic{
+    width: 200px;
+    height: 200px;
+}
+.menu{
+    position: absolute;
+    background-color: rgb(14, 13, 13);
+    opacity: .4;
+    width: 200px;
+    height: 90%;
+    color: white;
+    margin-top: 2.625em;
+    margin-left: 1.875em;
+}
+.listmenu{
+    position: absolute;
+    list-style-type: none;
+    margin-top: 25px;
+}
+.listmenu li{
+    cursor: pointer;
+}
+.container{
+    position: absolute;
+    background: rgba(255, 255, 255, 0.534);
+    z-index: 1;
+    width: 82vw;
+    height: 90%;
+    margin-left: 230px;
+    margin-top: 42px;
+    min-width: 100px;
+    overflow: auto;
+}
+.search-container{
+    width: 75%;
+    height: 100%;
+    font-size: 1.75em;
+    float: right;
+    box-sizing: border-box;
+    font-weight: bold;
+
+}
+#search_text{
+    float: right;
+    border:none;
+    width: 40%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url("../Art/search-icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+}
+.edit_modal{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.507);
+    z-index: 1;
+    box-sizing: border-box;
+    overflow: auto; /* Enable scroll if needed */
+}
+.emodal{
+    margin: 0 auto;
+    margin-top: 75px;
+    box-sizing: border-box;
+    width: 45%;
+    height: 58%;
+    padding: 15px;
+    background-color: rgb(59, 59, 58);
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    z-index: 2; /* Sit on top */
+    overflow: auto; /* Enable scroll if needed */
+}
+#editmodaltoptext{
+    font-weight: bold;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    line-height: 1;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+.emodal input{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+.e{
+    width: 25%;
+    background-color: white;
+    color: black;
+    font-size: 10px;
+}
+#save{
+    background-color: rgb(76, 167, 76);
+    transition: ease 500ms;
+}
+#save:hover{
+    background-color: rgb(49, 112, 49);
+    cursor: pointer;
+}
+.editusertext {
+      font-size: 14px;
+      color: white;
+      text-align: left;
+  }
+  .close2 {
+    color: #aaaaaa;
+    position: fixed;
+    top: 55px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    position: fixed;
+    background-color: black;
+    width: 2%;
+    border-radius: 50%;
+    transition: ease 500ms;
+}
+  
+.close2:hover,
+.close2:focus {
+    color: red;
+    background-color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+.close3{
+    color: #aaaaaa;
+    position: fixed;
+    top: 55px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    position: fixed;
+    background-color: black;
+    width: 2%;
+    border-radius: 50%;
+    transition: ease 500ms;
+  }
+.close3:hover,
+.close3:focus {
+    color: red;
+    background-color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .tablebtn{
+      width: 50%;
+      height: 2em;
+      margin: 0 auto;
+  }
+  .close4 {
+    color: #aaaaaa;
+    position: fixed;
+    top: 55px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    position: fixed;
+    background-color: black;
+    width: 2%;
+    border-radius: 50%;
+    transition: ease 500ms;
+}
+  
+.close4:hover,
+.close4:focus {
+    color: red;
+    background-color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .close5 {
+    color: #aaaaaa;
+    position: fixed;
+    top: 55px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    position: fixed;
+    background-color: black;
+    width: 2%;
+    border-radius: 50%;
+    transition: ease 500ms;
+}
+  
+.close5:hover,
+.close5:focus {
+    color: red;
+    background-color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+#clockin{
+    background-color: rgb(49, 112, 49);
+    transition: ease 500ms;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+#clockin:hover{
+    background-color: rgb(76, 167, 76);
+    cursor: pointer;
+}
+#clockout{
+    background-color: rgb(156, 50, 50);
+    transition: ease 500ms;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+#clockout:hover{
+    background-color: rgb(190, 53, 53);
+    cursor: pointer;
+}
+#createbuttons button{
+    float: right;
+    background-color: rgba(224, 152, 43, 0.753);
+}
+.delete{
+    float: left;
+    background-color: rgb(112, 23, 23);
+    transition: ease 500ms;
+    margin: 0 auto;
+    padding: 0;
+}
+.edit-user{
+    float: right;
+    background-color: rgb(40, 95, 15);
+    transition: ease 500ms;
+    margin: 0 auto;
+    padding: 0;
+}
+.delete:hover{
+    background-color: rgb(153, 32, 32);
+
+}
+.edit-user:hover{
+    background-color: rgb(54, 129, 19);
+}
+#editgrid{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 50px 50px 50px 50px 66px;
+    grid-gap: 1.5em;
+}
+#save{
+    grid-column-start: span 2;
+}
+.deletenofloat{
+    background-color: rgb(112, 23, 23);
+    transition: ease 500ms;
+    margin: 0 auto;
+    padding: 0;
+}
+.deletenofloat:hover{
+    background-color: rgb(153, 32, 32);
+}
+#dates p{
+    display: inline;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
