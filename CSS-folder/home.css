@@ -173,8 +173,8 @@ body{
     cursor: pointer;
   }
   .tablebtn{
-      width: 100%;
-      height: auto;
+      width: 50%;
+      height: 2em;
       margin: 0 auto;
   }
   .close4 {
@@ -247,12 +247,14 @@ body{
     display: none;
 }
 .delete{
+    float: left;
     background-color: rgb(112, 23, 23);
     transition: ease 500ms;
     margin: 0 auto;
     padding: 0;
 }
 .edit-user{
+    float: right;
     background-color: rgb(40, 95, 15);
     transition: ease 500ms;
     margin: 0 auto;
@@ -274,4 +276,13 @@ body{
 }
 #save{
     grid-column-start: span 2;
+}
+.deletenofloat{
+    background-color: rgb(112, 23, 23);
+    transition: ease 500ms;
+    margin: 0 auto;
+    padding: 0;
+}
+.deletenofloat:hover{
+    background-color: rgb(153, 32, 32);
 }

@@ -94,7 +94,7 @@ $(document).ready(function(){
                         var test = $('<button/>',
                             {
                                 id: idx,
-                                class: 'delete',
+                                class: 'deletenofloat',
                                 text: 'Delete',
                                 click: function() { 
                                     x = this.id;
