@@ -120,13 +120,13 @@ $(document).ready(function(){
     function load_data(query){
         var edit = document.getElementById('edit_modal');
         $.ajax({
-            url:"PHP-folder/tables/employee_table/full_table.php",
+            url:"PHP-folder/tables/employee_table/search_table.php",
             method:"post",
             data:{query:query},
             success:function(data)
             {
                 var jsondata = JSON.parse(data);
-                //console.log(jsondata);
+                console.log(jsondata);
                 $("#yatable").append('<tr>'
                     +'<th class="column" data-column="column1" data-label="Id">Id</th>'
                     +'<th class="column" data-column="column2" data-label="Name">Name</th>'

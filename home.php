@@ -157,4 +157,4 @@
 </div>
 </html>
 <script src="JS-folder/home.js"></script>
-<script src="JS-folder/completetable.js"></script>
+<script src="JS-folder/employee_table.js"></script>
