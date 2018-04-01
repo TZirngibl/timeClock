@@ -244,6 +244,8 @@ body{
 }
 #createbuttons button{
     float: right;
+    height: 2em;
+    width: 15em;
     background-color: rgba(224, 152, 43, 0.753);
 }
 .delete{
@@ -280,6 +282,8 @@ body{
 .deletenofloat{
     background-color: rgb(112, 23, 23);
     transition: ease 500ms;
+    height: 1.25em;
+    width: 10em;
     margin: 0 auto;
     padding: 0;
 }

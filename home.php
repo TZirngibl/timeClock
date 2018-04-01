@@ -42,13 +42,13 @@
                 ?>
             </div>
             <ul class="listmenu">
-                <li><button class="button6" type="button" id="managers">Home</button></li>
-                <li><button class="button6" type="button" id="money">Money</button></li>
-                <li><button class="button6" type="button" id="createmanager">Create New Manager</button></li>
-                <li><button class="button6" type="button" id="clockinbtn">Clock In</button></li>
-                <li><button class="button6" type="button" id="clockoutbtn">Clock Out</button></li>
+                <li><button class="button6 button5" type="button" id="managers">Home</button></li>
+                <li><button class="button6 button5" type="button" id="money">Money</button></li>
+                <li><button class="button6 button5" type="button" id="createmanager">Create New Manager</button></li>
+                <li><button class="button6 button5" type="button" id="clockinbtn">Clock In</button></li>
+                <li><button class="button6 button5" type="button" id="clockoutbtn">Clock Out</button></li>
                 <form method="post" action="PHP-folder/login_logout/log_out.php" class="logout">
-                <li><button class="button6 out" type="submit" name="login" value="login">Logout</button></li>
+                <li><button class="button6 out button5" type="submit" name="login" value="login">Logout</button></li>
                 </form>
             </ul>
         </div>

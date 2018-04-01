@@ -73,8 +73,8 @@ $(document).ready(function(){
 
         $('#money').click(function(){
             $(".result").empty();
-            $(".search-container").hide();
             $("#createbuttons").hide();
+            $(".search-container").hide();
             $.ajax({
                 method: "GET",
                 url: "PHP-folder/tables/clockin_table/full_money_table.php",
