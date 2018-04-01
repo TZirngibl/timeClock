@@ -8,7 +8,7 @@
         $result = $db-> query($sql);
         if($result-> num_rows > 0){
                 while($row = $result-> fetch_assoc()){
-                    if(true/*password_verify($pass, $row['pass'])*/){
+                    if(password_verify($pass, $row['pass'])){
                         if($row["level"] == 'm'){
                             $_SESSION["nameofuser"] = $row["name"];
                             $_SESSION['login'] = true;
