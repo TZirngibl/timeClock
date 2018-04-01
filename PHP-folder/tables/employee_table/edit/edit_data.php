@@ -73,6 +73,6 @@
 ////////////////////////////////////Last Modify//////////////////////////////////////////
     $sql = "UPDATE employee SET lastmodify_date=NOW(), lastmodify_by='$control' WHERE id='$id'";
     mysqli_query($db, $sql);
-        header("location:../home.php");
+        header("location:../../../../home.php");
     }
 ?>

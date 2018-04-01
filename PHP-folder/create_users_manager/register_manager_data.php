@@ -20,6 +20,6 @@
         $sql = "INSERT INTO manager(id, name, email, pass, level, create_date, create_by, lastmodify_date, lastmodify_by, expire_date) 
                 VALUES(null, '$name', '$email', '$hashedpass', '$level', NOW(), '$create_by', NOW(), '$lastmodify_by','$expire_date')";
         mysqli_query($db, $sql);
-        header("location:home.php");
+        header("location:../../home.php");
     }
 ?>

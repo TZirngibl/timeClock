@@ -1,7 +1,7 @@
 <?php
     session_start();
     if($_SESSION['login'] == FALSE){
-        header("location:login-logout/login.php");
+        header("location:PHP-folder/login_logout/login.php");
         die;
     }
     $con = mysqli_connect("localhost", "root", "", "project1");
@@ -47,7 +47,7 @@
                 <li><button class="button6" type="button" id="createmanager">Create New Manager</button></li>
                 <li><button class="button6" type="button" id="clockinbtn">Clock In</button></li>
                 <li><button class="button6" type="button" id="clockoutbtn">Clock Out</button></li>
-                <form method="post" action="Login-Logout/logout.php" class="logout">
+                <form method="post" action="PHP-folder/login_logout/log_out.php" class="logout">
                 <li><button class="button6 out" type="submit" name="login" value="login">Logout</button></li>
                 </form>
             </ul>
@@ -84,7 +84,7 @@
 <div class="modal_container" id="managermodal_container">
                 <div class="modal" id="managermodalslide">
                     <p id="registerform">Create  New  Manager</p>
-                        <form method="post" action="registermanagerdata.php" class="register-form">
+                        <form method="post" action="PHP-folder/create_users_manager/register_manager_data.php" class="register-form">
                              <input type="text"      name="name"     placeholder="Your Name"/>
                              <input type="text"      name="email"    placeholder="E-mail Address"/>
                              <input type="password"  name="pass"     placeholder="Password"/>
@@ -98,7 +98,7 @@
                 <div class="modal_container" id="usermodal_container">
                 <div class="modal">
                     <p id="registerform">Create  New  Employee</p>
-                        <form method="post" action="registeruserdata.php" class="register-form">
+                        <form method="post" action="PHP-folder/create_users_manager/register_user_data.php" class="register-form">
                             <input type="text"      name="name"     placeholder="Your Name"/>
                             <input type="text"      name="email"    placeholder="E-mail Address"/>
                             <input type="text"      name="pin"     placeholder="PIN(Format ### i.e (000/123)"/>
@@ -114,7 +114,7 @@
 <div class="edit_modal" id="edit_modal">
     <div class="emodal">
         <p id="editmodaltoptext">Edit User</p>
-            <form method="post" action="edit/editdata.php" class="editusertext" id="editgrid">
+            <form method="post" action="PHP-folder/tables/employee_table/edit/edit_data.php" class="editusertext" id="editgrid">
                 <input id= "idchange"           type="hidden"           name="id"               readonly/>
                 <label for="oldname">Current Name:              <input id= "namechange"     type="text"      name="oldname"      readonly/> </label>
                 <label for="newname">New Name:                  <input                      type="text"      name="newname"      placeholder="Name"/>    </label>
@@ -137,7 +137,7 @@
 <div class="modal_container" id="clockinmodal_container">
     <div class="modal">
         <p id="registerform">Clock In</p>
-            <form method="post" action="clockin.php" class="register-form">
+            <form method="post" action="PHP-folder/clockin_clockout/clock_in.php" class="register-form">
                 <label for="pin">PIN:<input type="" name="pin" placeholder="###"/>
                 <input id="clockin" type="submit" name="clockin" value="Clock In"/> 
             </form>
@@ -148,7 +148,7 @@
 <div class="modal_container" id="clockoutmodal_container">
     <div class="modal">
         <p id="registerform">Clock Out</p>
-            <form method="post" action="clockout.php" class="register-form">
+            <form method="post" action="PHP-folder/clockin_clockout/clock_out.php" class="register-form">
                 <label for="pin">PIN:<input type="" name="pin" placeholder="###"/>
                 <input id="clockout" type="submit" name="clockout" value="Clock Out"/> 
             </form>

@@ -26,11 +26,10 @@ $(document).ready(function(){
         var edit = document.getElementById('edit_modal');
         $.ajax({
         method: "GET",
-        url: "employee-table/full-table.php",
+        url: "PHP-folder/tables/employee_table/full_table.php",
         type: "json",
         success: function(data){
             var jsondata = JSON.parse(data);
-            //console.log(jsondata);
             $("#createbuttons").show();  
             $("#yatable").append('<tr>'
                 +'<th class="column" data-column="column1" data-label="Id">Id</th>'
@@ -56,7 +55,7 @@ $(document).ready(function(){
                         click: function() { 
                             $.ajax({
                                 type:"GET",
-                                url:"delete.php",
+                                url:"PHP-folder/tables/employee_table/delete.php",
                                 data:{id: x},
                                 success:function()
                                 {
@@ -75,7 +74,7 @@ $(document).ready(function(){
                             x = this.id;
                             $.ajax({
                                 type: "GET",
-                                url:"Edit/edit.php",
+                                url:"PHP-folder/tables/employee_table/edit/edit.php",
                                 data:{id: x},
                                 success:function(data1)
                                 {
@@ -121,7 +120,7 @@ $(document).ready(function(){
     function load_data(query){
         var edit = document.getElementById('edit_modal');
         $.ajax({
-            url:"employee-table/search-table.php",
+            url:"PHP-folder/tables/employee_table/full_table.php",
             method:"post",
             data:{query:query},
             success:function(data)
@@ -154,7 +153,7 @@ $(document).ready(function(){
                                 console.log(x);
                                 $.ajax({
                                     type:"GET",
-                                    url:"delete.php",
+                                    url:"PHP-folder/tables/employee_table/delete.php",
                                     data:{id: x},
                                     success:function()
                                     {
@@ -173,7 +172,7 @@ $(document).ready(function(){
                                 x = this.id;
                                 $.ajax({
                                     type: "GET",
-                                    url:"Edit/edit.php",
+                                    url:"PHP-folder/tables/employee_table/edit/edit.php",
                                     data:{id: x},
                                     success:function(data1)
                                     {

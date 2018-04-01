@@ -15,6 +15,6 @@
         $sql = "INSERT INTO employee(id, name, pin, email, dept, create_date, create_by, lastmodify_date, lastmodify_by, wage, wage_ot) 
                 VALUES(null, '$name', '$pin', '$email', '$dept', NOW(), '$create_by', NOW(), '$lastmodify_by','$wage','$wage_ot')";
         mysqli_query($db, $sql);
-        header("location:home.php");
+        header("location:../../home.php");
     }
 ?>

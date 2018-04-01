@@ -74,13 +74,13 @@ $(document).ready(function(){
         $('#money').click(function(){
             $(".result").empty();
             $(".search-container").hide();
+            $("#createbuttons").hide();
             $.ajax({
                 method: "GET",
-                url: "moneydata.php",
+                url: "PHP-folder/tables/clockin_table/full_money_table.php",
                 type: "json",
                 success: function(data)
                 {
-                    $("#createbuttons").hide();
                     $("#dates").show();  
                     var jsondata = JSON.parse(data);
                     //console.log(jsondata);
@@ -104,7 +104,7 @@ $(document).ready(function(){
                                     console.log(x);
                                     $.ajax({
                                         type:"GET",
-                                        url:"deletemoney.php",
+                                        url:"PHP-folder/tables/clockin_table/delete_money.php",
                                         data:{id: x},
                                         success:function()
                                         {

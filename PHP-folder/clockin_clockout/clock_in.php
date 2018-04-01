@@ -1,7 +1,7 @@
 <?php
     session_start();
     $db = mysqli_connect("localhost","root","","project1");
-    if(isset($_POST['clockout'])){
+    if(isset($_POST['clockin'])){
 /////////////////////////////////////Update Name//////////////////////////////////////////
         if(isset($_POST['pin'])){
             $pin = $_POST['pin'];
@@ -15,12 +15,12 @@
             // Free result set
             mysqli_free_result($result);
             }
-            $sql2 = "INSERT INTO employee_hours(id, employee_id, status, punch_timestamp) VALUES(null, '$employeeid', 'out', NOW())";
+            $sql2 = "INSERT INTO employee_hours(id, employee_id, status, punch_timestamp) VALUES(null, '$employeeid', 'in', NOW())";
             mysqli_query($db, $sql2);
         }
         if(empty($_POST['pin'])){
             return;
         }
-        header("location:home.php");
+        header("location:../../home.php");
     }
 ?>
