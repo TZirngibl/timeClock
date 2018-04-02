@@ -53,9 +53,18 @@
             </ul>
         </div>
         <div class="container">
+
         <div class="table-manager">
+
             <div class="search-container">
 				<div class="search-input">
+                <div id = "dates">
+                <form method="post" action="PHP-folder/tables/clockin_table/search_money_table.php" id ="startend">
+                    <p>  From <input type="text" name="startdate" id="datepicker" value="MM/DD/YYYY" class="daterino"></p>
+                    <p>  To <input type="text" name="enddate" id="datepicker2"value="MM/DD/YYYY" class="daterino"></p>
+                    <input type="submit" id="submitdates" value="Search Date Range" name="submitdates">
+                    </form>
+                </div>
                     <div class="searchicon"></div>
                 <div id ="employeesearchbar">
                 <input type="text" name="search_text" id="search_text" placeholder=" Search Employees by Name" class="form-control search_text" />
@@ -63,19 +72,14 @@
                 <div id ="moneysearchbar">
                 <input type="text" name="moneysearch_text" id="moneysearch_text" placeholder=" Search Clock Records by Employee ID" class="form-control search_text" />
                 </div>
-
+                
                 </div>
+
             </div>
             <div>
                 <!-- !!!!!!!  DATEPICKERS HERE  !!!!!! -->
                 <!-- hoang we need to use this to query results to the employee_hours table. store result in yatable/result div -->
-                <div id = "dates">
-                <form method="post" action="PHP-folder/tables/clockin_table/search_money_table.php" id ="startend">
-                    <p>Start Date: <input type="text" name="startdate" id="datepicker" value="MM/DD/YYYY"></p>
-                    <p>End Date:   <input type="text" name="enddate" id="datepicker2"value="MM/DD/YYYY"></p>
-                    <input type="submit" id="submitdates" value="Search Date Range" name="submitdates">
-                    </form>
-                </div>
+                
             <table id="yatable">            
                 <tbody class="result">
                 </tbody>
@@ -167,3 +171,4 @@
 </html>
 <script src="JS-folder/home.js"></script>
 <script src="JS-folder/employee_table.js"></script>
+<script src="JS-folder/money_table.js"></script>
