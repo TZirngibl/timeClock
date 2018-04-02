@@ -17,8 +17,9 @@ $(document).ready(function(){
     $('#managers').click(function(){
         $(".result").empty();
         $("#dates").hide();
-        $(".search-container").show();
-        $("#createbuttons").show();                
+        $("#createbuttons").show();
+        $("#search_text").show();
+        $("#moneysearch_text").hide();               
         loadfulltable();
     });
     loadfulltable();
