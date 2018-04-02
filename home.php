@@ -70,9 +70,9 @@
                 <!-- !!!!!!!  DATEPICKERS HERE  !!!!!! -->
                 <!-- hoang we need to use this to query results to the employee_hours table. store result in yatable/result div -->
                 <div id = "dates">
-                <form method="post" action="PHP-folder/tables/search_money_table.php" id ="startend">
-                    <p>Start Date: <input type="text" name="startdate" id="datepicker"></p>
-                    <p>End Date:   <input type="text" name="enddate" id="datepicker2"></p>
+                <form method="post" action="PHP-folder/tables/clockin_table/search_money_table.php" id ="startend">
+                    <p>Start Date: <input type="text" name="startdate" id="datepicker" value="MM/DD/YYYY"></p>
+                    <p>End Date:   <input type="text" name="enddate" id="datepicker2"value="MM/DD/YYYY"></p>
                     <input type="submit" id="submitdates" value="Search Date Range" name="submitdates">
                     </form>
                 </div>
