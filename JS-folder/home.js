@@ -1,6 +1,7 @@
 $(document).ready(function(){
         // Get the modal
         $("#dates").hide();
+        $("#moneysearch_text").hide();
         var createmanagermodal = document.getElementById('managermodal_container');
         var createusermodal = document.getElementById('usermodal_container');
         var clockinmodal = document.getElementById('clockinmodal_container');
@@ -74,7 +75,8 @@ $(document).ready(function(){
         $('#money').click(function(){
             $(".result").empty();
             $("#createbuttons").hide();
-            $(".search-container").hide();
+            $("#search_text").hide();
+            $("#moneysearch_text").show();
             $.ajax({
                 method: "GET",
                 url: "PHP-folder/tables/clockin_table/full_money_table.php",

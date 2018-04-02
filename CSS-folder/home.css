@@ -44,7 +44,7 @@ body{
     overflow: auto;
 }
 .search-container{
-    width: 75%;
+    width: 50%;
     height: 100%;
     font-size: 1.75em;
     float: right;
@@ -52,10 +52,10 @@ body{
     font-weight: bold;
 
 }
-#search_text{
+.search_text{
     float: right;
     border:none;
-    width: 40%;
+    width: 75%;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -250,7 +250,7 @@ body{
 }
 .delete{
     float: left;
-    background-color: rgb(112, 23, 23);
+    background-color: rgba(112, 23, 23);
     transition: ease 500ms;
     margin: 0 auto;
     padding: 0;
