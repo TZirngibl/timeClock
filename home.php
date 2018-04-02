@@ -57,15 +57,24 @@
             <div class="search-container">
 				<div class="search-input">
                     <div class="searchicon"></div>
-                <input type="text" name="search_text" id="search_text" placeholder=" Search Employees by Name" class="form-control" />
+                <div id ="employeesearchbar">
+                <input type="text" name="search_text" id="search_text" placeholder=" Search Employees by Name" class="form-control search_text" />
+                </div>
+                <div id ="moneysearchbar">
+                <input type="text" name="moneysearch_text" id="moneysearch_text" placeholder=" Search Clock Records by Employee ID" class="form-control search_text" />
+                </div>
+
                 </div>
             </div>
             <div>
                 <!-- !!!!!!!  DATEPICKERS HERE  !!!!!! -->
                 <!-- hoang we need to use this to query results to the employee_hours table. store result in yatable/result div -->
                 <div id = "dates">
-                    <p>Start Date: <input type="text" id="datepicker"></p>
-                    <p>End Date:   <input type="text" id="datepicker2"></p>
+                <form method="post" action="PHP-folder/tables/search_money_table.php" id ="startend">
+                    <p>Start Date: <input type="text" name="startdate" id="datepicker"></p>
+                    <p>End Date:   <input type="text" name="enddate" id="datepicker2"></p>
+                    <input type="submit" id="submitdates" value="Search Date Range" name="submitdates">
+                    </form>
                 </div>
             <table id="yatable">            
                 <tbody class="result">

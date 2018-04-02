@@ -33,7 +33,7 @@ tbody{
     width: 100%;
     table-layout: fixed;
     z-index: 2;
-    font-size: 10px;
+    font-size: 12px;
   }
 .container table caption {
     font-size: 1.5em;
