@@ -1,13 +1,17 @@
 $(document).ready(function(){
     
     $('#submitdates').click(function(){
+        var startdate = $('#datepicker').val();
+        var enddate = $('#datepicker2').val();
         $(".result").empty();
         $.ajax({
             method: "GET",
             url: "PHP-folder/tables/clockin_table/search_money_table.php",
             type: "json",
+            data: {poststart: startdate, postend: enddate},
             success: function(data)
             {
+                console.log(startdate);
                 var jsondata2 = JSON.parse(data);
                 //console.log(jsondata2);
                 $("#yatable").append('<tr>'
@@ -64,7 +68,7 @@ $(document).ready(function(){
             {
                 $("#dates").show();  
                 var jsondata = JSON.parse(data);
-                //console.log(jsondata);
+                console.log(jsondata);
                 $("#yatable").append('<tr>'
                     +'<th class="column" data-column="column1" data-label="Id">ID</th>'
                     +'<th class="column" data-column="column2" data-label="EmployeeId">Employee ID</th>'

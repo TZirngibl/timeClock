@@ -2,11 +2,10 @@
     session_start();
     $db = mysqli_connect("localhost", "root", "", "project1");
     $arr = [];
-    if(isset($_POST['submitdates'])){
-        $startdate = $_POST['startdate'];
+        $startdate = $_GET['poststart'];
         $startdatecon = new DateTime($startdate);
         $startdatecon = $startdatecon->format('Y-m-d H:i:s');
-        $enddate = $_POST['enddate'];
+        $enddate = $_GET['postend'];
         $enddatecon = new DateTime($enddate);
         $enddatecon->add(new DateInterval('PT23H59M'));
         $enddatecon =  $enddatecon->format('Y-m-d H:i:s');
@@ -18,6 +17,5 @@
                 array_push($arr,$row);
        }
     }
-}
     echo json_encode($arr);
 ?>

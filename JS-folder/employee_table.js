@@ -53,14 +53,15 @@ $(document).ready(function(){
                         id: idx,
                         class: 'delete tablebtn',
                         text: 'Delete',
-                        click: function() { 
+                        click: function() {
+                            x = this.id; 
                             $.ajax({
                                 type:"GET",
                                 url:"PHP-folder/tables/employee_table/delete.php",
                                 data:{id: x},
                                 success:function()
                                 {
-                                    swal("Hello world!");
+                                    
                                 }
                             });
                             $(this).parent().parent().remove();
@@ -158,7 +159,7 @@ $(document).ready(function(){
                                     data:{id: x},
                                     success:function()
                                     {
-                                        swal("Hello world!");
+                                    
                                     }
                                 });
                                 $(this).parent().parent().remove();
