@@ -54,16 +54,16 @@ $(document).ready(function(){
                         class: 'delete tablebtn',
                         text: 'Delete',
                         click: function() { 
+                            $(this).parent().parent().remove();
                             $.ajax({
                                 type:"GET",
                                 url:"PHP-folder/tables/employee_table/delete.php",
                                 data:{id: x},
                                 success:function()
                                 {
-                                    swal("Hello world!");
+                                    
                                 }
                             });
-                            $(this).parent().parent().remove();
                         }
                     });
                     var editbutton = $('<button/>',
