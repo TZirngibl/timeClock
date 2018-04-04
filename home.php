@@ -43,7 +43,7 @@
             </div>
             <ul class="listmenu">
                 <li><button class="button6 button5" type="button" id="managers">Home</button></li>
-                <li><button class="button6 button5" type="button" id="money">Money</button></li>
+                <li><button class="button6 button5" type="button" id="money">Report</button></li>
                 <li><button class="button6 button5" type="button" id="createmanager">Create New Manager</button></li>
                 <li><button class="button6 button5" type="button" id="clockinbtn">Clock In</button></li>
                 <li><button class="button6 button5" type="button" id="clockoutbtn">Clock Out</button></li>
@@ -53,7 +53,9 @@
             </ul>
         </div>
         <div class="container">
+
         <div class="table-manager">
+
             <div class="search-container">
 				<div class="search-input">
                     <div class="searchicon"></div>
@@ -63,19 +65,22 @@
                 <div id ="moneysearchbar">
                 <input type="text" name="moneysearch_text" id="moneysearch_text" placeholder=" Search Clock Records by Employee ID" class="form-control search_text" />
                 </div>
-
-                </div>
-            </div>
-            <div>
-                <!-- !!!!!!!  DATEPICKERS HERE  !!!!!! -->
-                <!-- hoang we need to use this to query results to the employee_hours table. store result in yatable/result div -->
-                <div id = "dates">
                 
-                    <p>Start Date: <input type="text" name="startdate" id="datepicker"></p>
-                    <p>End Date:   <input type="text" name="enddate" id="datepicker2"></p>
+                </div>
+                
+            </div>
+            <!-- !!!!!!!  DATEPICKERS HERE  !!!!!! -->
+                <!-- hoang we need to use this to query results to the employee_hours table. store result in yatable/result div -->
+            <div id = "dates">
+                <form method="post" action="PHP-folder/tables/clockin_table/search_money_table.php" id ="startend">
+                    <p>  From <input type="text" name="startdate" id="datepicker" value="MM/DD/YYYY" class="daterino"></p>
+                    <p>  To <input type="text" name="enddate" id="datepicker2"value="MM/DD/YYYY" class="daterino"></p>
                     <input type="submit" id="submitdates" value="Search Date Range" name="submitdates">
                     
                 </div>
+            <div>
+                
+                
             <table id="yatable">            
                 <tbody class="result">
                 </tbody>

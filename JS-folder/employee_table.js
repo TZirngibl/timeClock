@@ -53,7 +53,12 @@ $(document).ready(function(){
                         id: idx,
                         class: 'delete tablebtn',
                         text: 'Delete',
-                        click: function() {
+
+
+                            
+
+                        click: function() { 
+                            $(this).parent().parent().remove();
                             x = this.id; 
                             $.ajax({
                                 type:"GET",
@@ -64,7 +69,6 @@ $(document).ready(function(){
                                     
                                 }
                             });
-                            $(this).parent().parent().remove();
                         }
                     });
                     var editbutton = $('<button/>',
