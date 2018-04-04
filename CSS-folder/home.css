@@ -309,7 +309,7 @@ body{
 }
 #submitdates:hover{
     background-color: rgb(83, 83, 83);
-    color: white;
+    color: rgba(70, 214, 233, 0.911);
     cursor: pointer;
 }
 .daterino{

@@ -43,7 +43,7 @@
             </div>
             <ul class="listmenu">
                 <li><button class="button6 button5" type="button" id="managers">Home</button></li>
-                <li><button class="button6 button5" type="button" id="money">Money</button></li>
+                <li><button class="button6 button5" type="button" id="money">Report</button></li>
                 <li><button class="button6 button5" type="button" id="createmanager">Create New Manager</button></li>
                 <li><button class="button6 button5" type="button" id="clockinbtn">Clock In</button></li>
                 <li><button class="button6 button5" type="button" id="clockoutbtn">Clock Out</button></li>
