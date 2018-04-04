@@ -120,8 +120,12 @@ body{
     font-size: 10px;
 }
 #save{
+    grid-column-start: span 2;
     background-color: rgb(76, 167, 76);
-    transition: ease 500ms;
+    color: white;
+    border-color: white;
+    transition: ease 300ms;
+    font-size: 16px;
 }
 #save:hover{
     background-color: rgb(49, 112, 49);
@@ -277,9 +281,6 @@ body{
     grid-template-rows: 50px 50px 50px 50px 50px 66px;
     grid-gap: 1.5em;
 }
-#save{
-    grid-column-start: span 2;
-}
 .deletenofloat{
     background-color: rgb(112, 23, 23);
     transition: ease 500ms;
@@ -300,6 +301,7 @@ body{
     background-color: rgba(255, 255, 255, 0);
     transition: ease 350ms;
     height: auto;
+    font-size: 18px;
     width: 10em;
     margin: 0 auto;
     padding: 0;
@@ -314,5 +316,5 @@ body{
     height: 100%;
     border: 2px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 18px;
 }
