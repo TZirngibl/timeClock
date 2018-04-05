@@ -32,6 +32,7 @@ $(document).ready(function(){
         success: function(data){
             var jsondata = JSON.parse(data);
             $("#createbuttons").show();  
+            $(".result").append('<h3>Employees</h3>');
             $("#yatable").append('<tr>'
                 +'<th class="column" data-column="column1" data-label="Id">Id</th>'
                 +'<th class="column" data-column="column2" data-label="Name">Name</th>'

@@ -168,3 +168,4 @@
 <script src="JS-folder/home.js"></script>
 <script src="JS-folder/employee_table.js"></script>
 <script src="JS-folder/money_table.js"></script>
+<script src="JS-folder/manager_table.js"></script>
