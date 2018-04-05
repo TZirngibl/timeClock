@@ -53,8 +53,8 @@ $(document).ready(function(){
                         id: idx,
                         class: 'delete tablebtn',
                         text: 'Delete',
-                        click: function() { 
-                            $(this).parent().parent().remove();
+                        click: function() {
+                            x = this.id; 
                             $.ajax({
                                 type:"GET",
                                 url:"PHP-folder/tables/employee_table/delete.php",
@@ -64,6 +64,7 @@ $(document).ready(function(){
                                     
                                 }
                             });
+                            $(this).parent().parent().remove();
                         }
                     });
                     var editbutton = $('<button/>',
@@ -93,7 +94,32 @@ $(document).ready(function(){
                             })
                             edit.style.display = "block";
                         }
-                });
+                    });
+                    var historybutton = $('<button/>',
+                    {
+                        id: idx,
+                        class: 'history tablebtn',
+                        text: 'History',
+                        click: function() {
+                            x = this.id;
+                            $.ajax({
+                                type: "GET",
+                                url:"PHP-folder/tables/employee_table/history/history.php",
+                                data:{id: x},
+                                success:function(data2)
+                                {
+                                    var jsondata2 = JSON.parse(data2);
+                                    console.log(jsondata2);
+                                    user = jsondata2[1]['name'];
+                                    console.log(user);
+                                    for(var x = 0; x < jsondata2.length; x++){
+                                        console.log(new Date(jsondata2[x]['punch_timestamp']).getTime()/1000);
+                                    }
+                                }
+                            })
+                            edit.style.display = "block";
+                        }
+                    });
                 $(".result").append('<tr class="row100">'
                 + '<td id="columnid" class="column" data-column="column1" data-label="Id">' + jsondata[x]['id'] + '</td>'
                 + '<td id="columnname" class="column" data-column="column2" data-label="Name">' + jsondata[x]['name'] + '</td>'
@@ -107,7 +133,7 @@ $(document).ready(function(){
                 + '<td id="columnwage" class="column" data-column="column10" data-label="Wage">' + jsondata[x]['wage'] + '</td>'
                 + '<td id="columnwageot" class="column" data-column="column11" data-label="OT Wage">' + jsondata[x]['wage_ot'] + '</td>'
                 + '<td id="columndelete" class="column" data-column="column12" data-label="Delete"></td></tr>');
-                $(".result").find('td').last().append(deletebutton).append(editbutton);
+                $(".result").find('td').last().append(deletebutton).append(editbutton).append(historybutton);
             }        
         }
       });
@@ -127,7 +153,6 @@ $(document).ready(function(){
             success:function(data)
             {
                 var jsondata = JSON.parse(data);
-                console.log(jsondata);
                 $("#yatable").append('<tr>'
                     +'<th class="column" data-column="column1" data-label="Id">Id</th>'
                     +'<th class="column" data-column="column2" data-label="Name">Name</th>'
@@ -151,14 +176,13 @@ $(document).ready(function(){
                             text: 'Delete',
                             click: function() { 
                                 x = this.id;
-                                console.log(x);
                                 $.ajax({
                                     type:"GET",
                                     url:"PHP-folder/tables/employee_table/delete.php",
                                     data:{id: x},
                                     success:function()
                                     {
-                                        swal("Hello world!");
+                                    
                                     }
                                 });
                                 $(this).parent().parent().remove();
@@ -171,6 +195,7 @@ $(document).ready(function(){
                             text: 'Edit',
                             click: function() {
                                 x = this.id;
+                                console.log(x);
                                 $.ajax({
                                     type: "GET",
                                     url:"PHP-folder/tables/employee_table/edit/edit.php",
@@ -191,7 +216,31 @@ $(document).ready(function(){
                                 })
                                 edit.style.display = "block";
                             }
-                    });
+                        });
+                        var historybutton = $('<button/>',
+                        {
+                            id: idx,
+                            class: 'history tablebtn',
+                            text: 'History',
+                            click: function() {
+                                x = this.id;
+                                console.log(x);
+                                $.ajax({
+                                    type: "GET",
+                                    url:"PHP-folder/tables/employee_table/history/history.php",
+                                    data:{id: x},
+                                    success:function(data2)
+                                    {
+                                        var jsondata2 = JSON.parse(data2);
+                                        console.log(jsondata2)
+                                        for(var x = 0; x < jsondata.length; x++){
+                               
+                                        }
+                                    }
+                                });
+                                edit.style.display = "block";
+                            }
+                        });
                     $(".result").append('<tr class="row100">'
                         + '<td id="columnid" class="column" data-column="column1" data-label="Id">' + jsondata[x]['id'] + '</td>'
                         + '<td id="columnname" class="column" data-column="column2" data-label="Name">' + jsondata[x]['name'] + '</td>'
@@ -205,7 +254,7 @@ $(document).ready(function(){
                         + '<td id="columnwage" class="column" data-column="column10" data-label="Wage">' + jsondata[x]['wage'] + '</td>'
                         + '<td id="columnwageot" class="column" data-column="column11" data-label="OT Wage">' + jsondata[x]['wage_ot'] + '</td>'
                         + '<td id="columndelete" class="column" data-column="column12" data-label="Delete"></td></tr>');
-                    $(".result").find('td').last().append(deletebutton).append(editbutton);
+                    $(".result").find('td').last().append(deletebutton).append(editbutton).append(historybutton);
                 } 
             }
         });
