@@ -242,11 +242,20 @@ body{
     background-color: rgb(190, 53, 53);
     cursor: pointer;
 }
-#createbuttons button{
-    float: right;
+#createuser{
+    font-size: 20px;
+    line-height: 0;
     height: 2em;
     width: 15em;
-    background-color: rgba(224, 152, 43, 0.753);
+    background-color: rgba(255, 255, 255, 0);
+    border-color: 1em solid rgb(224, 152, 43);
+    transition: ease 300ms;
+    padding: 1px;
+}
+#createuser:hover{
+    cursor: pointer;
+    color: white;
+    border-color: 1em dotted rgb(224, 152, 43);
 }
 .delete{
     float: left;
@@ -294,3 +303,282 @@ body{
     display: inline;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+#dates input{
+    font-size: 20px;
+}
+.button5{
+    width: 200px;
+    height: 40px;
+    background-color: rgb(14, 13, 13);
+    color: white;
+    border-style: none;
+    border-width: 0.5px;
+}
+.button6{
+	color: rgba(255,255,255,1);
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	position: relative;	
+}
+.button6 a{
+	color: rgba(51,51,51,1);
+	text-decoration: none;
+	display: block;
+}
+.button6 span{
+	z-index: 2;	
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;	
+}
+.button6::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0;
+	background-color: rgba(255,255,255,0.5);
+	-webkit-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	transition: all 0.4s;
+	-webkit-transform: scale(0.5, 1);
+	transform: scale(0.5, 1);
+}
+.button6:hover::before{
+	opacity: 1;
+	-webkit-transform: scale(1, 1);
+	transform: scale(1, 1);
+}
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+#registerform{
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  line-height: 1;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+#registermanager, #registeruser{
+  border: 2px solid #333;
+  font-family: "Open Sans", sans-serif;
+  background-color: #333;
+  color: white;   
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: ease 500ms;
+}
+#registermanager:hover, #registeruser:hover{
+  background-color: #555;
+  border: 2px solid #333;
+  color: white;
+  cursor: pointer;
+}
+.modal_container{
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.507);
+  z-index: 1;
+  box-sizing: border-box;
+  overflow: auto; /* Enable scroll if needed */
+}
+.modal{
+  display: block;
+  box-sizing: border-box;
+  position: fixed;
+  top: 20%;
+  left: 30%;
+  width: 30%;
+  background: #FFFFFF;
+  margin: 10px;
+  padding: 20px 45px 20px 45px;
+  padding-top: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  z-index: 2; /* Sit on top */
+  overflow: auto; /* Enable scroll if needed */
+}
+.modal input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border: 1px solid lightgray;
+  
+}
+.checkmark {
+  height: 25px;
+  width: 25px;
+}
+#managertext{
+  font-size: 1.25em;
+  margin: 0px 0px 15px 0px;
+  font-family: "Roboto";
+  font-weight: bold;
+}
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  position: fixed;
+  top: 55px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  position: fixed;
+  background-color: black;
+  width: 2%;
+  border-radius: 50%;
+  transition: ease 500ms;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  background-color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+.container .tbtn{
+    color: white;
+    background: rgba(70, 70, 70, 0.233);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5vw;
+    border-radius: 5px;
+    width: 10%;
+    z-index: 1;
+}
+.Managers{
+    margin-left: .25%;
+}
+.container .tbtn:hover{
+    background: rgba(70, 70, 70, 0.753);
+    cursor: pointer;
+}
+body{
+  font-family: sans-serif;
+}
+.container .tbtn:active{
+    color: Black;
+    background: rgba(70, 70, 70, 0.753);
+    cursor: pointer;
+}
+tbody{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+    z-index: 2;
+    font-size: 12px;
+  }
+.container table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+.container table tr {
+    background: #f8f8f8a8;
+    border: 1px solid #ddd;
+    padding: .35em;
+  }
+  table th,
+  table td {
+    overflow: hidden;
+    padding: .625em;
+    text-align: center;
+  }
+  table th {
+    color: white;
+    background-color: #333;
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  @media screen and (max-width: 700px) {
+    body{
+        background-size: cover;
+    }
+    .container .tbtn{
+        color: white;
+        background: rgba(70, 70, 70, 0.233);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 1.5em;
+        border-radius: 5px;
+        width: 30%;
+        z-index: 1;
+    }
+    .Managers{
+        margin-left: .25%;
+    }
+    .container .tbtn:hover{
+        background: rgba(70, 70, 70, 0.753);
+        cursor: pointer;
+    }
+    .container .tbtn:active{
+        color: Black;
+        background: rgba(70, 70, 70, 0.753);
+        cursor: pointer;
+    }
+    table {
+      border: 0;
+    }
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    table td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+  .table-manager .row100:hover td {
+    background-color: #555;
+    color: #fff;
+  }
+  .table-manager .row100 td:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  .table-manager .column th:hover {
+    background-color: #333;
+  }
+

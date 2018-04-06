@@ -1,13 +1,4 @@
-<?php
-    session_start();
-    if($_SESSION['login'] == FALSE){
-        header("location:PHP-folder/login_logout/login.php");
-        die;
-    }
-    $con = mysqli_connect("localhost", "root", "", "project1");
-    $sql = "SELECT * FROM employee";
-    $result = $con -> query($sql);
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +23,16 @@
   </script>
     
 </head>
+<?php
+    session_start();
+    if($_SESSION['login'] == FALSE){
+        header("location:PHP-folder/login_logout/login.php");
+        die;
+    }
+    $con = mysqli_connect("localhost", "root", "", "project1");
+    $sql = "SELECT * FROM employee";
+    $result = $con -> query($sql);
+?>
 <body>
     <div class="general">
         <div class="menu">
@@ -67,22 +68,21 @@
                 </div>
             </div>
             <div>
+                <div id="createbuttons">
+                     <button class="createuser" type="button" id="createuser">Create New Employee</button>
+                </div>
                 <!-- !!!!!!!  DATEPICKERS HERE  !!!!!! -->
                 <!-- hoang we need to use this to query results to the employee_hours table. store result in yatable/result div -->
                 <div id = "dates">
-                
-                    <p>Start Date: <input type="text" name="startdate" id="datepicker"></p>
-                    <p>End Date:   <input type="text" name="enddate" id="datepicker2"></p>
+                    <p>From: <input type="text" name="startdate" id="datepicker" placeholder="MM/DD/YYYY"></p>
+                    <p>to:   <input type="text" name="enddate" id="datepicker2" placeholder="MM/DD/YYYY"></p>
                     <input type="submit" id="submitdates" value="Search Date Range" name="submitdates">
-                    
                 </div>
             <table id="yatable">            
                 <tbody class="result">
                 </tbody>
             </table>
-                <div id="createbuttons">
-                    <button class="button6" type="button" id="createuser">Create New Employee</button>
-                </div>
+                
             </div><!--yatable-->
 </div>
 </div>
