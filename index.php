@@ -21,8 +21,8 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a href="#" id="homepage">CRST Timeclock</a></li>
                 <li><a href="#" id="reportcontainer">Reports</a></li>
-                <li><a href="#">Clock In</a></li>
-                <li><a href="#">Clock Out</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#clockIn">Clock In</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#clockOut">Clock Out</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
         </div>
@@ -343,16 +343,23 @@
     </div>
 <!-- CLOCK IN Modal -->
 <div class="modal fade" id="clockIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content moveleft">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Clock In</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        PIN:
+        <form>
+            <div class="form-group row">
+                <label for="pin" class="col-sm-2 col-form-label">PIN:</label>
+                <div class="col-sm-10">
+                <input type="int" class="form-control" id="inpin" placeholder="###">
+                </div>
+            </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -363,16 +370,23 @@
 </div>
 <!-- CLOCK OUT Modal -->
 <div class="modal fade" id="clockOut" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content moveleft">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Clock Out</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        PIN:
+        <form>
+            <div class="form-group row">
+                <label for="pin" class="col-sm-2 col-form-label">PIN:</label>
+                <div class="col-sm-10">
+                <input type="int" class="form-control" id="outpin" placeholder="###">
+                </div>
+            </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
