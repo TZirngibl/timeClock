@@ -19,7 +19,8 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"><a href="#" id="homepage">CRST Timeclock</a></li>
+                <li class="sidebar-brand"><a href="#" class="homepage">CRST Timeclock</a></li>
+                <li><a href="#" class="homepage">Home</a></li>
                 <li><a href="#" id="reportcontainer">Reports</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#clockIn">Clock In</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#clockOut">Clock Out</a></li>
@@ -173,7 +174,58 @@
 
                         </div>
                         <!-- /#wrapper -->
+<!-- REPORTS FILTER Modal -->
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Select Date Range</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="accordion">
+            <!-- Date Filter -->
+            <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                <button class="btn btn-block" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                   By Date Filter
+                </button>
+                </h5>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    hi
+                </div>
+            </div>
+            </div>
 
+            <!-- Pay Period Filter -->
+            <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                <button class="btn btn-block collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                   By Pay Periods
+                </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                From: <input type="text" class="datepicker"></input>To:<input type="text" class="datepicker"></input>
+                </div>
+            </div>
+            </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!--ADD MANAGER Modal -->
     <div class="modal fade" id="addManager" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog" role="document">
