@@ -1,8 +1,7 @@
 <?php
     session_start();
     $db = mysqli_connect("localhost","root","","project1");
-    $arr = array();
-    $arr2 = [];
+    $arr = [];
     if(isset($_GET['id'])){
         $id = $_GET['id'];
         $sql = "SELECT name, pin FROM employee WHERE id='$id'";
@@ -17,7 +16,14 @@
                         $splitTimeStamp = explode(" ",$timestamp);
                         $date = $splitTimeStamp[0];
                         $time = $splitTimeStamp[1];
-                        $arr[] = $row + $row2;
+                        $data = array(
+                            'name' => $row['name'],
+                            'pin' => $row['pin'],
+                            'status' => $row2['status'],
+                            'date' => $date,
+                            'time' => $time
+                        );
+                        array_push($arr, $data);
                     }
                 }
             }
