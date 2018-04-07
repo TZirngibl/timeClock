@@ -11,6 +11,9 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- date pickers -->
+<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 <title>CRST Timeclock</title>
 </head>
 <body>
@@ -56,7 +59,7 @@
                         </button>
                         <!--MANAGER AND EMPLOYEE TABLES-->
                         <!--EMPLOYEES-->
-                        <div class="table-responsive-md">
+                        <div class="table-responsive-sm">
                             <table class="table">
                                 <thead class="table-dark">
                                     <th>Id</th>
@@ -107,7 +110,7 @@
                                 </div>
                         <!--MANAGERS-->
                         <h5>Managers</h5>
-                        <div class="table-responsive-sm">
+                        <div class="table-responsive-md">
                             <table class="table">
                                 <thead class="table-dark">
                                     <th>Id</th>
@@ -167,6 +170,34 @@
                                         </form>
                                     </div>
                             </nav>
+                            <!--CLOCK HISTORY TABLE-->
+                        <h5>Clock History</h5>
+                        <div class="table-responsive-sm">
+                            <table class="table">
+                                <thead class="table-dark">
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Timestamp</th>
+                                    <th>Action</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Joey No Ajax</td>
+                                        <td>jnojax@gmail.com</td>
+                                        <td>fakepasswordhaha</td>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>HonkyNoJax</td>
+                                        <td>yerrr@yahoo.com</td>
+                                        <td>fakepasswordhaha2</td>
+                                        <td>u2</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         </div>
                             </div>
@@ -190,14 +221,18 @@
             <div class="card">
             <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
-                <button class="btn btn-block" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button class="btn btn-block collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                    By Date Filter
                 </button>
                 </h5>
             </div>
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
-                    hi
+                    <div class="input-append date">
+                        From:<input type="datepicker" id="datetimepicker1"></input>
+                        To:<input type="datepicker" id="datetimepicker2"></input>
+                        <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+                    </div>
                 </div>
             </div>
             </div>
@@ -213,7 +248,22 @@
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                 <div class="card-body">
-                From: <input type="text" class="datepicker"></input>To:<input type="text" class="datepicker"></input>
+                Starting Date:<input type="datepicker" id="datetimepicker3"></input>
+                <label for="payInt" class="col-sm-12 col-form-label nopads">Interval:</label>
+                    <div class="col-sm-6 nopads" id="payIntervals">
+                    <select class="form-control" id="payInt">
+                    <option>Weekly</option>
+                    <option>Bi-Weekly</option>
+                    <option>Monthly</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-6 nopads" id="payPeriods">
+                    <select class="form-control" id="payPeriod">
+                    <option>xxxx-xxxx</option><!-- insert the generated dates into each of these options -->
+                    <option>xxxx-xxxx</option>
+                    <option>xxxx-xxxx</option>
+                    </select>
+                    </div>
                 </div>
             </div>
             </div>

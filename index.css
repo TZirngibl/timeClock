@@ -1,7 +1,16 @@
 .moveleft{
     right: 80%;
 }
-
+.nopads{
+  padding-left: 0;
+  padding-right: 0;
+}
+#payIntervals{
+  float: left;
+}
+#payPeriods{
+  float: right;
+}
 /*!
  * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
  * Copyright 2013-2017 Start Bootstrap
