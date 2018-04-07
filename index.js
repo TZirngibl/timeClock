@@ -1,0 +1,9 @@
+$("#reportspage").hide();
+$("#reportcontainer").click(function(){
+    $("#home-page-wrapper").hide();
+    $("#reportspage").show();
+});
+$("#homepage").click(function(){
+    $("#home-page-wrapper").show();
+    $("#reportspage").hide();
+});
