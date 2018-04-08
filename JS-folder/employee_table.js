@@ -110,11 +110,33 @@ $(document).ready(function(){
                                 {
                                     var jsondata2 = JSON.parse(data2);
                                     console.log(jsondata2);
-                                    user = jsondata2[1]['name'];
-                                    console.log(user);
+                                    var current_date = jsondata2[0]['date'];
+                                    var clockin_history = [];
+                                    var index = 0;
+                                    var result = [];
+                                    var result_index = 0;
                                     for(var x = 0; x < jsondata2.length; x++){
-                                        console.log(new Date(jsondata2[x]['punch_timestamp']).getTime()/1000);
+                                        while(jsondata2[x]['date'] == current_date){
+                                            clockin_history[index] = jsondata2[x]['status'];
+                                            clockin_history[index + 1] = jsondata2[x]['time']
+                                            x++; index = index + 2;
+                                            if(x >= jsondata2.length){
+                                                break;
+                                            }
+                                        }
+                                        result.push({
+                                            'date': current_date,
+                                            'history': clockin_history
+                                        })
+                                        clockin_history = [];
+                                        if(x < jsondata2.length){
+                                            current_date = jsondata2[x]['date'];
+                                        }
+                                        index = 0;
+                                        x--;
                                     }
+                                    console.log(result);
+                                    calculate(result);
                                 }
                             })
                             edit.style.display = "block";
@@ -258,5 +280,13 @@ $(document).ready(function(){
                 } 
             }
         });
+    }
+/*
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////calculate//////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+*/
+    function calculate(array){
+
     }
 });
