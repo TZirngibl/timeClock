@@ -291,12 +291,11 @@ $(document).ready(function(){
     function calculate(result_clockin){
         var result_time = [];
         var block = [];
-        var time_in; var time_out; var total_time_date = 0; var total_time_block;
+        var time_in; var time_out; var total_time_date; var total_time_block = 0;;
         for(var i = 0; i < result_clockin.length; i++){
             var count = 0;
             var expect_status = 'in';
             for(var j = 0; j < result_clockin[i]['history'].length; j++){
-                console.log(j);
                 if(result_clockin[i]['history'][j]['status'] == expect_status){
                     switch(expect_status){
                         case 'in':
@@ -316,8 +315,9 @@ $(document).ready(function(){
 
                         var totalSec = endTime.diff(startTime, 'seconds');
                         var result = moment().startOf('day').seconds(totalSec).format('H.mm');
+                        total_time_block = total_time_block + totalSec;
+                        console.log(total_time_block);
                         count = 0;
-                        console.log(result);
                         block.push({
                             'status_in': 'in',
                             "time_in": time_in,
@@ -328,9 +328,11 @@ $(document).ready(function(){
                     }
                 }
             }
+            total_time_date = moment().startOf('day').seconds(total_time_block).format('H.mm');
             result_time.push({
                 'date': result_clockin[i]['date'],
                 'blocks': block,
+                'working_hour': total_time_date,
             });
             block = [];
         }
