@@ -316,7 +316,6 @@ $(document).ready(function(){
                         var totalSec = endTime.diff(startTime, 'seconds');
                         var result = moment().startOf('day').seconds(totalSec).format('H.mm');
                         total_time_block = total_time_block + totalSec;
-                        console.log(total_time_block);
                         count = 0;
                         block.push({
                             'status_in': 'in',
