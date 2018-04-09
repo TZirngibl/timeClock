@@ -117,9 +117,11 @@ $(document).ready(function(){
                                     var result_index = 0;
                                     for(var x = 0; x < jsondata2.length; x++){
                                         while(jsondata2[x]['date'] == current_date){
-                                            clockin_history[index] = jsondata2[x]['status'];
-                                            clockin_history[index + 1] = jsondata2[x]['time']
-                                            x++; index = index + 2;
+                                            clockin_history.push({
+                                                'status': jsondata2[x]['status'],
+                                                'time': jsondata2[x]['time']
+                                            });
+                                            x++;
                                             if(x >= jsondata2.length){
                                                 break;
                                             }
@@ -286,7 +288,52 @@ $(document).ready(function(){
 ////////////////////////////////calculate//////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 */
-    function calculate(array){
+    function calculate(result_clockin){
+        var result_time = [];
+        var block = [];
+        var time_in; var time_out; var total_time_date = 0; var total_time_block;
+        for(var i = 0; i < result_clockin.length; i++){
+            var count = 0;
+            var expect_status = 'in';
+            for(var j = 0; j < result_clockin[i]['history'].length; j++){
+                console.log(j);
+                if(result_clockin[i]['history'][j]['status'] == expect_status){
+                    switch(expect_status){
+                        case 'in':
+                            time_in = result_clockin[i]['history'][j]['time'];
+                            expect_status ='out';
+                            count++;
+                            break;
+                        case 'out':
+                            time_out = result_clockin[i]['history'][j]['time'];
+                            expect_status ='in';
+                            count++;
+                            break;
+                    }
+                    if(count == 2){
+                        var startTime = moment(time_in, 'hh.mm');
+                        var endTime = moment(time_out, 'hh.mm');
 
+                        var totalSec = endTime.diff(startTime, 'seconds');
+                        var result = moment().startOf('day').seconds(totalSec).format('H.mm');
+                        count = 0;
+                        console.log(result);
+                        block.push({
+                            'status_in': 'in',
+                            "time_in": time_in,
+                            'status_out': 'out',
+                            "time_out": time_out,
+                            "time-block": result,
+                        });
+                    }
+                }
+            }
+            result_time.push({
+                'date': result_clockin[i]['date'],
+                'blocks': block,
+            });
+            block = [];
+        }
+        console.log(result_time);
     }
 });
