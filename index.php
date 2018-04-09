@@ -17,11 +17,16 @@
 <title>CRST Timeclock</title>
 </head>
 <body>
+<div id = "everything">
 <div id="wrapper" class = "toggled">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a href="#" class="homepage">CRST Timeclock</a></li>
+                <img src="profile.png" class="profile-pic">
+                <?php 
+                    echo "Welcome, ". $_SESSION["nameofuser"];
+                ?>
                 <li><a href="#" class="homepage">Home</a></li>
                 <li><a href="#" id="reportcontainer">Reports</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#clockIn">Clock In</a></li>
@@ -496,6 +501,7 @@
     </div>
   </div>
 </div>
-<script src="/timeclock/index.js"></script>
+<script src="index.js"></script>
+</div> <!--everything-->
 </body>
 </html>
