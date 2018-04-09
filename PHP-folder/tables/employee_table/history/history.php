@@ -4,7 +4,7 @@
     $arr = [];
     if(isset($_GET['id'])){
         $id = $_GET['id'];
-        $sql = "SELECT name, pin FROM employee WHERE id='$id'";
+        $sql = "SELECT name, pin, wage, wage_ot FROM employee WHERE id='$id'";
         $result = $db-> query($sql);
         if($result-> num_rows > 0){
             while($row = $result-> fetch_assoc()){
@@ -19,6 +19,8 @@
                         $data = array(
                             'name' => $row['name'],
                             'pin' => $row['pin'],
+                            'wage' => $row['wage'],
+                            'wage_ot' => $row['wage_ot'],
                             'status' => $row2['status'],
                             'date' => $date,
                             'time' => $time

@@ -134,6 +134,7 @@ $(document).ready(function(){
                                             'date': current_date,
                                             'history': clockin_history
                                         })
+                                        console.log(jsondata2[0]['wage']);
                                         clockin_history = [];
                                         if(x < jsondata2.length){
                                             current_date = jsondata2[x]['date'];
@@ -297,7 +298,7 @@ $(document).ready(function(){
         var name = result_clockin[0]['name']; var pin = result_clockin[0]['pin']; 
         var wage= result_clockin[0]['wage'];  var wage_ot= result_clockin[0]['wage_ot']; 
         var time_in; var time_out; var total_regular_time; var total_time_second = 0;
-                                   var total_pay_regular;  var total_pay_over = 0; var total_pay_date;
+                                   var total_pay_regular;  var total_pay_over; var total_pay_date;
                                    var total_over_time;
         for(var i = 0; i < result_clockin.length; i++){
             var count = 0;
