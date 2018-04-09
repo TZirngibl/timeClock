@@ -22,6 +22,26 @@
 .table thead th{
   border-bottom: none;
 }
+table{
+  overflow: auto;
+}
+#employeesearch{
+  border: 1px solid white;
+  color: white;
+}
+#employeesearch:hover{
+  background: white;
+  color: black;
+}
+
+#reportsearch{
+  border: 1px solid white;
+  color: white;
+}
+#reportsearch:hover{
+  background: white;
+  color: black;
+}
 /*!
  * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
  * Copyright 2013-2017 Start Bootstrap

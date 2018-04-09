@@ -23,10 +23,6 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a href="#" class="homepage">CRST Timeclock</a></li>
-                <img src="profile.png" class="profile-pic">
-                <?php 
-                    echo "Welcome, ". $_SESSION["nameofuser"];
-                ?>
                 <li><a href="#" class="homepage">Home</a></li>
                 <li><a href="#" id="reportcontainer">Reports</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#clockIn">Clock In</a></li>
@@ -53,7 +49,7 @@
                                 </ul>
                                 <form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Search Employee Name" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"id="employeesearch">Search</button>
                                 </form>
                             </div>
                     </nav>
@@ -170,7 +166,7 @@
                                         </ul>
                                         <form class="form-inline my-2 my-lg-0">
                                         <input class="form-control mr-sm-2" type="search" placeholder="Search Employee ID" aria-label="Search">
-                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="reportsearch">Search</button>
                                         </form>
                                     </div>
                             </nav>
