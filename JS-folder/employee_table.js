@@ -127,6 +127,10 @@ $(document).ready(function(){
                                             }
                                         }
                                         result.push({
+                                            'pin': jsondata2[0]['pin'],
+                                            'name': jsondata2[0]['name'],
+                                            'wage': jsondata2[0]['wage'],
+                                            'wage_ot': jsondata2[0]['wage_ot'],
                                             'date': current_date,
                                             'history': clockin_history
                                         })
@@ -289,9 +293,12 @@ $(document).ready(function(){
 //////////////////////////////////////////////////////////////////////////////
 */
     function calculate(result_clockin){
-        var result_time = [];
-        var block = [];
-        var time_in; var time_out; var total_time_date; var total_time_block = 0;;
+        var result_time = []; var block = [];
+        var name = result_clockin[0]['name']; var pin = result_clockin[0]['pin']; 
+        var wage= result_clockin[0]['wage'];  var wage_ot= result_clockin[0]['wage_ot']; 
+        var time_in; var time_out; var total_regular_time; var total_time_second = 0;
+                                   var total_pay_regular;  var total_pay_over = 0; var total_pay_date;
+                                   var total_over_time;
         for(var i = 0; i < result_clockin.length; i++){
             var count = 0;
             var expect_status = 'in';
@@ -315,7 +322,7 @@ $(document).ready(function(){
 
                         var totalSec = endTime.diff(startTime, 'seconds');
                         var result = moment().startOf('day').seconds(totalSec).format('H.mm');
-                        total_time_block = total_time_block + totalSec;
+                        total_time_second = total_time_second + totalSec;
                         count = 0;
                         block.push({
                             'status_in': 'in',
@@ -327,11 +334,26 @@ $(document).ready(function(){
                     }
                 }
             }
-            total_time_date = moment().startOf('day').seconds(total_time_block).format('H.mm');
+            if(total_time_second > 14400){
+                total_overtime = 144000 - total_time_second;
+            }
+            else{
+                total_overtime = 0
+            }
+            total_pay_regular = (wage/3600)*total_time_second;
+            total_pay_over = (wage_ot/3600)*total_overtime;
+            total_pay_date = total_pay_regular + total_pay_over;
+            total_regular_time = moment().startOf('day').seconds(total_time_second).format('H.mm');
+            total_over_time = moment().startOf('day').seconds(total_overtime).format('H.mm');
             result_time.push({
                 'date': result_clockin[i]['date'],
                 'blocks': block,
-                'working_hour': total_time_date,
+                'working_hour': total_regular_time,
+                'overtime': total_over_time,
+                "regular pay": total_pay_regular,
+                "overtime pay": total_pay_over,
+                'total pay': total_pay_date,
+
             });
             block = [];
         }
