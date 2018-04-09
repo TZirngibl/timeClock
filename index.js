@@ -1,4 +1,16 @@
 $(function() {
+    $("#overtimelimit").val(40);
+    $("#payInt").on("change",function(){
+        if($("#payInt").val() == "Weekly"){
+            $("#overtimelimit").val(40);
+        }
+        else if($("#payInt").val() == "Bi-Weekly"){
+            $("#overtimelimit").val(80);
+        }
+        else if($("#payInt").val() == "Monthly"){
+            $("#overtimelimit").val(160);
+        }
+    });
     $('#datetimepicker1').datetimepicker({
       uiLibrary: 'bootstrap4',
       language: 'pt-BR'

@@ -48,8 +48,7 @@
                                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#addManager">Add Manager</a></li>
                                 </ul>
                                 <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search Employee Name" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"id="employeesearch">Search</button>
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search Employee Name" aria-label="Search" id="employeesearch">
                                 </form>
                             </div>
                     </nav>
@@ -165,8 +164,7 @@
                                         <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#filterModal">Filter <span class="sr-only">(current)</span></a></li>
                                         </ul>
                                         <form class="form-inline my-2 my-lg-0">
-                                        <input class="form-control mr-sm-2" type="search" placeholder="Search Employee ID" aria-label="Search">
-                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="reportsearch">Search</button>
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search Employee ID" aria-label="Search" id="reportsearch">
                                         </form>
                                     </div>
                             </nav>
@@ -222,34 +220,32 @@
             <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
                 <button class="btn btn-block collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                   By Date Filter
+                   Date Range
                 </button>
                 </h5>
             </div>
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
                     <div class="input-append date">
-                        From:<input type="datepicker" id="datetimepicker1"></input>
-                        To:<input type="datepicker" id="datetimepicker2"></input>
+                        Starting Date: <input type="datepicker" id="datetimepicker1"></input>
                         <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
                     </div>
                 </div>
             </div>
             </div>
 
-            <!-- Pay Period Filter -->
+            <!-- Settings Filter -->
             <div class="card">
             <div class="card-header" id="headingTwo">
                 <h5 class="mb-0">
                 <button class="btn btn-block collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                   By Pay Periods
+                   Settings
                 </button>
                 </h5>
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                 <div class="card-body">
-                Starting Date:<input type="datepicker" id="datetimepicker3"></input>
-                <label for="payInt" class="col-sm-12 col-form-label nopads">Interval:</label>
+                <label for="payInt" class="col-sm-12 col-form-label nopads" id="half">Interval:</label>
                     <div class="col-sm-6 nopads" id="payIntervals">
                     <select class="form-control" id="payInt">
                     <option>Weekly</option>
@@ -257,11 +253,9 @@
                     <option>Monthly</option>
                     </select>
                     </div>
+                    <label for="overtimelimit" class="nopads col-form-label">OT Limit:</label>
                     <div class="col-sm-6 nopads" id="payPeriods">
-                    <select class="form-control" id="payPeriod">
-                    <option>xxxx-xxxx</option><!-- insert the generated dates into each of these options -->
-                    <option>xxxx-xxxx</option>
-                    <option>xxxx-xxxx</option>
+                    <input class="form-control" type="int" id="overtimelimit">
                     </select>
                     </div>
                 </div>
@@ -271,7 +265,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Search Dates</button>
+        <button type="button" class="btn btn-primary">Generate a Report</button>
       </div>
     </div>
   </div>
