@@ -1,52 +1,101 @@
-.moveleft{
+@media(max-width:768px) {
+  /* this is where mobile css starts*/
+  #home-page-wrapper{
+    width: 80vw;
+  }
+  .table{
+    max-width: 100px;
+  }
+  body {
+    background: url("bg.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  #wrapper {
+    padding-left: 0;
+  }
+  #wrapper.toggled {
+    padding-left: 250px;
+  }
+  #sidebar-wrapper {
+    width: 0;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+  }
+  #page-content-wrapper {
+    width: 100%;
+    height: 90vh;
+    padding: 10px;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    overflow: auto;
+    position: absolute;
+    margin-right: 0;
+    width: fit-content;
+    height: 90vh;
+  }
+  }/*end of media statement*/
+  @media(max-width:1920px) {
+  #homenavbar{
+    width: 80vw;
+  }
+  #reportnavbar{
+    width: 80vw;
+  }
+  .moveleft{
     right: 80%;
-}
-.nopads{
+  }
+  .nopads{
   padding-left: 0;
   padding-right: 0;
-}
-#everything{
+  }
+  #everything{
   margin-top: 30px;
   margin-left: 10px;
   margin-bottom: 30px;
-}
-.table td{
+  }
+  .table td{
   border: none;
-}
-.table thead th{
+  }
+  .table thead th{
   border-bottom: none;
-}
-table{
-  overflow: auto;
-}
-#employeesearch{
+  }
+  .table{
+    overflow: scroll;
+  }
+  #employeesearch{
   border: 1px solid white;
   color: white;
-}
-#employeesearch:hover{
+  }
+  #employeesearch:hover{
   background: white;
   color: black;
-}
-#reportsearch{
+  }
+  #reportsearch{
   border: 1px solid white;
   color: white;
-}
-#reportsearch:hover{
+  }
+  #reportsearch:hover{
   background: white;
   color: black;
-}
-#half{
+  }
+  #half{
   width:50%;
-}
-/*!
- * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
- */
-
- body {
-    background-image: url("bg.jpg");
-    background-repeat: no-repeat;
+  }
+  /*!
+  * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+  * Copyright 2013-2017 Start Bootstrap
+  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+  */
+  
+  body {
+    background: url("bg.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
   }
   
@@ -67,7 +116,7 @@ table{
     position: fixed;
     left: 250px;
     width: 0;
-    height: 90%;
+    height: 90vh;
     margin-left: -225px;
     overflow-y: auto;
     background: #000;
@@ -82,19 +131,12 @@ table{
   }
   
   #page-content-wrapper {
-    width: 100%;
+    width: fit-content;
     height: 90vh;
     position: absolute;
     padding: 15px;
     background: rgba(255, 255, 255, 0.638);
   }
-  
-  #wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
-  }
-  
-  
   /* Sidebar Styles */
   
   .sidebar-nav {
@@ -141,26 +183,4 @@ table{
     color: #fff;
     background: none;
   }
-  
-  @media(min-width:768px) {
-    #wrapper {
-      padding-left: 0;
-    }
-    #wrapper.toggled {
-      padding-left: 250px;
-    }
-    #sidebar-wrapper {
-      width: 0;
-    }
-    #wrapper.toggled #sidebar-wrapper {
-      width: 250px;
-    }
-    #page-content-wrapper {
-      padding: 10px;
-      position: relative;
-    }
-    #wrapper.toggled #page-content-wrapper {
-      position: relative;
-      margin-right: 0;
-    }
-  }
+}

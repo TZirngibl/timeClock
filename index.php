@@ -17,6 +17,7 @@
 <title>CRST Timeclock</title>
 </head>
 <body>
+<div class="container-fluid">
 <div id = "everything">
 <div id="wrapper" class = "toggled">
         <!-- Sidebar -->
@@ -34,10 +35,10 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container-fluid">
+            
                 <div id="home-page-wrapper">
                 <!--NAVBAR-->
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="homenavbar">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -58,7 +59,7 @@
                         </button>
                         <!--MANAGER AND EMPLOYEE TABLES-->
                         <!--EMPLOYEES-->
-                        <div class="table-responsive-sm">
+                        <div class="table-responsive-md">
                             <table class="table">
                                 <thead class="table-dark">
                                     <th>Id</th>
@@ -154,7 +155,7 @@
                     </div><!-- /#home-page-wrapper -->
                         <div id="reportspage">
                             <!--REPORTS NAVBAR-->
-                            <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+                            <nav class="navbar navbar-expand-lg navbar-dark bg-success" id="reportnavbar">
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
