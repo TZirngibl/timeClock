@@ -20,6 +20,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" media="screen" href="CSS-folder/button.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="CSS-folder/home.css" />
@@ -29,11 +30,13 @@
   $( function() {
     $( "#datepicker" ).datepicker();
     $( "#datepicker2" ).datepicker();
+    $( 'input#timefix').timepicker({ timeFormat: 'HH:mm:ss' });
   } );
   </script>
     
 </head>
 <body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <div class="general">
         <div class="menu">
             <div class="admin">
@@ -44,10 +47,12 @@
             </div>
             <ul class="listmenu">
                 <li><button class="button6 button5" type="button" id="managers">Home</button></li>
-                <li><button class="button6 button5" type="button" id="money">Money</button></li>
+                <li><button class="button6 button5" type="button" id="money">History</button></li>
                 <li><button class="button6 button5" type="button" id="createmanager">Create New Manager</button></li>
                 <li><button class="button6 button5" type="button" id="clockinbtn">Clock In</button></li>
                 <li><button class="button6 button5" type="button" id="clockoutbtn">Clock Out</button></li>
+                <li><button class="button6 button5" type="button" id="timefixbtn">Fix Time</button></li>
+                <li><button class="button6 button5" type="button" id="generate">Generate</button></li>
                 <form method="post" action="PHP-folder/login_logout/log_out.php" class="logout">
                 <li><button class="button6 out button5" type="submit" name="login" value="login">Logout</button></li>
                 </form>
@@ -163,6 +168,34 @@
                 <input id="clockout" type="submit" name="clockout" value="Clock Out"/> 
             </form>
         <span class="close5" href="#">X</span>
+    </div>
+</div>
+<!-- Change Login Time Modal -->
+<div class="modal_container" id="timefix_container">
+    <div class="modal">
+        <p id="registerform">Modify</p>
+            <form method="post" action="PHP-folder/clockin_clockout/time_fix.php" class="register-form">
+                <label for="pin">PIN:<input type="" name="pin" placeholder="###"/>
+                <label for="date">Date<input type="date"  name="date"  id="datefix"></p>
+                <label for="time">Time<input type="text" name="time" id="timefix"></p>
+                <input id="fix_clockout" type="submit" name="clockout" value="Clock Out"/>
+                <input id="fix_clockin" type="submit" name="clockin" value="Clock In"/> 
+            </form>
+        <span class="close6" href="#">X</span>
+    </div>
+</div>
+<!-- Generate Report -->
+<div class="modal_container" id="report_generate">
+    <div class="modal">
+        <p id="registerform">Generator</p>
+            <form method="post" action="PHP-folder/clockin_clockout/time_fix.php" class="register-form">
+                <label for="pin">PIN:<input type="" name="pin" placeholder="###"/>
+                <label for="date">Date<input type="date"  name="date"  id="datefix"></p>
+                <label for="time">Time<input type="text" name="time" id="timefix"></p>
+                <input id="fix_clockout" type="submit" name="clockout" value="Clock Out"/>
+                <input id="fix_clockin" type="submit" name="clockin" value="Clock In"/> 
+            </form>
+        <span class="close7" href="#">X</span>
     </div>
 </div>
 </html>

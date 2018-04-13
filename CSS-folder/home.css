@@ -219,7 +219,26 @@ body{
     text-decoration: none;
     cursor: pointer;
   }
-
+.close6 {
+    color: #aaaaaa;
+    position: fixed;
+    top: 55px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    position: fixed;
+    background-color: black;
+    width: 2%;
+    border-radius: 50%;
+    transition: ease 500ms;
+} 
+.close6:hover,
+.close6:focus {
+    color: red;
+    background-color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
 #clockin{
     background-color: rgb(49, 112, 49);
     transition: ease 500ms;
@@ -239,6 +258,28 @@ body{
     text-align: center;
 }
 #clockout:hover{
+    background-color: rgb(190, 53, 53);
+    cursor: pointer;
+}
+#fix_clockin{
+    background-color: rgb(49, 112, 49);
+    transition: ease 500ms;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+#fix_clockin:hover{
+    background-color: rgb(76, 167, 76);
+    cursor: pointer;
+}
+#fix_clockout{
+    background-color: rgb(156, 50, 50);
+    transition: ease 500ms;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+#fix_clockout:hover{
     background-color: rgb(190, 53, 53);
     cursor: pointer;
 }
@@ -294,3 +335,5 @@ body{
     display: inline;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+
