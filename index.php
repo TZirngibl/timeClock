@@ -56,134 +56,23 @@
                         <!--EMPLOYEES-->
                         <div class="table-responsive-md">
                             <table class="table">
-                                <thead class="table-dark">
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>PIN</th>
-                                    <th>Dept</th>
-                                    <th>Create Date</th>
-                                    <th>Create By</th>
-                                    <th>Modify Date</th>
-                                    <th>Modify By</th>
-                                    <th>Wage</th>
-                                    <th>OTWage</th>
-                                    <th>Edit/Delete</th>
+                                <thead class="table-dark" id="employeetableheader">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Pin</th>
+                                        <th>Email</th>
+                                        <th>Dept</th>
+                                        <th>Create Date</th>
+                                        <th>Create By</th>
+                                        <th>Modify Date</th>
+                                        <th>Modify By</th>
+                                        <th>Wage</th>
+                                        <th>OT Wage</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </thead>
-                                <tbody class="employeetablerow">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Tim Zirngibl</td>
-                                        <td>tzirn@yerr.com</td>
-                                        <td>555</td>
-                                        <td>100</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Creator</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Modifier</td>
-                                        <td>15</td>
-                                        <td>20</td>
-                                        <td>Edit/Delete Links</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Hoang Nguyen</td>
-                                        <td>backendiswackend@hoang.com</td>
-                                        <td>444</td>
-                                        <td>100</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Creator</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Modifier</td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>Edit/Delete Links</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Tim Zirngibl</td>
-                                        <td>tzirn@yerr.com</td>
-                                        <td>555</td>
-                                        <td>100</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Creator</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Modifier</td>
-                                        <td>15</td>
-                                        <td>20</td>
-                                        <td>Edit/Delete Links</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Hoang Nguyen</td>
-                                        <td>backendiswackend@hoang.com</td>
-                                        <td>444</td>
-                                        <td>100</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Creator</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Modifier</td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>Edit/Delete Links</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Tim Zirngibl</td>
-                                        <td>tzirn@yerr.com</td>
-                                        <td>555</td>
-                                        <td>100</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Creator</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Modifier</td>
-                                        <td>15</td>
-                                        <td>20</td>
-                                        <td>Edit/Delete Links</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Hoang Nguyen</td>
-                                        <td>backendiswackend@hoang.com</td>
-                                        <td>444</td>
-                                        <td>100</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Creator</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Modifier</td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>Edit/Delete Links</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Tim Zirngibl</td>
-                                        <td>tzirn@yerr.com</td>
-                                        <td>555</td>
-                                        <td>100</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Creator</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Modifier</td>
-                                        <td>15</td>
-                                        <td>20</td>
-                                        <td>Edit/Delete Links</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Hoang Nguyen</td>
-                                        <td>backendiswackend@hoang.com</td>
-                                        <td>444</td>
-                                        <td>100</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Creator</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Modifier</td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>Edit/Delete Links</td>
-                                    </tr>
-
+                                <tbody class="employeetablerow" id="employeetablebody">
                                 </tbody>
                             </table>
                                 <!-- EMPLOYEE PAGINATOR -->
@@ -209,7 +98,7 @@
                         <h5>Managers</h5>
                         <div class="table-responsive-md">
                             <table class="table">
-                                <thead class="table-dark">
+                                <thead class="table-dark"id="managertableheader">
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Email</th>
@@ -220,32 +109,9 @@
                                     <th>Modify Date</th>
                                     <th>Modify By</th>
                                     <th>Expire Date</th>
+                                    <th>Action</th>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Joey No Ajax</td>
-                                        <td>jnojax@gmail.com</td>
-                                        <td>fakepasswordhaha</td>
-                                        <td>m</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Creator</td>
-                                        <td>MM-DD-YYYY</td>
-                                        <td>Modifier</td>
-                                        <td>seconds until expiry</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>HonkyNoJax</td>
-                                        <td>yerrr@yahoo.com</td>
-                                        <td>fakepasswordhaha2</td>
-                                        <td>u2</td>
-                                        <td>MM-DD-YYYY2</td>
-                                        <td>Creator2</td>
-                                        <td>MM-DD-YYYY2</td>
-                                        <td>Modifier2</td>
-                                        <td>seconds until expiry2</td>
-                                    </tr>
+                                <tbody id="managertablebody">
                                 </tbody>
                             </table>
                             <!-- MANAGER PAGINATOR -->
@@ -269,6 +135,7 @@
 
                         </div>
                     </div><!-- /#home-page-wrapper -->
+                    <!--REPORTS PAGE-->
                         <div id="reportspage">
                             <!--REPORTS NAVBAR-->
                             <nav class="navbar navbar-expand-lg navbar-dark bg-success" id="reportnavbar">
@@ -289,28 +156,15 @@
                         <h5>Clock History</h5>
                         <div class="table-responsive-sm">
                             <table class="table">
-                                <thead class="table-dark">
+                                <thead class="table-dark" id="reporttableheader">
                                     <th>Id</th>
-                                    <th>Name</th>
+                                    <th>Emp ID</th>
                                     <th>Status</th>
                                     <th>Timestamp</th>
                                     <th>Action</th>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Joey No Ajax</td>
-                                        <td>jnojax@gmail.com</td>
-                                        <td>fakepasswordhaha</td>
-                                        <td>m</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>HonkyNoJax</td>
-                                        <td>yerrr@yahoo.com</td>
-                                        <td>fakepasswordhaha2</td>
-                                        <td>u2</td>
-                                    </tr>
+                                <tbody id="reporttablebody">
+
                                 </tbody>
                             </table>
                             <!-- REPORTS PAGINATOR -->
@@ -386,38 +240,36 @@
             </button>
         </div>
         <div class="modal-body">
-            <form>
+            <form method="post" action="/timeclock/timeclock/PHP-folder/create_users_manager/register_manager_data.php">
                 <div class="form-group row">
-                    <input id= "addmidchange"  type="hidden" name="id" readonly/>
-
                     <label for="addmname" class="col-sm-2 col-form-label">Name:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="addmname" placeholder="Name">
+                        <input type="text" class="form-control" name="addmname" placeholder="Name">
                     </div>
 
                     <label for="addmemail" class="col-sm-2 col-form-label">Email: </label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="addmemail" placeholder="Email">
+                        <input type="text" class="form-control" name="addmemail" placeholder="Email">
                     </div>
 
                     <label for="inputmPassword" class="col-sm-2 col-form-label">Password:</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputmPassword" placeholder="Password">
+                        <input type="password" class="form-control" name="inputmPassword" placeholder="Password">
                     </div>
-                    
                     <label for="isManager" class="col-sm-2 col-form-label">Manager: </label>
                     <div class="col-sm-10">
-                    <select class="form-control" id="isManager">
+                    <select class="form-control" name="isManager">
                     <option>Yes</option>
                     <option>No</option>
                     </select>
                     </div>
                 </div>
-                </form>
+                
             </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add Manager</button>
+            <button type="submit" class="btn btn-primary" name="register">Add Manager</button>
+            </form>
         </div>
         </div>
     </div>
@@ -433,35 +285,35 @@
             </button>
         </div>
         <div class="modal-body">
-            <form>
+            <form method="post" action="/timeclock/timeclock/PHP-folder/create_users_manager/register_user_data.php">
                 <div class="form-group row">
                     <input id= "addeidchange"  type="hidden" name="id" readonly/>
 
                     <label for="addename" class="col-sm-2 col-form-label">Name:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="addename" placeholder="Name">
+                        <input type="text" class="form-control" name="addename" placeholder="Name">
                     </div>
 
                     <label for="addepin" class="col-sm-2 col-form-label">PIN:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="addepin" placeholder="PIN">
+                        <input type="text" class="form-control" name="addepin" placeholder="PIN">
                     </div>
 
                     <label for="addeemail" class="col-sm-2 col-form-label">Email: </label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="addeemail" placeholder="Email">
+                        <input type="text" class="form-control" name="addeemail" placeholder="Email">
                     </div>
 
                     <label for="addedept" class="col-sm-2 col-form-label">Dept:</label>
                     <div class="col-sm-10">
-                        <input type="int" class="form-control" id="addedept" placeholder="Dept">
+                        <input type="int" class="form-control" name="addedept" placeholder="Dept">
                     </div>
 
                     <label for="addewage" class="col-sm-2 col-form-label">Wage:</label>
                     <div class="col-sm-10">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
-                        <input type="int" class="form-control" id="addewage" placeholder="Wage">
+                        <input type="int" class="form-control" name="addewage" placeholder="Wage">
                         </div>
                     </div>
 
@@ -469,15 +321,16 @@
                     <div class="col-sm-10">
                         <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
-                        <input type="int" class="form-control" id="addeot_wage" placeholder="OT Wage">
+                        <input type="int" class="form-control" name="addeot_wage" placeholder="OT Wage">
                         </div>
                     </div>
                 </div>
-                </form>
+                
             </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add Employee</button>
+            <button type="submit" class="btn btn-primary" name="register">Add Employee</button>
+            </form>
         </div>
         </div>
     </div>
@@ -598,7 +451,7 @@
 </div>
 </div> <!--everything-->
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!-- date pickers -->
