@@ -7,12 +7,7 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="index.css">
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<!-- date pickers -->
-<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
+<!--date picker css-->
 <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 <title>CRST Timeclock</title>
 </head>
@@ -75,7 +70,7 @@
                                     <th>OTWage</th>
                                     <th>Edit/Delete</th>
                                 </thead>
-                                <tbody>
+                                <tbody class="employeetablerow">
                                     <tr>
                                         <td>1</td>
                                         <td>Tim Zirngibl</td>
@@ -104,9 +99,111 @@
                                         <td>2</td>
                                         <td>Edit/Delete Links</td>
                                     </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tim Zirngibl</td>
+                                        <td>tzirn@yerr.com</td>
+                                        <td>555</td>
+                                        <td>100</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Creator</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Modifier</td>
+                                        <td>15</td>
+                                        <td>20</td>
+                                        <td>Edit/Delete Links</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Hoang Nguyen</td>
+                                        <td>backendiswackend@hoang.com</td>
+                                        <td>444</td>
+                                        <td>100</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Creator</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Modifier</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>Edit/Delete Links</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tim Zirngibl</td>
+                                        <td>tzirn@yerr.com</td>
+                                        <td>555</td>
+                                        <td>100</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Creator</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Modifier</td>
+                                        <td>15</td>
+                                        <td>20</td>
+                                        <td>Edit/Delete Links</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Hoang Nguyen</td>
+                                        <td>backendiswackend@hoang.com</td>
+                                        <td>444</td>
+                                        <td>100</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Creator</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Modifier</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>Edit/Delete Links</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tim Zirngibl</td>
+                                        <td>tzirn@yerr.com</td>
+                                        <td>555</td>
+                                        <td>100</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Creator</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Modifier</td>
+                                        <td>15</td>
+                                        <td>20</td>
+                                        <td>Edit/Delete Links</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Hoang Nguyen</td>
+                                        <td>backendiswackend@hoang.com</td>
+                                        <td>444</td>
+                                        <td>100</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Creator</td>
+                                        <td>MM-DD-YYYY</td>
+                                        <td>Modifier</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>Edit/Delete Links</td>
+                                    </tr>
+
                                 </tbody>
                             </table>
-                        
+                                <!-- EMPLOYEE PAGINATOR -->
+                                        <ul class="pagination justify-content-end flex-wrap">
+                                            <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                            </li>
+                                        </ul>
                                 </div>
                         <!--MANAGERS-->
                         <h5>Managers</h5>
@@ -151,6 +248,25 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <!-- MANAGER PAGINATOR -->
+                                    <ul class="pagination justify-content-end flex-wrap">
+                                        <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                        </li>
+                                    </ul>
+
                         </div>
                     </div><!-- /#home-page-wrapper -->
                         <div id="reportspage">
@@ -197,8 +313,27 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <!-- REPORTS PAGINATOR -->
+                                    <ul class="pagination justify-content-end flex-wrap">
+                                        <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                        </li>
+                                    </ul>
                         </div>
                         </div>
+                        
                             </div>
                             <!-- /#page-content-wrapper -->
 
@@ -215,42 +350,15 @@
         </button>
       </div>
       <div class="modal-body">
-        <div id="accordion">
-            <!-- Date Filter -->
-            <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                <button class="btn btn-block collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                   Date Range
-                </button>
-                </h5>
-            </div>
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
                     <div class="input-append date">
                         Starting Date: <input type="datepicker" id="datetimepicker1"></input>
                         <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
                     </div>
-                </div>
-            </div>
-            </div>
-
-            <!-- Settings Filter -->
-            <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                <button class="btn btn-block collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                   Settings
-                </button>
-                </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-body">
                 <label for="payInt" class="col-sm-12 col-form-label nopads" id="half">Interval:</label>
                     <div class="col-sm-6 nopads" id="payIntervals">
                     <select class="form-control" id="payInt">
-                    <option>Weekly</option>
                     <option>Bi-Weekly</option>
+                    <option>Weekly</option>
                     <option>Monthly</option>
                     </select>
                     </div>
@@ -259,10 +367,6 @@
                     <input class="form-control" type="int" id="overtimelimit">
                     </select>
                     </div>
-                </div>
-            </div>
-            </div>
-            </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -492,7 +596,13 @@
     </div>
   </div>
 </div>
-<script src="index.js"></script>
 </div> <!--everything-->
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- date pickers -->
+<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
+<script src="index.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 $(function() {
-    $("#overtimelimit").val(40);
+    $("#overtimelimit").val(80);
     $("#payInt").on("change",function(){
         if($("#payInt").val() == "Weekly"){
             $("#overtimelimit").val(40);
@@ -33,3 +33,4 @@ $(function() {
         $("#reportspage").hide();
     });
 });
+
