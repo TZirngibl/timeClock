@@ -52,7 +52,7 @@
                 <li><button class="button6 button5" type="button" id="clockinbtn">Clock In</button></li>
                 <li><button class="button6 button5" type="button" id="clockoutbtn">Clock Out</button></li>
                 <li><button class="button6 button5" type="button" id="timefixbtn">Fix Time</button></li>
-                <li><button class="button6 button5" type="button" id="generate">Generate</button></li>
+                <li><button class="button6 button5" type="button" id="report1">Report</button></li>
                 <form method="post" action="PHP-folder/login_logout/log_out.php" class="logout">
                 <li><button class="button6 out button5" type="submit" name="login" value="login">Logout</button></li>
                 </form>
@@ -189,11 +189,11 @@
     <div class="modal">
         <p id="registerform">Generator</p>
             <form method="post" action="PHP-folder/clockin_clockout/time_fix.php" class="register-form">
-                <label for="pin">PIN:<input type="" name="pin" placeholder="###"/>
-                <label for="date">Date<input type="date"  name="date"  id="datefix"></p>
-                <label for="time">Time<input type="text" name="time" id="timefix"></p>
-                <input id="fix_clockout" type="submit" name="clockout" value="Clock Out"/>
-                <input id="fix_clockin" type="submit" name="clockin" value="Clock In"/> 
+                <label for="report_type">Type:<select name="report_type">
+                                    <option value="Weekly">Weekly</option>
+                                    <option value="Bi-Weekly">Bi-Weekly</option>
+                                    <option value="Monthly">Monthly</option>>
+
             </form>
         <span class="close7" href="#">X</span>
     </div>

@@ -15,7 +15,7 @@ $(document).ready(function(){
         var clockinbtn = document.getElementById("clockinbtn");
         var clockoutbtn = document.getElementById("clockoutbtn");
         var timefixbtn = document.getElementById("timefixbtn");
-        var generate = document.getElementById("generate");
+        var report = document.getElementById("report1");
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
         var span2 = document.getElementsByClassName("close2")[0];
@@ -40,7 +40,7 @@ $(document).ready(function(){
         timefixbtn.onclick = function() {
             timefixmodal.style.display = "block";
         }
-        generate.onclick = function() {
+        report.onclick = function() {
             report_generate_modal.style.display = "block";
         }
         // When the user clicks on <span> (x), close the modal

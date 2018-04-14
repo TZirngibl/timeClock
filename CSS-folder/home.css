@@ -239,6 +239,26 @@ body{
     text-decoration: none;
     cursor: pointer;
   }
+.close7 {
+    color: #aaaaaa;
+    position: fixed;
+    top: 55px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    position: fixed;
+    background-color: black;
+    width: 2%;
+    border-radius: 50%;
+    transition: ease 500ms;
+}
+.close7:hover,
+.close7:focus {
+    color: red;
+    background-color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
 #clockin{
     background-color: rgb(49, 112, 49);
     transition: ease 500ms;
