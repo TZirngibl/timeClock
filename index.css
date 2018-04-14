@@ -39,6 +39,13 @@
   }
   }/*end of media statement*/
   @media(max-width:1920px) {
+  .btn-link{
+    border: none;
+  }
+  .btn-link:hover{
+    border: none;
+    cursor: pointer;
+  }
   #homenavbar{
     width: 80vw;
   }

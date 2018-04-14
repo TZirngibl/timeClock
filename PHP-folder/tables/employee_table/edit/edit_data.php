@@ -5,74 +5,46 @@
     if(isset($_POST['save'])){
         $id = $_POST['id'];
 /////////////////////////////////////Update Name//////////////////////////////////////////
-        if(isset($_POST['newname'])){
-            $name = $_POST['newname'];
-            $sql = "UPDATE employee SET name='$name' WHERE id='$id'";
-            mysqli_query($db, $sql);
-        }
-        if(empty($_POST['newname'])){
-            $name = $_POST['oldname'];
+        if(isset($_POST['editename'])){
+            $name = $_POST['editename'];
             $sql = "UPDATE employee SET name='$name' WHERE id='$id'";
             mysqli_query($db, $sql);
         }
 /////////////////////////////////////Update Email//////////////////////////////////////////
-        if(isset($_POST['newpin'])){
-            $pin = $_POST['newpin'];
-            $sql = "UPDATE employee SET pin='$pin' WHERE id='$id'";
-            mysqli_query($db, $sql);
-        }
-        if(empty($_POST['newpin'])){
-            $pin = $_POST['oldpin'];
+        if(isset($_POST['editepin'])){
+            $pin = $_POST['editepin'];
             $sql = "UPDATE employee SET pin='$pin' WHERE id='$id'";
             mysqli_query($db, $sql);
         }
 /////////////////////////////////////Update Pin////////////////////////////////////////////        
-        if(isset($_POST['newemail'])){
-            $email = $_POST['newemail'];
-            $sql = "UPDATE employee SET email='$email' WHERE id='$id'";
-            mysqli_query($db, $sql);
-        }
-        if(empty($_POST['newemail'])){
-            $email = $_POST['oldemail'];
+        if(isset($_POST['editeemail'])){
+            $email = $_POST['editeemail'];
             $sql = "UPDATE employee SET email='$email' WHERE id='$id'";
             mysqli_query($db, $sql);
         }
 //////////////////////////////Department change//////////////////////////////////////////
-    if(isset($_POST['newdept'])){
-        $dept = $_POST['newdept'];
+    if(isset($_POST['editedept'])){
+        $dept = $_POST['editedept'];
         $sql = "UPDATE employee SET dept='$dept' WHERE id='$id'";
         mysqli_query($db, $sql);
     }
-    if(empty($_POST['newdept'])){
-        $dept = $_POST['olddept'];
-        $sql = "UPDATE employee SET dept='$dept' WHERE id='$id'";
-        mysqli_query($db, $sql);
-    }
+
 ////////////////////////////////////Wage Change//////////////////////////////////////////    
-    if(isset($_POST['newwage'])){
-        $wage = $_POST['newwage'];
+    if(isset($_POST['editewage'])){
+        $wage = $_POST['editewage'];
         $sql = "UPDATE employee SET wage='$wage' WHERE id='$id'";
         mysqli_query($db, $sql);
     }
-    if(empty($_POST['newwage'])){
-        $wage = $_POST['oldwage'];
-        $sql = "UPDATE employee SET wage='$wage' WHERE id='$id'";
-        mysqli_query($db, $sql);
-    }
+
 ////////////////////////////////////overtime Wage Change//////////////////////////////////////////    
-    if(isset($_POST['newwage_ot'])){
-        $wage_ot = $_POST['newwage_ot'];
-        $sql = "UPDATE employee SET wage_ot='$wage_ot' WHERE id='$id'";
-        mysqli_query($db, $sql);
-    }
-    if(empty($_POST['newwage_ot'])){
-        $wage_ot = $_POST['oldwage_ot'];
+    if(isset($_POST['editeot_wage'])){
+        $wage_ot = $_POST['editeot_wage'];
         $sql = "UPDATE employee SET wage_ot='$wage_ot' WHERE id='$id'";
         mysqli_query($db, $sql);
     }
 ////////////////////////////////////Last Modify//////////////////////////////////////////
-    $sql = "UPDATE employee SET lastmodify_date=NOW(), lastmodify_by='$control' WHERE id='$id'";
+    $sql = "UPDATE employee SET lastmodify_date=DATE.NOW(), lastmodify_by='$control' WHERE id='$id'";
     mysqli_query($db, $sql);
-        header("location:../../../../home.php");
+        header("location:../../../../index.php");
     }
 ?>

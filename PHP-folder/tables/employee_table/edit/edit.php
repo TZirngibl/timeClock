@@ -7,7 +7,7 @@
         $sql = "SELECT id, name, pin, email, dept, wage, wage_ot FROM employee WHERE id='$id'";
         $result = $db-> query($sql);
         if($result-> num_rows > 0){
-            while($row = $result-> fetch_assoc()){
+            while($row = $result -> fetch_assoc()){
                 array_push($arr, $row);
             }
         }

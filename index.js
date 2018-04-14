@@ -73,7 +73,7 @@ function loademployeetable(){
             var deletebutton = $('<button/>',
                 {
                     id: idx,
-                    class: 'delete btn-danger',
+                    class: 'delete btn-link',
                     text: 'Delete',
                     click: function() {
                         x = this.id; 
@@ -83,16 +83,20 @@ function loademployeetable(){
                             data:{id: x},
                             success:function()
                             {
-                                $(this).parent().parent().remove();
+                                
                             }
                         });
+                        $(this).parent().parent().remove();
                     }
                 });
                 var editbutton = $('<button/>',
                 {
+                    
                     id: idx,
-                    class: 'btn-success',
+                    class: 'btn-link',
                     text: 'Edit',
+                    'data-toggle': 'modal',
+                    'data-target': '#editEmployee',
                     click: function() {
                         x = this.id;
                         $.ajax({
@@ -102,7 +106,7 @@ function loademployeetable(){
                             success:function(data1)
                             {
                                 var jsondata1 = JSON.parse(data1);
-                                for(var x = 0; x < jsondata.length; x++){
+                                for(var x = 0; x < jsondata1.length; x++){
                                     $("#idchange").val(jsondata1[x]['id']);
                                     $("#namechange").val(jsondata1[x]['name']);
                                     $("#pinchange").val(jsondata1[x]['pin']);
@@ -115,7 +119,7 @@ function loademployeetable(){
                         })
                     }
                 });
-                var historybutton = $('<button/>',
+                /*var historybutton = $('<button/>',
                 {
                     id: idx,
                     class: 'btn-primary',
@@ -167,7 +171,7 @@ function loademployeetable(){
                             }
                         })
                     }
-                });
+                });*/
                 $("#employeetablebody").append('<tr>'
                 + '<td>' + jsondata[x]['id'] + '</td>'
                 + '<td>' + jsondata[x]['name'] + '</td>'
@@ -180,8 +184,8 @@ function loademployeetable(){
                 + '<td>' + jsondata[x]['lastmodify_by'] + '</td>'
                 + '<td>' + jsondata[x]['wage'] + '</td>'
                 + '<td>' + jsondata[x]['wage_ot'] + '</td>'
-                + '<td></td></tr>');
-                $("#employeetablebody").find('td').last().append(deletebutton).append(editbutton).append(historybutton);
+                + '<td></td></tr>');                                                               //.append(historybutton)
+                $("#employeetablebody").find('td').last().append(deletebutton).append(editbutton);
         }        
     }
   });
@@ -200,7 +204,7 @@ function load_data(query){
             var deletebutton = $('<button/>',
                 {
                     id: idx,
-                    class: 'delete btn-danger',
+                    class: 'delete btn-link',
                     text: 'Delete',
                     click: function() {
                         x = this.id; 
@@ -210,17 +214,19 @@ function load_data(query){
                             data:{id: x},
                             success:function()
                             {
-                                $(this).parent().parent().remove();
+                                
                             }
                         });
+                        $(this).parent().parent().remove();
                     }
                 });
                 var editbutton = $('<button/>',
                 {
                     id: idx,
-                    class: 'btn-success',
+                    class: 'btn-link',
                     text: 'Edit',
                     click: function() {
+                        $("#editEmployee").show();
                         x = this.id;
                         $.ajax({
                             type: "GET",
@@ -242,7 +248,7 @@ function load_data(query){
                         })
                     }
                 });
-                var historybutton = $('<button/>',
+                /*var historybutton = $('<button/>',
                 {
                     id: idx,
                     class: 'btn-primary',
@@ -294,7 +300,7 @@ function load_data(query){
                             }
                         })
                     }
-                });
+                });*/
                 $("#employeetablebody").append('<tr>'
                 + '<td>' + jsondata[x]['id'] + '</td>'
                 + '<td>' + jsondata[x]['name'] + '</td>'
@@ -308,7 +314,7 @@ function load_data(query){
                 + '<td>' + jsondata[x]['wage'] + '</td>'
                 + '<td>' + jsondata[x]['wage_ot'] + '</td>'
                 + '<td></td></tr>');
-                $("#employeetablebody").find('td').last().append(deletebutton).append(editbutton).append(historybutton);
+                $("#employeetablebody").find('td').last().append(deletebutton).append(editbutton);//.append(historybutton);
         }        
     }
   });
@@ -327,19 +333,20 @@ function loadmanagertable(){
             var deletebutton = $('<button/>',
                 {
                     id: idx,
-                    class: 'delete btn-danger',
+                    class: 'delete btn-link',
                     text: 'Delete',
                     click: function() {
                         x = this.id; 
                         $.ajax({
                             type:"GET",
-                            url:"/timeclock/timeclock/PHP-folder/tables/employee_table/delete.php",
+                            url:"/timeclock/timeclock/PHP-folder/tables/manager_table/delete.php",
                             data:{id: x},
                             success:function()
                             {
-                                $(this).parent().parent().remove();
+                                
                             }
                         });
+                        $(this).parent().parent().remove();
                     }
                 });
                 $("#managertablebody").append('<tr>'
@@ -374,7 +381,7 @@ function loadreporttable(){
                 var test = $('<button/>',
                     {
                         id: idx,
-                        class: 'btn-danger',
+                        class: 'btn-link',
                         text: 'Delete',
                         click: function() { 
                             x = this.id;
@@ -385,10 +392,13 @@ function loadreporttable(){
                                 data:{id: x},
                                 success:function()
                                 {
-                                    $(this).parent().parent().remove();
+                                    
                                 }
-                            });
+                                
+                        });
+                        $(this).parent().parent().remove();
                         }
+
                     });
                     $("#reporttablebody").append('<tr>'
                     + '<td>' + jsondata[x]['id'] + '</td>'

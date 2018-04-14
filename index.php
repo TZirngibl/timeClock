@@ -48,10 +48,6 @@
                                 </form>
                             </div>
                     </nav>
-                        <!-- Button trigger EDIT EMPLOYEE modal -->
-                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#editEmployee">
-                        Edit Employee
-                        </button>
                         <!--MANAGER AND EMPLOYEE TABLES-->
                         <!--EMPLOYEES-->
                         <div class="table-responsive-md">
@@ -336,7 +332,7 @@
     </div>
     </div>
 <!--EDIT EMPLOYEE Modal -->
-    <div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="editEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
     <div class="modal-dialog modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -346,35 +342,35 @@
             </button>
         </div>
         <div class="modal-body">
-            <form>
+            <form method="post" action="/timeclock/timeclock/PHP-folder/tables/employee_table/edit/edit_data.php">
                 <div class="form-group row">
-                    <input id= "editeidchange"  type="hidden" name="id" readonly/>
+                    <input id= "editeidchange"  type="hidden" name="id" id="idchange"readonly/>
 
                     <label for="editename" class="col-sm-2 col-form-label">Name:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="editename" placeholder="Name">
+                        <input type="text" class="form-control" name="editename" placeholder="Name" id="namechange">
                     </div>
 
-                    <label for="editepin" class="col-sm-2 col-form-label">PIN:</label>
+                    <label for="editepin" class="col-sm-2 col-form-label" >PIN:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="editepin" placeholder="PIN">
+                        <input type="int" class="form-control" name="editepin" placeholder="PIN" id="pinchange">
                     </div>
 
                     <label for="editeemail" class="col-sm-2 col-form-label">Email: </label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="editeemail" placeholder="Email">
+                        <input type="text" class="form-control" name="editeemail" placeholder="Email" id="emailchange">
                     </div>
 
                     <label for="editedept" class="col-sm-2 col-form-label">Dept:</label>
                     <div class="col-sm-10">
-                        <input type="" class="form-control" id="editedept" placeholder="Dept">
+                        <input type="int" class="form-control" name="editedept" placeholder="Dept" id="deptchange">
                     </div>
 
                     <label for="editewage" class="col-sm-2 col-form-label">Wage:</label>
                     <div class="col-sm-10">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
-                        <input type="int" class="form-control" id="editewage" placeholder="Wage">
+                        <input type="int" class="form-control" name="editewage" placeholder="Wage" id="wagechange">
                         </div>
                     </div>
 
@@ -382,15 +378,16 @@
                     <div class="col-sm-10">
                         <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
-                        <input type="int" class="form-control" id="editeot_wage" placeholder="OT Wage">
+                        <input type="int" class="form-control" name="editeot_wage" placeholder="OT Wage" id="wage_otchange">
                         </div>
                     </div>
                 </div>
-                </form>
+                
             </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary" name="save">Save changes</button>
+            </form>
         </div>
         </div>
     </div>
