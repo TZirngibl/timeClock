@@ -71,6 +71,12 @@
   border-bottom: none;
   }
   .table{
+    width: 80vw;
+  }
+  #employeetablebody{
+    overflow: scroll;
+  }
+  #managertablebody{
     overflow: scroll;
   }
   #employeesearch{
