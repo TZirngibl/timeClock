@@ -188,17 +188,18 @@
 <div class="modal_container" id="report_generate">
     <div class="modal">
         <p id="registerform">Generator</p>
-            <form method="post" action="PHP-folder/clockin_clockout/time_fix.php" class="register-form">
-                <label for="report_type">Type:<select name="report_type">
+            <label for="pin_generate">Pin: <input id= "pin_generate" type="text" name="pin"/></label>
+                <label for="report_type">Type:<select id="type" name="report_type">
                                     <option value="Weekly">Weekly</option>
                                     <option value="Bi-Weekly">Bi-Weekly</option>
-                                    <option value="Monthly">Monthly</option>>
-
-            </form>
+                                    <option value="Monthly">Monthly</option>
+                <label for="overtime_amount">Overtime: <input id= "overtime_amount" type="text" name="overtime_amount"/></label>
+                <input id="generate_btn" type="submit" name="generate" value="Generate"/> 
         <span class="close7" href="#">X</span>
     </div>
 </div>
 </html>
-<script src="JS-folder/home.js"></script>
+<script src="JS-folder/popup.js"></script>
 <script src="JS-folder/employee_table.js"></script>
 <script src="JS-folder/money_table.js"></script>
+<script src="JS-folder/report.js"></script>

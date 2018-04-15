@@ -303,6 +303,17 @@ body{
     background-color: rgb(190, 53, 53);
     cursor: pointer;
 }
+#generate_btn{
+    background-color: rgb(37, 35, 172);
+    transition: ease 500ms;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+#generate_btn:hover{
+    background-color: rgb(51, 31, 168);
+    cursor: pointer;
+}
 #createbuttons button{
     float: right;
     height: 2em;
