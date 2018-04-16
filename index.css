@@ -37,8 +37,38 @@
     width: fit-content;
     height: 90vh;
   }
+  #logout{
+    padding: 0;
+    color: Red;
+  }
+  #clockinbtn{
+    width: 100%;
+    float: left;
+  }
+  #clockoutbtn{
+    width: 100%;
+    float: right;
+  }
+  .gj-modal{
+    z-index: 1100;
+  }
+
   }/*end of media statement*/
   @media(max-width:1920px) {
+  .gj-modal{
+    z-index: 1100;
+  }
+  #clockinbtn{
+    width: 100%;
+    float: left;
+  }
+  #clockoutbtn{
+    width: 100%;
+    float: right;
+  }
+  #logout{
+    padding: 0;
+  }
   .btn-link{
     border: none;
   }

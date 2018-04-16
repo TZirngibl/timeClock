@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if($_SESSION['login'] == FALSE){
+        header("location:PHP-folder/login_logout/login.php");
+        die;
+    }
+    $con = mysqli_connect("localhost", "root", "", "project1");
+    $sql = "SELECT * FROM employee";
+    $result = $con -> query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +31,10 @@
                 <li class="sidebar-brand"><a href="#" class="homepage">CRST Timeclock</a></li>
                 <li><a href="#" class="homepage">Home</a></li>
                 <li><a href="#" id="reportcontainer">Reports</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#clockIn">Clock In</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#clockOut">Clock Out</a></li>
-                <li><a href="#">Logout</a></li>
+                <li>
+                <form method="post" action="PHP-folder/login_logout/log_out.php" class="logout">
+                <input type="submit" id="logout" name="logout" value="Logout" class="btn-link"></li>
+                </form>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -142,6 +153,7 @@
                                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                                         <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#filterModal">Filter <span class="sr-only">(current)</span></a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#addClock">Add Record(s)</a></li>
                                         </ul>
                                         <form class="form-inline my-2 my-lg-0">
                                         <input class="form-control mr-sm-2" type="search" placeholder="Search Employee ID" aria-label="Search" id="reportsearch">
@@ -344,7 +356,7 @@
         <div class="modal-body">
             <form method="post" action="/timeclock/timeclock/PHP-folder/tables/employee_table/edit/edit_data.php">
                 <div class="form-group row">
-                    <input id= "editeidchange"  type="hidden" name="id" id="idchange"readonly/>
+                    <input type="hidden" name="id" id="idchange"readonly/>
 
                     <label for="editename" class="col-sm-2 col-form-label">Name:</label>
                     <div class="col-sm-10">
@@ -446,6 +458,52 @@
     </div>
   </div>
 </div>
+<!--ADD CLOCK Modal -->
+<div class="modal fade" id="addClock" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add Records</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form method="post" action="/timeclock/timeclock/PHP-folder/clockin_clockout/time_fix.php">
+                <div class="form-group row">
+                    <label for="pin" class="col-sm-2 col-form-label">PIN:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="pin" placeholder="###">
+                    </div>
+
+                    <label for="date" class="col-sm-2 col-form-label">Date:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="date" placeholder="Date" id="newclockdate">
+                    </div>
+
+                    <label for="time" class="col-sm-2 col-form-label">Time:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="time" placeholder="Time" id="newclocktime">
+                    </div>
+
+                    <label for="note" class="col-sm-2 col-form-label">Note:</label>
+                    <div class="col-sm-12">
+                        <input type="textarea" class="form-control" name="note" placeholder="Note...">
+                    </div>
+                </div>
+                
+            </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" name="clockIn" id="clockinbtn">Clock In</button>
+            <button type="submit" class="btn btn-danger" name="clockOut" id="clockoutbtn">Clock Out</button>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+
 </div> <!--everything-->
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

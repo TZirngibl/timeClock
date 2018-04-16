@@ -12,7 +12,7 @@
                         if($row["level"] == 'm'){
                             $_SESSION["nameofuser"] = $row["name"];
                             $_SESSION['login'] = true;
-                            header("location:../../home.php");
+                            header("location:/timeclock/timeclock/index.php");
                         }
                         else
                         {
@@ -22,15 +22,15 @@
                     }
                     else
                     {
-                        $_SESSION['errors'] = "Wrong Username or Password";
+                        $_SESSION['errors'] = "Incorrect Username or Password";
                         header("location:login.php");
                     }
                 }
             }
         else
         {
-            $_SESSION['errors'] = "Wrong Username or Password";
-            header("location:login.php");
+            $_SESSION['errors'] = "Incorrect Username or Password";
+            header("location:/timeclock/timeclock/index.php");
         }
     }
 ?>

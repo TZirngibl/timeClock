@@ -13,7 +13,9 @@
         $wage_ot = $_POST['editeot_wage'];
         //set to expire 1 year from now(256 days in seconds)
         $expire_date = time() + (256 * 24 * 60 * 60);;
-        $sql = "UPDATE employee SET name='$name' AND pin='$pin' AND email='$email' AND dept = '$dept' AND wage = '$wage' AND wage_ot = '$wage_ot' WHERE id='$id'";
+        $sql = "UPDATE employee SET name='$name', pin='$pin', email='$email',dept = '$dept', wage = '$wage', wage_ot = '$wage_ot' WHERE id='$id'";
         mysqli_query($db, $sql);
+        echo 'hi';
+        header("location:../../../../index.php");
     }
 ?>

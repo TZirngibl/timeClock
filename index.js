@@ -43,13 +43,18 @@ $(function() {
         language: 'pt-BR'
       });
 
-      $('#datetimepicker3').datepicker({
+    $('#datetimepicker3').datepicker({
         uiLibrary: 'bootstrap4',
         language: 'pt-BR'
       });
-
-    
-
+    $('#newclockdate').datepicker({
+        uiLibrary: 'bootstrap4',
+        language: 'pt-BR'
+    });
+    $('#newclocktime').timepicker({
+        uiLibrary: 'bootstrap4',
+        language: 'pt-BR',
+    });
     $("#reportcontainer").click(function(){
         $("#home-page-wrapper").hide();
         $("#reportspage").show();
@@ -222,11 +227,13 @@ function load_data(query){
                 });
                 var editbutton = $('<button/>',
                 {
+                    
                     id: idx,
                     class: 'btn-link',
                     text: 'Edit',
+                    'data-toggle': 'modal',
+                    'data-target': '#editEmployee',
                     click: function() {
-                        $("#editEmployee").show();
                         x = this.id;
                         $.ajax({
                             type: "GET",
@@ -235,7 +242,7 @@ function load_data(query){
                             success:function(data1)
                             {
                                 var jsondata1 = JSON.parse(data1);
-                                for(var x = 0; x < jsondata.length; x++){
+                                for(var x = 0; x < jsondata1.length; x++){
                                     $("#idchange").val(jsondata1[x]['id']);
                                     $("#namechange").val(jsondata1[x]['name']);
                                     $("#pinchange").val(jsondata1[x]['pin']);
