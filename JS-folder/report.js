@@ -77,7 +77,24 @@ $(document).ready(function(){
             }
         });
     });
-    function calculation(pre_arr){
-        
+    function calculation(result_clockin){
+        for(var i = 0; i < result_clockin.length; i++){
+            var count = 0;
+            var expect_status = 'in';
+            for(var j = 0; j < result_clockin[i]['history'].length; j++){
+                switch(expect_status){
+                    case 'in':
+                        time_in = result_clockin[i]['history'][j]['time'];
+                        expect_status ='out';
+                        count++;
+                        break;
+                    case 'out':
+                        time_out = result_clockin[i]['history'][j]['time'];
+                        expect_status ='in';
+                        count++;
+                        break;
+                }
+            }
+        }
     }
 })
