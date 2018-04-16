@@ -33,17 +33,17 @@ $(function() {
         }
     });
 
-    $('#datetimepicker1').datetimepicker({
+    $('#datetimepicker1').datepicker({
       uiLibrary: 'bootstrap4',
       language: 'pt-BR'
     });
 
-    $('#datetimepicker2').datetimepicker({
+    $('#datetimepicker2').datepicker({
         uiLibrary: 'bootstrap4',
         language: 'pt-BR'
       });
 
-      $('#datetimepicker3').datetimepicker({
+      $('#datetimepicker3').datepicker({
         uiLibrary: 'bootstrap4',
         language: 'pt-BR'
       });
