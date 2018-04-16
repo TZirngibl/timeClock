@@ -30,6 +30,7 @@
   $( function() {
     $( "#datepicker" ).datepicker();
     $( "#datepicker2" ).datepicker();
+    $( "#datepicker3" ).datepicker();
     $( 'input#timefix').timepicker({ timeFormat: 'HH:mm:ss' });
   } );
   </script>
@@ -188,7 +189,8 @@
 <div class="modal_container" id="report_generate">
     <div class="modal">
         <p id="registerform">Generator</p>
-            <label for="pin_generate">Pin: <input id= "pin_generate" type="text" name="pin"/></label>
+            <label for="pin_generate">ID: <input id= "pin_generate" type="text" name="pin"/></label>
+                <p>Start Date: <input type="text" name="startdate" id="datepicker3"></p>
                 <label for="report_type">Type:<select id="type" name="report_type">
                                     <option value="Weekly">Weekly</option>
                                     <option value="Bi-Weekly">Bi-Weekly</option>

@@ -134,7 +134,6 @@ $(document).ready(function(){
                                             'date': current_date,
                                             'history': clockin_history
                                         })
-                                        console.log(jsondata2[0]['wage']);
                                         clockin_history = [];
                                         if(x < jsondata2.length){
                                             current_date = jsondata2[x]['date'];
