@@ -64,7 +64,7 @@
             $data = array(
                 'id' => $row['id'],
                 'type' => $type,
-                'ovetime_limit' => $limit,
+                'overtime_limit' => $limit,
                 'name' => $row['name'],
                 'pin' => $row['pin'],
                 'wage' => $row['wage'],
