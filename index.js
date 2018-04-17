@@ -18,6 +18,20 @@ $(function() {
             loademployeetable(); 			
         }
     });// end Search Employee Table Function
+    //Search Manager Table Function
+    $('#managersearch').keyup(function(){
+        var searchmanager = $(this).val();
+        if(searchmanager != '')
+        {
+            $("#managertablebody").empty();
+            load_managerdata(searchmanager);  
+        }
+        else
+        {
+            $("#managertablebody").empty();
+            loadmanagertable(); 			
+        }
+    });// end Search Manager Table Function
 
     $("#overtimelimit").val(80);
 
@@ -52,6 +66,14 @@ $(function() {
         language: 'pt-BR'
     });
     $('#newclocktime').timepicker({
+        uiLibrary: 'bootstrap4',
+        language: 'pt-BR',
+    });
+    $('#quickstart').datepicker({
+        uiLibrary: 'bootstrap4',
+        language: 'pt-BR',
+    });
+    $('#quickend').datepicker({
         uiLibrary: 'bootstrap4',
         language: 'pt-BR',
     });
@@ -178,7 +200,6 @@ function loademployeetable(){
                     }
                 });*/
                 $("#employeetablebody").append('<tr>'
-                + '<td>' + jsondata[x]['id'] + '</td>'
                 + '<td>' + jsondata[x]['name'] + '</td>'
                 + '<td>' + jsondata[x]['pin'] + '</td>'
                 + '<td>' + jsondata[x]['email'] + '</td>'
@@ -309,7 +330,6 @@ function load_data(query){
                     }
                 });*/
                 $("#employeetablebody").append('<tr>'
-                + '<td>' + jsondata[x]['id'] + '</td>'
                 + '<td>' + jsondata[x]['name'] + '</td>'
                 + '<td>' + jsondata[x]['pin'] + '</td>'
                 + '<td>' + jsondata[x]['email'] + '</td>'
@@ -357,10 +377,8 @@ function loadmanagertable(){
                     }
                 });
                 $("#managertablebody").append('<tr>'
-                + '<td>' + jsondata[x]['id'] + '</td>'
                 + '<td>' + jsondata[x]['name'] + '</td>'
                 + '<td>' + jsondata[x]['email'] + '</td>'
-                + '<td>' + jsondata[x]['pass'] + '</td>'
                 + '<td>' + jsondata[x]['level'] + '</td>'
                 + '<td>' + jsondata[x]['create_date'] + '</td>'
                 + '<td>' + jsondata[x]['create_by'] + '</td>'
@@ -373,6 +391,49 @@ function loadmanagertable(){
     }
   });
 }// end DEFAULT MANAGER TABLE
+// EMPLOYEE SEARCH TABLE
+function load_managerdata(query){
+    $.ajax({
+    url: "/timeclock/timeclock/PHP-folder/tables/manager_table/search_table.php",
+    method: "post",
+    data:{query:query},
+    success: function(data){
+        var jsondata = JSON.parse(data); 
+        for(var x = 0; x < jsondata.length; x++){
+            var idx = jsondata[x]['id'];
+            var deletebutton = $('<button/>',
+                {
+                    id: idx,
+                    class: 'delete btn-link',
+                    text: 'Delete',
+                    click: function() {
+                        x = this.id; 
+                        $.ajax({
+                            type:"GET",
+                            url:"/timeclock/timeclock/PHP-folder/tables/manager_table/delete.php",
+                            data:{id: x},
+                            success:function()
+                            {
+                                $(this).parent().parent().remove();
+                            }
+                        });
+                    }
+                });
+                $("#managertablebody").append('<tr>'
+                + '<td>' + jsondata[x]['name'] + '</td>'
+                + '<td>' + jsondata[x]['email'] + '</td>'
+                + '<td>' + jsondata[x]['level'] + '</td>'
+                + '<td>' + jsondata[x]['create_date'] + '</td>'
+                + '<td>' + jsondata[x]['create_by'] + '</td>'
+                + '<td>' + jsondata[x]['lastmodify_date'] + '</td>'
+                + '<td>' + jsondata[x]['lastmodify_by'] + '</td>'
+                + '<td>' + jsondata[x]['expire_date'] + '</td>'
+                + '<td></td></tr>');
+                $("#managertablebody").find('td').last().append(deletebutton);
+        }        
+    }
+  });
+}// end MANAGER SEARCH TABLE
 // DEFAULT REPORTS TABLE
 function loadreporttable(){
     $.ajax({
@@ -408,8 +469,6 @@ function loadreporttable(){
 
                     });
                     $("#reporttablebody").append('<tr>'
-                    + '<td>' + jsondata[x]['id'] + '</td>'
-                    + '<td>' + jsondata[x]['employee_id'] + '</td>'
                     + '<td>' + jsondata[x]['status'] + '</td>'
                     + '<td>' + jsondata[x]['punch_timestamp'] + '</td>'
                     + '<td></td></tr>');
@@ -417,4 +476,48 @@ function loadreporttable(){
             }        
         }
     });// end DEFAULT REPORTS TABLE
+
+}
+function quicksearchReports(){
+    var startdate = $('#quickstart').val();
+    var enddate = $('#quickend').val();
+    $("#reporttablebody").empty();
+    $.ajax({
+        method: "GET",
+        url: "PHP-folder/tables/clockin_table/search_money_table.php",
+        type: "json",
+        data: {poststart: startdate, postend: enddate},
+        success: function(data)
+        {
+            console.log(startdate);
+            var jsondata2 = JSON.parse(data);
+            //console.log(jsondata2);
+        for(var x = 0; x < jsondata2.length; x++){
+            var idx = jsondata2[x]['id'];
+            var test = $('<button/>',
+                {
+                    id: idx,
+                    class: 'btn-link',
+                    text: 'Delete',
+                    click: function() { 
+                        x = this.id;   
+                        $.ajax({
+                            type:"GET",
+                            url:"PHP-folder/tables/clockin_table/delete_money.php",
+                            data:{id: x},
+                            success:function()
+                            {
+                                $(this).parent().parent().remove();
+                            }
+                        });
+                    }
+                });
+                $("#reporttablebody").append('<tr class="row100">'
+                + '<td>' + jsondata2[x]['status'] + '</td>'
+                + '<td>' + jsondata2[x]['punch_timestamp'] + '</td>'
+                + '<td></td></tr>');
+                $("#reporttablebody").find('td').last().append(test);
+            }
+        }
+    });
 }

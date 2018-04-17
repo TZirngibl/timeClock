@@ -1,5 +1,8 @@
 @media(max-width:768px) {
   /* this is where mobile css starts*/
+  #quicksearch{
+    color:rgb(29, 133, 3);
+  }
   #home-page-wrapper{
     width: 80vw;
   }
@@ -52,9 +55,52 @@
   .gj-modal{
     z-index: 1100;
   }
+  #quicksearchy{
+    width: 100%;
+    color: black;
+    padding: 5px;
+  }
+  #quicksearchy:hover{
+    width: 100%;
+    color: white;
+  }
+  #quickSearchs{
+    line-height: 3.3em;
+    padding-right: 1em;
+    width: 45%;
+    color: rgba(144, 238, 144, 0.645);
+  }
+  #quicksearch{
+    color:rgb(29, 133, 3);
+  }
+  .gj-modal{ 
+    z-index:999999 !important; 
+}
+
 
   }/*end of media statement*/
   @media(max-width:1920px) {
+    .gj-modal{ 
+      z-index:999999 !important; 
+ }
+ 
+  #quicksearchy{
+    padding: 5px;
+    width: 100%;
+    color: black;
+  }
+  #quicksearchy:hover{
+    width: 100%;
+    color: white;
+  }
+  #quickSearchs{
+    padding-right: 1em;
+    width: 45%;
+    color: rgba(144, 238, 144, 0.645);
+  }
+  #quicksearch{
+    color:rgb(29, 133, 3);
+  }
   .gj-modal{
     z-index: 1100;
   }

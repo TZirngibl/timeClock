@@ -52,10 +52,9 @@
                             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#addEmployee">Add Employee <span class="sr-only">(current)</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#addManager">Add Manager</a></li>
                                 </ul>
                                 <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search Employee Name" aria-label="Search" id="employeesearch">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search By Name" aria-label="Search" id="employeesearch">
                                 </form>
                             </div>
                     </nav>
@@ -65,7 +64,6 @@
                             <table class="table">
                                 <thead class="table-dark" id="employeetableheader">
                                     <tr>
-                                        <th>Id</th>
                                         <th>Name</th>
                                         <th>Pin</th>
                                         <th>Email</th>
@@ -75,7 +73,7 @@
                                         <th>Modify Date</th>
                                         <th>Modify By</th>
                                         <th>Wage</th>
-                                        <th>OT Wage</th>
+                                        <th>OTWage</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -101,15 +99,27 @@
                                             </li>
                                         </ul>
                                 </div>
+                                <!-- MANAGER NAVBAR -->
+                                <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="homenavbar">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Managers</a>
+                            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#addManager">Add Manager</a></li>
+                                </ul>
+                                <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search By Name" aria-label="Search" id="managersearch" name="searchmanager">
+                                </form>
+                            </div>
+                    </nav><!-- end MANAGER NAVBAR-->
                         <!--MANAGERS-->
-                        <h5>Managers</h5>
                         <div class="table-responsive-md">
                             <table class="table">
                                 <thead class="table-dark"id="managertableheader">
-                                    <th>Id</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Pass</th>
                                     <th>Level</th>
                                     <th>Create Date</th>
                                     <th>Create By</th>
@@ -155,8 +165,28 @@
                                         <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#filterModal">Filter <span class="sr-only">(current)</span></a></li>
                                         <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#addClock">Add Record(s)</a></li>
                                         </ul>
+                                         <div id="quickSearchs">
+                                            
+                                            
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <h5 id="quicksearch">Quick Search</h5>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <form method="get" action="javascript:quicksearchReports()">
+                                                    <input type="text" id="quickstart" class="form-control .align-middle" name="poststart" placeholder="Start Date">  
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input type="text" id="quickend" class="form-control .align-middle" name="postend" placeholder="End Date">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                <button type="submit" class="btn btn-outline-dark" id="quicksearchy">Search</button>
+                                                </form>
+                                                </div>
+                                            </div>                                            
+                                         </div>
                                         <form class="form-inline my-2 my-lg-0">
-                                        <input class="form-control mr-sm-2" type="search" placeholder="Search Employee ID" aria-label="Search" id="reportsearch">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search By Name" aria-label="Search" id="reportsearch">
                                         </form>
                                     </div>
                             </nav>
@@ -165,8 +195,6 @@
                         <div class="table-responsive-sm">
                             <table class="table">
                                 <thead class="table-dark" id="reporttableheader">
-                                    <th>Id</th>
-                                    <th>Emp ID</th>
                                     <th>Status</th>
                                     <th>Timestamp</th>
                                     <th>Action</th>
