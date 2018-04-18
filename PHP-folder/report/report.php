@@ -62,9 +62,12 @@
                 }
             }
             $data = array(
+                'start_date' => $startdate,
+                'end_date' => $enddate,
                 'id' => $row['id'],
                 'type' => $type,
                 'overtime_limit' => $limit,
+                'dept' => $row['dept'],
                 'name' => $row['name'],
                 'pin' => $row['pin'],
                 'wage' => $row['wage'],

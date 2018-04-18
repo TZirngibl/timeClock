@@ -31,13 +31,13 @@ $(document).ready(function(){
                 startdate: startdate},
             success:function(data)
             {
+                var result = [];
                 var jsondata2 = JSON.parse(data);
                 for(var y = 0; y < jsondata2.length; y++){
+                    var pass_arr =[];
                     var clockin_history = [];
-                    var index = 0;
-                    var result = [];
+                    //var result = [];
                     var history = [];
-                    var result_index = 0;
                     var current_date = jsondata2[y]['history'][0]['date'];
                     for(var x = 0; x < jsondata2[y]['history'].length; x++){
                         while(jsondata2[y]['history'][x]['date'] == current_date){
@@ -58,10 +58,13 @@ $(document).ready(function(){
                         if(x < jsondata2[y]['history'].length){
                             current_date = jsondata2[y]['history'][x]['date'];
                         }
-                        index = 0;
                         x--;
                     }
                     result.push({
+                        'start_date' : jsondata2[y]['start_date'],
+                        'end_date' : jsondata2[y]['end_date'],
+                        'id': jsondata2[y]['id'],
+                        'dept' : jsondata2[y]['dept'],
                         'pin': jsondata2[y]['pin'],
                         'name': jsondata2[y]['name'],
                         'wage': jsondata2[y]['wage'],
@@ -69,9 +72,9 @@ $(document).ready(function(){
                         'type': jsondata2[y]['type'],
                         'overtime_limit': jsondata2[y]['overtime_limit'],
                         'history': history
-                    })
-                    calculation(result);
+                    });
                 }
+                calculation(result);
             }
         });
     });
@@ -82,12 +85,11 @@ $(document).ready(function(){
         var pay_type= result_clockin[0]['type'];  var amount_overtime = result_clockin[0]['overtime_limit'];  
         var time_in; var time_out; 
         var total_regular_time;
-        var overtime_second = amount_overtime*60*60;                            
+        var overtime_second = amount_overtime*60*60;                           
         for(var a = 0; a < result_clockin.length; a++){
             var total_time_second = 0;
             var total_pay_regular = 0;  
             var total_pay_over = 0;
-            var total_time = 0; 
             var total_pay = 0;
             for(var b = 0; b < result_clockin[a]['history'].length; b++){
                 var total_time_date = 0;
@@ -140,14 +142,19 @@ $(document).ready(function(){
             else{
                 total_overtime = 0;
             }
-            total_time = total_time_second + overtime_second;
+            var total_time_both_second = total_time_second + total_overtime;
             total_pay_regular = (wage/3600)*total_time_second;
             total_pay_over = (wage_ot/3600)*total_overtime;
-            var total_time_regular = moment().startOf('day').seconds(total_time_second).format('H.mm');
-            var total_time_over = moment().startOf('day').seconds(total_overtime).format('H.mm');
+            var total_time_regular = total_time_second/60/60;
+            var total_time_over = total_overtime/60/60;
+            var total_time_both = total_time_both_second/60/60;
             total_pay = total_pay_regular + total_pay_over;
             final.push({
+                'start_date' : result_clockin[a]['start_date'],
+                'end_date' : result_clockin[a]['end_date'],
+                'id': result_clockin[a]['id'],
                 'pin': result_clockin[a]['pin'],
+                'dept': result_clockin[a]['dept'],
                 'name': result_clockin[a]['name'],
                 'wage': result_clockin[a]['wage'],
                 'wage_ot': result_clockin[a]['wage_ot'],
@@ -158,11 +165,107 @@ $(document).ready(function(){
                 'total_pay_regular': total_pay_regular,
                 'total_over_hours': total_time_over,
                 'total_pay_over': total_pay_over,
+                'total_working_hour': total_time_both,
                 'total_pay': total_pay
             });
             result_time = [];
-            console.log(final);
         }//finish report of one person
         //////////////////////////////
+        console.log(final);
+        create(final);
+    }
+    //////////////////create pdf file////////////////////////
+    ////////////////////////////////////////////////////////
+    function create(print){
+        var doc = new jsPDF();
+        doc.setFontSize(8);
+
+        for(var i = 0; i <print.length; i++)
+        {
+            //INSERT CURRENT TIMESTAMP HERE
+            doc.text(10, 10, 'x/x/xxxx x:xx:xx PM');
+
+            doc.setLineWidth(0.5);
+            doc.line(10, 11, 200, 11);
+            doc.setFontSize(10);
+            var start_date = print[i]['start_date'];
+            var end_date = print[i]['end_date'];
+            var range = "Time Cards/Day Report - " + "from " +  start_date + " to " + end_date; 
+
+            //TIME CARD DATE RANGE HERE
+            doc.text(25, 15, range);
+
+            doc.setLineWidth(1);
+            doc.line(10, 17, 200, 17);
+            doc.setLineWidth(.25);
+            doc.line(10, 18, 200, 18);
+
+            var public_info = " Name: " + print[i]['name'] + "   ID: " + print[i]['id'] + "   DEPT: " + print[i]['dept'];
+            doc.setFontSize(8);
+            //NAME, ID, PIN, DEPT, Default
+            doc.text(10, 21, public_info);
+            //Wages, Regular total, OT Total
+            doc.text(155, 21, 'Wages:       Reg 79:19       OT: 0:00');
+            //Report week date ... REG WAGES ... OT WAGES ... Weekly Total: 
+            doc.text(10, 24, '(Week of 20150219)                Reg 42:13       OT 0:00             Weekly Total: $0.00');
+
+
+            //!------------------------------------FIRST WEEK STARTS HERE--------------------------------------!
+            //MONDAY STARTS HERE
+            doc.line(54, 25, 113, 25);
+            //Monday's info
+            doc.text(55, 28, 'Mon   Daily Total:    Reg 11:59      OT 0:00 ');
+            //All clock in/out on monday
+            doc.text(35, 32, 'Mon 2/9/2018      9:00AM      Hol         7:30        Presidents dat');
+            doc.text(35, 35, 'Mon 2/9/2018      9:16AM      In');
+            doc.text(35, 38, 'Mon 2/9/2018      1:45PM          Out     4:29');
+            //MONDAY ENDS HERE
+
+            //TUESDAY STARTS HERE
+            doc.line(54, 40, 113, 40);
+            //Tuesday's info
+            doc.text(55, 43, 'Tue   Daily Total:    Reg 6:30      OT 0:00 ');
+            //All clock in/out on tuesday
+            doc.text(35, 47, 'Tue 2/10/2018      9:10AM      In');
+            doc.text(35, 50, 'Tue 2/10/2018     12:57PM         Out     3:22');
+            doc.text(35, 53, 'Tue 2/10/2018      1:22PM      In');
+            doc.text(35, 56, 'Tue 2/10/2018      4:05PM          Out     2:43');
+            //TUESDAY ENDS HERE
+
+
+            //WEDNESDAY STARTS HERE
+            doc.line(54, 58, 113, 58);
+            //Wednesday's info
+            doc.text(55, 61, 'Wed   Daily Total:    Reg 8:15      OT 0:00 ');
+            //All clock in/out on wednesday
+            doc.text(35, 65, 'Wed 2/11/2018      9:11AM      In');
+            doc.text(35, 68, 'Wed 2/11/2018     12:18PM         Out     3:07');
+            doc.text(35, 71, 'Wed 2/11/2018     12:39PM      In');
+            doc.text(35, 74, 'Wed 2/11/2018      5:47PM          Out     5:08');
+            //WEDNESDAY ENDS HERE
+
+
+            //THURSDAY STARTS HERE
+            doc.line(54, 75, 113, 75);
+            //Thursday's info
+            doc.text(55, 78, 'Thu   Daily Total:    Reg 7:38      OT 0:00 ');
+            //All clock in/out on thursday
+            doc.text(35, 82, 'Thu 2/12/2018      9:10AM      In');
+            doc.text(35, 85, 'Thu 2/12/2018     12:32PM         Out     3:22');
+            doc.text(35, 88, 'Thu 2/12/2018     12:51PM      In');
+            doc.text(35, 91, 'Thu 2/12/2018      5:07PM          Out     4:16');
+            //THURSDAY ENDS HERE
+
+            //FRIDAY STARTS HERE
+            doc.line(54, 92, 113, 92);
+            //Friday's info
+            doc.text(55, 95, 'Fri   Daily Total:    Reg 7:51      OT 0:00 ');
+            //All clock in/out on friday
+            doc.text(35, 99, 'Fri 2/12/2018      9:17AM      In');
+            doc.text(35, 102, 'Fri 2/12/2018     5:08PM         Out     7:51');
+            //FRIDAY ENDS HERE
+            doc.addPage();
+        }
+    doc.save("EmployeeReport.pdf")
     }
 })
