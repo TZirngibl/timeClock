@@ -80,6 +80,11 @@
 
   }/*end of media statement*/
   @media(max-width:1920px) {
+  
+    .paginatorss{
+      padding-top: 1em;
+      padding-right: 1em;
+    }
     .gj-modal{ 
       z-index:999999 !important; 
  }
