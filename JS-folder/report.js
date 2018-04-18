@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $("#overtime_amount").val(80);
     $("#type").val("Bi-Weekly");
-    var overtime_amount; var overtime_amount; var id; var startdate;
+    var id; var startdate;
     $("#type").on("change",function(){
         if($("#type").val() == "Weekly"){
             $("#overtime_amount").val(40);
@@ -14,8 +14,8 @@ $(document).ready(function(){
         }
     });
     $("#generate_btn").click(function(){
-        overtime_type = $("#type").val();
-        overtime_amount = $("#overtime_amount").val();
+        var overtime_type = $("#type").val();
+        var overtime_amount = $("#overtime_amount").val();
         id = $("#pin_generate").val();
         startdate = $("#datepicker3").val();
         //--Ajex call report.php to get the array with the clockin history--//
@@ -128,10 +128,12 @@ $(document).ready(function(){
                 }//finish punch time for one day
                 ////////////////////////////////
                 total_regular_time = moment().startOf('day').seconds(total_time_date).format('H.mm');
+                total_regular_time_number = total_time_date*60*60;
                 result_time.push({
                     'date': result_clockin[a]['history'][b]['date'],
                     'blocks': block,
                     'working_hour': total_regular_time,
+                    'calculate': total_regular_time_number
                 });
                 block = [];
             }//finish all days report
@@ -179,7 +181,7 @@ $(document).ready(function(){
     function create(print){
         var doc = new jsPDF();
         doc.setFontSize(8);
-
+        var weekDay;
         for(var i = 0; i <print.length; i++)
         {
             //INSERT CURRENT TIMESTAMP HERE
@@ -187,7 +189,7 @@ $(document).ready(function(){
 
             doc.setLineWidth(0.5);
             doc.line(10, 11, 200, 11);
-            doc.setFontSize(10);
+            doc.setFontSize(12);
             var start_date = print[i]['start_date'];
             var end_date = print[i]['end_date'];
             var range = "Time Cards/Day Report - " + "from " +  start_date + " to " + end_date; 
@@ -204,66 +206,64 @@ $(document).ready(function(){
             doc.setFontSize(8);
             //NAME, ID, PIN, DEPT, Default
             doc.text(10, 21, public_info);
+
+            var private_info = "Wage:       Reg  " + print[i]['wage'] + "         OT:  " + print[i]['wage_ot'];
             //Wages, Regular total, OT Total
-            doc.text(155, 21, 'Wages:       Reg 79:19       OT: 0:00');
-            //Report week date ... REG WAGES ... OT WAGES ... Weekly Total: 
-            doc.text(10, 24, '(Week of 20150219)                Reg 42:13       OT 0:00             Weekly Total: $0.00');
+            doc.text(155, 21, private_info);
 
-
-            //!------------------------------------FIRST WEEK STARTS HERE--------------------------------------!
-            //MONDAY STARTS HERE
-            doc.line(54, 25, 113, 25);
-            //Monday's info
-            doc.text(55, 28, 'Mon   Daily Total:    Reg 11:59      OT 0:00 ');
-            //All clock in/out on monday
-            doc.text(35, 32, 'Mon 2/9/2018      9:00AM      Hol         7:30        Presidents dat');
-            doc.text(35, 35, 'Mon 2/9/2018      9:16AM      In');
-            doc.text(35, 38, 'Mon 2/9/2018      1:45PM          Out     4:29');
-            //MONDAY ENDS HERE
-
-            //TUESDAY STARTS HERE
-            doc.line(54, 40, 113, 40);
-            //Tuesday's info
-            doc.text(55, 43, 'Tue   Daily Total:    Reg 6:30      OT 0:00 ');
-            //All clock in/out on tuesday
-            doc.text(35, 47, 'Tue 2/10/2018      9:10AM      In');
-            doc.text(35, 50, 'Tue 2/10/2018     12:57PM         Out     3:22');
-            doc.text(35, 53, 'Tue 2/10/2018      1:22PM      In');
-            doc.text(35, 56, 'Tue 2/10/2018      4:05PM          Out     2:43');
-            //TUESDAY ENDS HERE
-
-
-            //WEDNESDAY STARTS HERE
-            doc.line(54, 58, 113, 58);
-            //Wednesday's info
-            doc.text(55, 61, 'Wed   Daily Total:    Reg 8:15      OT 0:00 ');
-            //All clock in/out on wednesday
-            doc.text(35, 65, 'Wed 2/11/2018      9:11AM      In');
-            doc.text(35, 68, 'Wed 2/11/2018     12:18PM         Out     3:07');
-            doc.text(35, 71, 'Wed 2/11/2018     12:39PM      In');
-            doc.text(35, 74, 'Wed 2/11/2018      5:47PM          Out     5:08');
-            //WEDNESDAY ENDS HERE
-
-
-            //THURSDAY STARTS HERE
-            doc.line(54, 75, 113, 75);
-            //Thursday's info
-            doc.text(55, 78, 'Thu   Daily Total:    Reg 7:38      OT 0:00 ');
-            //All clock in/out on thursday
-            doc.text(35, 82, 'Thu 2/12/2018      9:10AM      In');
-            doc.text(35, 85, 'Thu 2/12/2018     12:32PM         Out     3:22');
-            doc.text(35, 88, 'Thu 2/12/2018     12:51PM      In');
-            doc.text(35, 91, 'Thu 2/12/2018      5:07PM          Out     4:16');
-            //THURSDAY ENDS HERE
-
-            //FRIDAY STARTS HERE
-            doc.line(54, 92, 113, 92);
-            //Friday's info
-            doc.text(55, 95, 'Fri   Daily Total:    Reg 7:51      OT 0:00 ');
-            //All clock in/out on friday
-            doc.text(35, 99, 'Fri 2/12/2018      9:17AM      In');
-            doc.text(35, 102, 'Fri 2/12/2018     5:08PM         Out     7:51');
-            //FRIDAY ENDS HERE
+            doc.line(34, 25, 113, 25);
+            var date_y = 30;
+            for(var y = 0; y < print[i]['history'].length; y++){
+                var date = print[i]['history'][y]['date'];
+                var myDate = new Date(date);
+                var final_date = myDate.getDay();
+                switch(final_date){
+                    case 0:
+                         weekDay = 'Sunday';
+                        break;
+                    case 1:
+                         weekDay = 'Monday';
+                        break;
+                    case 2:
+                         weekDay = 'Tuesday';
+                        break;
+                    case 3:
+                         weekDay = 'Wednesday';
+                        break;
+                    case 4:
+                         weekDay = 'Thursday';
+                        break;
+                    case 5:
+                         weekDay = 'Friday';
+                        break;
+                    case 6:
+                         weekDay = 'Saturday';
+                        break;
+                }
+                var title = weekDay + "        " + date;
+                doc.text(35, date_y, title);
+                date_y = date_y + 3;
+                doc.line(34, date_y, 113, date_y);
+                date_y = date_y + 4;
+                for(var x = 0; x < print[i]['history'][y]['blocks'].length; x++)
+                {
+                    var info_in =  date + "        " + print[i]['history'][y]['blocks'][x]['status_in'] + "       "  + print[i]['history'][y]['blocks'][x]['time_in'];
+                    var info_out =  date + "                " + print[i]['history'][y]['blocks'][x]['status_out'] + "       "  + print[i]['history'][y]['blocks'][x]['time_out']; 
+                    doc.text(35, date_y, info_in);
+                    date_y = date_y + 3;
+                    doc.text(35, date_y, info_out);
+                    date_y = date_y + 3;
+                    var time_block ="Total time block:    " + print[i]['history'][y]['blocks'][x]['time-block'];
+                    doc.text(35, date_y, time_block);
+                    date_y = date_y + 4;
+                }
+                date_y = date_y + 3;
+                var time_date = "Total Working of Day:    " + print[i]['history'][y]['working_hour'];
+                doc.text(35, date_y, time_date);
+                date_y = date_y + 3;
+                doc.line(34, date_y, 113, date_y);
+                date_y = date_y + 4;
+            }
             doc.addPage();
         }
     doc.save("EmployeeReport.pdf")

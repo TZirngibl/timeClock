@@ -13,13 +13,13 @@
     //create variables//
 
     //setting the date interval base on the report type//
-    if($type = "Weekly"){
+    if($type == "Weekly"){
         $enddate->add(new DateInterval('P8D'));
     }
-    if($type = "Bi-Weekly"){
+    if($type == "Bi-Weekly"){
         $enddate->add(new DateInterval('P15D'));
     }
-    if($type = "Monthly"){
+    if($type == "Monthly"){
         $enddate->add(new DateInterval('P31D'));
     }
     $startdate = $startdate->format('Y-m-d H:i:s');
