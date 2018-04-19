@@ -214,29 +214,29 @@ $(document).ready(function(){
             doc.line(34, 25, 113, 25);
             var date_y = 30;
             for(var y = 0; y < print[i]['history'].length; y++){
-                var date = print[i]['history'][y]['date'];
-                var myDate = new Date(date);
+                var myfirst_day = new Date(print[i]['start_date']);
+                var myDate = new Date(print[i]['history'][y]['date']);
                 var final_date = myDate.getDay();
                 switch(final_date){
-                    case 0:
+                    case 6:
                          weekDay = 'Sunday';
                         break;
-                    case 1:
+                    case 0:
                          weekDay = 'Monday';
                         break;
-                    case 2:
+                    case 1:
                          weekDay = 'Tuesday';
                         break;
-                    case 3:
+                    case 2:
                          weekDay = 'Wednesday';
                         break;
-                    case 4:
+                    case 3:
                          weekDay = 'Thursday';
                         break;
-                    case 5:
+                    case 4:
                          weekDay = 'Friday';
                         break;
-                    case 6:
+                    case 5:
                          weekDay = 'Saturday';
                         break;
                 }
@@ -263,6 +263,10 @@ $(document).ready(function(){
                 date_y = date_y + 3;
                 doc.line(34, date_y, 113, date_y);
                 date_y = date_y + 4;
+                for(var a = 0; a >= 6; a++){
+                    myfirst_day.setDate(myfirst_day.getDate() + 1);
+                    console.log(myfirst_day);
+                }
             }
             doc.addPage();
         }
