@@ -128,12 +128,11 @@ $(document).ready(function(){
                 }//finish punch time for one day
                 ////////////////////////////////
                 total_regular_time = moment().startOf('day').seconds(total_time_date).format('H.mm');
-                total_regular_time_number = total_time_date*60*60;
                 result_time.push({
                     'date': result_clockin[a]['history'][b]['date'],
                     'blocks': block,
                     'working_hour': total_regular_time,
-                    'calculate': total_regular_time_number
+                    'calculate': total_time_date
                 });
                 block = [];
             }//finish all days report
@@ -173,7 +172,6 @@ $(document).ready(function(){
             result_time = [];
         }//finish report of one person
         //////////////////////////////
-        console.log(final);
         create(final);
     }
     //////////////////create pdf file////////////////////////
@@ -182,8 +180,13 @@ $(document).ready(function(){
         var doc = new jsPDF();
         doc.setFontSize(8);
         var weekDay;
+        console.log(print);
         for(var i = 0; i <print.length; i++)
         {
+            var first_day = print[i]['start_date'];
+            var myfirst_day = new Date(first_day);
+            var week_total = 0;
+            var check_date = myfirst_day.getDay();
             //INSERT CURRENT TIMESTAMP HERE
             doc.text(10, 10, 'x/x/xxxx x:xx:xx PM');
 
@@ -214,9 +217,10 @@ $(document).ready(function(){
             doc.line(34, 25, 113, 25);
             var date_y = 30;
             for(var y = 0; y < print[i]['history'].length; y++){
-                var myfirst_day = new Date(print[i]['start_date']);
-                var myDate = new Date(print[i]['history'][y]['date']);
+                var date = print[i]['history'][y]['date'];
+                var myDate = new Date(date);
                 var final_date = myDate.getDay();
+                console.log("clockin day " + final_date + " " + myDate);
                 switch(final_date){
                     case 6:
                          weekDay = 'Sunday';
@@ -263,9 +267,28 @@ $(document).ready(function(){
                 date_y = date_y + 3;
                 doc.line(34, date_y, 113, date_y);
                 date_y = date_y + 4;
-                for(var a = 0; a >= 6; a++){
-                    myfirst_day.setDate(myfirst_day.getDate() + 1);
-                    console.log(myfirst_day);
+                for(var a = 0; a <= 6; a++){
+                    var check_date = myfirst_day.getDay();
+                    console.log("enter loop " + check_date);
+                    console.log("current date " + final_date);
+                    console.log("--------------")
+                    if(check_date == final_date){
+                        week_total = week_total + print[i]['history'][y]['calculate'];
+                        console.log(week_total);
+                        break;
+                    }
+                    myfirst_day.setDate(myfirst_day.getDay() + 1);
+                    if(myDate != myfirst_day && a == 6){
+                        console.log("yes");
+                        myfirst_day.setDate(myfirst_day.getDate() + 6);
+                        week_total = week_total /60/60;
+                        var week_string = "total working hour in this week " + week_total;
+                        doc.text(35, date_y, week_string);
+                        date_y = date_y + 3;
+                        doc.line(34, date_y, 113, date_y);
+                        date_y = date_y + 4;
+                        week_total = 0;
+                    }
                 }
             }
             doc.addPage();

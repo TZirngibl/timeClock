@@ -34,7 +34,10 @@
         $sql = "SELECT * FROM employee WHERE id = '$employee_id'";
     }
     //check if the user want to generate the report of one employee or all//
-
+    $starttimestamp = $startdate;
+    $splitTimeStamp = explode(" ",$starttimestamp);
+    $startdate = $splitTimeStamp[0];
+    $starttime = $splitTimeStamp[1];
     //create array from database//
     $result = $db-> query($sql);;
     if($result-> num_rows > 0){
