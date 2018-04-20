@@ -189,7 +189,6 @@ $(document).ready(function(){
             var mylast_day = moment(first_day, 'YYYY-MM-DD').add(6, 'days').format('YYYY-MM-DD');
             var check_last = moment(first_day, 'YYYY-MM-DD').add(6, 'days')
             var week_total = 0;
-            console.log(myfirst_day + "      " +mylast_day);
             //INSERT CURRENT TIMESTAMP HERE
             doc.text(10, 10, 'x/x/xxxx x:xx:xx PM');
 
@@ -220,6 +219,7 @@ $(document).ready(function(){
             doc.line(34, 25, 113, 25);
             var date_y = 30;
             for(var y = 0; y < print[i]['history'].length; y++){
+                console.log(y);
                 var date = print[i]['history'][y]['date'];
                 var myDate = moment(date).format('YYYY-MM-DD');
                 var final_date = moment(date).format('dddd');
@@ -251,7 +251,8 @@ $(document).ready(function(){
                 if(check_date >= check_first && check_date <= check_last){
                     week_total = week_total + print[i]['history'][y]['calculate'];
                 }
-                if(check_date > check_last || y == print[i]['history'].length){
+                else{
+                    console.log("yes " + myDate);
                     week_total = week_total /60/60;
                     var week_string = "total working hour in this week " + week_total;
                     doc.text(35, date_y, week_string);
@@ -260,10 +261,19 @@ $(document).ready(function(){
                     date_y = date_y + 4;
                     week_total = 0;
                     doc.addPage();
-                    check_first = check_date;
-                    check_last = moment(check_first, 'YYYY-MM-DD').add(6, 'days')
+                    date_y = 30;
+                    y--;
+                    check_first = moment(check_last, 'YYYY-MM-DD').add(1, 'days');
+                    check_last = moment(check_first, 'YYYY-MM-DD').add(6, 'days');
+                    var con =moment(check_first).format('YYYY-MM-DD');
+                    var con2 = moment(check_last).format('YYYY-MM-DD');
+                    console.log("week " + con + "      " + con2);
+                    console.log(y);
                 }
             }
+            week_total = week_total /60/60;
+            var week_string = "total working hour in this week " + week_total;
+            date_y = date_y + 3;
             doc.addPage();
         }
     doc.save("EmployeeReport.pdf")
