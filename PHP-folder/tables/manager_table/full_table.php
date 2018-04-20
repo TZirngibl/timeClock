@@ -1,7 +1,7 @@
 <?php
     session_start();
     $db = mysqli_connect("localhost", "root", "", "project1");
-    $sql = "SELECT * FROM manager LIMIT 5";
+    $sql = "SELECT * FROM manager";
     $arr = [];
     $result = $db -> query($sql);
         if($result-> num_rows > 0){

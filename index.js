@@ -1,9 +1,8 @@
 $(function() {
-    $("#reportspage").hide();
     loademployeetable();
     loadmanagertable();
     loadreporttable();
-
+    $("#reportspage").hide();
     //Search Employee Table Function
     $('#employeesearch').keyup(function(){
         var search = $(this).val();
@@ -32,9 +31,7 @@ $(function() {
             loadmanagertable(); 			
         }
     });// end Search Manager Table Function
-
     $("#overtimelimit").val(80);
-
     $("#payInt").on("change",function(){
         if($("#payInt").val() == "Weekly"){
             $("#overtimelimit").val(40);
@@ -86,7 +83,72 @@ $(function() {
         $("#home-page-wrapper").show();
         $("#reportspage").hide();
     });
-});
+    //if a delete button is pressed
+    $(".container-fluid").on("click", ".deleteemp", function() {
+        //alert("Are you sure you want to delete this?");
+        x = this.id; 
+        $(this).parent().parent().remove();
+        console.log(x);
+        $.ajax({
+            type:"GET",
+            url:"/timeclock/timeclock/PHP-folder/tables/employee_table/delete.php",
+            data:{id: x},
+            success:function()
+            {
+                
+            }
+        });
+     });
+
+     $(".container-fluid").on("click", ".deleterecord", function() { 
+        //alert("Are you sure you want to delete this?");
+        x = this.id;
+        $(this).parent().parent().remove();
+        console.log(x);
+        $.ajax({
+            type:"GET",
+            url:"/timeclock/timeclock/PHP-folder/tables/clockin_table/delete_money.php",
+            data:{id: x},
+            success:function()
+            {
+                
+            }
+        });
+     });
+     $(".container-fluid").on("click", ".edit", function() { 
+        x = this.id;
+        $.ajax({
+            type: "GET",
+            url:"/timeclock/timeclock/PHP-folder/tables/employee_table/edit/edit.php",
+            data:{id: x},
+            success:function(data1)
+            {
+                var jsondata1 = JSON.parse(data1);
+                for(var x = 0; x < jsondata1.length; x++){
+                    $("#idchange").val(jsondata1[x]['id']);
+                    $("#namechange").val(jsondata1[x]['name']);
+                    $("#pinchange").val(jsondata1[x]['pin']);
+                    $("#emailchange").val(jsondata1[x]['email']);
+                    $("#deptchange").val(jsondata1[x]['dept']);
+                    $("#wagechange").val(jsondata1[x]['wage']);
+                    $("#wage_otchange").val(jsondata1[x]['wage_ot']);
+                }
+            }
+        });
+        });
+        $(".container-fluid").on("click", ".deletemanager", function() { 
+            x = this.id;
+            $(this).parent().parent().remove();
+            $.ajax({
+                type: "GET",
+                url:"/timeclock/timeclock/PHP-folder/tables/manager_table/delete.php",
+                data:{id: x},
+                success:function(data1)
+                {
+                }
+            });
+            });
+    });
 //DEFAULT EMPLOYEE TABLE
 function loademployeetable(){
     $.ajax({
@@ -97,121 +159,16 @@ function loademployeetable(){
         var jsondata = JSON.parse(data);
         for(var x = 0; x < jsondata.length; x++){
             var idx = jsondata[x]['id'];
-            var deletebutton = $('<button/>',
-                {
-                    id: idx,
-                    class: 'delete btn-link',
-                    text: 'Delete',
-                    click: function() {
-                        x = this.id; 
-                        $.ajax({
-                            type:"GET",
-                            url:"/timeclock/timeclock/PHP-folder/tables/employee_table/delete.php",
-                            data:{id: x},
-                            success:function()
-                            {
-                                
-                            }
-                        });
-                        $(this).parent().parent().remove();
-                    }
-                });
-                var editbutton = $('<button/>',
-                {
-                    
-                    id: idx,
-                    class: 'btn-link',
-                    text: 'Edit',
-                    'data-toggle': 'modal',
-                    'data-target': '#editEmployee',
-                    click: function() {
-                        x = this.id;
-                        $.ajax({
-                            type: "GET",
-                            url:"/timeclock/timeclock/PHP-folder/tables/employee_table/edit/edit.php",
-                            data:{id: x},
-                            success:function(data1)
-                            {
-                                var jsondata1 = JSON.parse(data1);
-                                for(var x = 0; x < jsondata1.length; x++){
-                                    $("#idchange").val(jsondata1[x]['id']);
-                                    $("#namechange").val(jsondata1[x]['name']);
-                                    $("#pinchange").val(jsondata1[x]['pin']);
-                                    $("#emailchange").val(jsondata1[x]['email']);
-                                    $("#deptchange").val(jsondata1[x]['dept']);
-                                    $("#wagechange").val(jsondata1[x]['wage']);
-                                    $("#wage_otchange").val(jsondata1[x]['wage_ot']);
-                                }
-                            }
-                        })
-                    }
-                });
-                /*var historybutton = $('<button/>',
-                {
-                    id: idx,
-                    class: 'btn-primary',
-                    text: 'History',
-                    click: function() {
-                        x = this.id;
-                        $.ajax({
-                            type: "GET",
-                            url:"/timeclock/timeclock/PHP-folder/tables/employee_table/history/history.php",
-                            data:{id: x},
-                            success:function(data2)
-                            {
-                                var jsondata2 = JSON.parse(data2);
-                                console.log(jsondata2);
-                                var current_date = jsondata2[0]['date'];
-                                var clockin_history = [];
-                                var index = 0;
-                                var result = [];
-                                var result_index = 0;
-                                for(var x = 0; x < jsondata2.length; x++){
-                                    while(jsondata2[x]['date'] == current_date){
-                                        clockin_history.push({
-                                            'status': jsondata2[x]['status'],
-                                            'time': jsondata2[x]['time']
-                                        });
-                                        x++;
-                                        if(x >= jsondata2.length){
-                                            break;
-                                        }
-                                    }
-                                    result.push({
-                                        'pin': jsondata2[0]['pin'],
-                                        'name': jsondata2[0]['name'],
-                                        'wage': jsondata2[0]['wage'],
-                                        'wage_ot': jsondata2[0]['wage_ot'],
-                                        'date': current_date,
-                                        'history': clockin_history
-                                    })
-                                    console.log(jsondata2[0]['wage']);
-                                    clockin_history = [];
-                                    if(x < jsondata2.length){
-                                        current_date = jsondata2[x]['date'];
-                                    }
-                                    index = 0;
-                                    x--;
-                                }
-                                console.log(result);
-                                calculate(result);
-                            }
-                        })
-                    }
-                });*/
                 $("#employeetablebody").append('<tr>'
-                + '<td>' + jsondata[x]['name'] + '</td>'
-                + '<td>' + jsondata[x]['pin'] + '</td>'
-                + '<td>' + jsondata[x]['email'] + '</td>'
-                + '<td>' + jsondata[x]['dept'] + '</td>'
-                + '<td>' + jsondata[x]['create_date'] + '</td>'
-                + '<td>' + jsondata[x]['create_by'] + '</td>'
-                + '<td>' + jsondata[x]['lastmodify_date'] + '</td>'
-                + '<td>' + jsondata[x]['lastmodify_by'] + '</td>'
-                + '<td>' + jsondata[x]['wage'] + '</td>'
-                + '<td>' + jsondata[x]['wage_ot'] + '</td>'
-                + '<td></td></tr>');                                                               //.append(historybutton)
-                $("#employeetablebody").find('td').last().append(deletebutton).append(editbutton);
+                + '<td class="col-md-2">' + jsondata[x]['name'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['pin'] + '</td>'
+                + '<td class="col-md-3">' + jsondata[x]['email'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['dept'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['lastmodify_date'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['lastmodify_by'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['wage'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['wage_ot'] + '</td>'
+                + '<td class="col-md-1"><Button class="btn-link deleteemp" id="' + idx + '">Delete</button><Button class="btn-link edit" data-toggle="modal" data-target="#editEmployee" id="' + idx + '">Edit</Button></td></tr>');
         }        
     }
   });
@@ -227,121 +184,16 @@ function load_data(query){
         var jsondata = JSON.parse(data); 
         for(var x = 0; x < jsondata.length; x++){
             var idx = jsondata[x]['id'];
-            var deletebutton = $('<button/>',
-                {
-                    id: idx,
-                    class: 'delete btn-link',
-                    text: 'Delete',
-                    click: function() {
-                        x = this.id; 
-                        $.ajax({
-                            type:"GET",
-                            url:"/timeclock/timeclock/PHP-folder/tables/employee_table/delete.php",
-                            data:{id: x},
-                            success:function()
-                            {
-                                
-                            }
-                        });
-                        $(this).parent().parent().remove();
-                    }
-                });
-                var editbutton = $('<button/>',
-                {
-                    
-                    id: idx,
-                    class: 'btn-link',
-                    text: 'Edit',
-                    'data-toggle': 'modal',
-                    'data-target': '#editEmployee',
-                    click: function() {
-                        x = this.id;
-                        $.ajax({
-                            type: "GET",
-                            url:"/timeclock/timeclock/PHP-folder/tables/employee_table/edit/edit.php",
-                            data:{id: x},
-                            success:function(data1)
-                            {
-                                var jsondata1 = JSON.parse(data1);
-                                for(var x = 0; x < jsondata1.length; x++){
-                                    $("#idchange").val(jsondata1[x]['id']);
-                                    $("#namechange").val(jsondata1[x]['name']);
-                                    $("#pinchange").val(jsondata1[x]['pin']);
-                                    $("#emailchange").val(jsondata1[x]['email']);
-                                    $("#deptchange").val(jsondata1[x]['dept']);
-                                    $("#wagechange").val(jsondata1[x]['wage']);
-                                    $("#wage_otchange").val(jsondata1[x]['wage_ot']);
-                                }
-                            }
-                        })
-                    }
-                });
-                /*var historybutton = $('<button/>',
-                {
-                    id: idx,
-                    class: 'btn-primary',
-                    text: 'History',
-                    click: function() {
-                        x = this.id;
-                        $.ajax({
-                            type: "GET",
-                            url:"/timeclock/timeclock/PHP-folder/tables/employee_table/history/history.php",
-                            data:{id: x},
-                            success:function(data2)
-                            {
-                                var jsondata2 = JSON.parse(data2);
-                                console.log(jsondata2);
-                                var current_date = jsondata2[0]['date'];
-                                var clockin_history = [];
-                                var index = 0;
-                                var result = [];
-                                var result_index = 0;
-                                for(var x = 0; x < jsondata2.length; x++){
-                                    while(jsondata2[x]['date'] == current_date){
-                                        clockin_history.push({
-                                            'status': jsondata2[x]['status'],
-                                            'time': jsondata2[x]['time']
-                                        });
-                                        x++;
-                                        if(x >= jsondata2.length){
-                                            break;
-                                        }
-                                    }
-                                    result.push({
-                                        'pin': jsondata2[0]['pin'],
-                                        'name': jsondata2[0]['name'],
-                                        'wage': jsondata2[0]['wage'],
-                                        'wage_ot': jsondata2[0]['wage_ot'],
-                                        'date': current_date,
-                                        'history': clockin_history
-                                    })
-                                    console.log(jsondata2[0]['wage']);
-                                    clockin_history = [];
-                                    if(x < jsondata2.length){
-                                        current_date = jsondata2[x]['date'];
-                                    }
-                                    index = 0;
-                                    x--;
-                                }
-                                console.log(result);
-                                calculate(result);
-                            }
-                        })
-                    }
-                });*/
-                $("#employeetablebody").append('<tr>'
-                + '<td>' + jsondata[x]['name'] + '</td>'
-                + '<td>' + jsondata[x]['pin'] + '</td>'
-                + '<td>' + jsondata[x]['email'] + '</td>'
-                + '<td>' + jsondata[x]['dept'] + '</td>'
-                + '<td>' + jsondata[x]['create_date'] + '</td>'
-                + '<td>' + jsondata[x]['create_by'] + '</td>'
-                + '<td>' + jsondata[x]['lastmodify_date'] + '</td>'
-                + '<td>' + jsondata[x]['lastmodify_by'] + '</td>'
-                + '<td>' + jsondata[x]['wage'] + '</td>'
-                + '<td>' + jsondata[x]['wage_ot'] + '</td>'
-                + '<td></td></tr>');
-                $("#employeetablebody").find('td').last().append(deletebutton).append(editbutton);//.append(historybutton);
+            $("#employeetablebody").append('<tr>'
+                + '<td class="col-md-2">' + jsondata[x]['name'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['pin'] + '</td>'
+                + '<td class="col-md-3">' + jsondata[x]['email'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['dept'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['lastmodify_date'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['lastmodify_by'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['wage'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['wage_ot'] + '</td>'
+                + '<td class="col-md-1"><Button class="deleteemp btn-link" id="' + idx + '">Delete</button><Button class="edit btn-link" data-toggle="modal" data-target="#editEmployee"  id="' + idx + '">Edit</button></td></tr>');
         }        
     }
   });
@@ -357,41 +209,21 @@ function loadmanagertable(){
         var jsondata = JSON.parse(data);
         for(var x = 0; x < jsondata.length; x++){
             var idx = jsondata[x]['id'];
-            var deletebutton = $('<button/>',
-                {
-                    id: idx,
-                    class: 'delete btn-link',
-                    text: 'Delete',
-                    click: function() {
-                        x = this.id; 
-                        $.ajax({
-                            type:"GET",
-                            url:"/timeclock/timeclock/PHP-folder/tables/manager_table/delete.php",
-                            data:{id: x},
-                            success:function()
-                            {
-                                
-                            }
-                        });
-                        $(this).parent().parent().remove();
-                    }
-                });
-                $("#managertablebody").append('<tr>'
-                + '<td>' + jsondata[x]['name'] + '</td>'
-                + '<td>' + jsondata[x]['email'] + '</td>'
-                + '<td>' + jsondata[x]['level'] + '</td>'
-                + '<td>' + jsondata[x]['create_date'] + '</td>'
-                + '<td>' + jsondata[x]['create_by'] + '</td>'
-                + '<td>' + jsondata[x]['lastmodify_date'] + '</td>'
-                + '<td>' + jsondata[x]['lastmodify_by'] + '</td>'
-                + '<td>' + jsondata[x]['expire_date'] + '</td>'
-                + '<td></td></tr>');
-                $("#managertablebody").find('td').last().append(deletebutton);
+            $("#managertablebody").append('<tr>'
+            + '<td class="col-md-2">' + jsondata[x]['name'] + '</td>'
+            + '<td class="col-md-3">' + jsondata[x]['email'] + '</td>'
+            + '<td class="col-md-1">' + jsondata[x]['level'] + '</td>'
+            + '<td class="col-md-1">' + jsondata[x]['create_date'] + '</td>'
+            + '<td class="col-md-1">' + jsondata[x]['create_by'] + '</td>'
+            + '<td class="col-md-1">' + jsondata[x]['lastmodify_date'] + '</td>'
+            + '<td class="col-md-1">' + jsondata[x]['lastmodify_by'] + '</td>'
+            + '<td class="col-md-1">' + jsondata[x]['expire_date'] + '</td>'
+            + '<td class="col-md-1"><Button class="deletemanager btn-link" id="'+idx+'">Delete</button></td></tr>');
         }        
     }
   });
 }// end DEFAULT MANAGER TABLE
-// EMPLOYEE SEARCH TABLE
+// MANAGER SEARCH TABLE
 function load_managerdata(query){
     $.ajax({
     url: "/timeclock/timeclock/PHP-folder/tables/manager_table/search_table.php",
@@ -401,35 +233,16 @@ function load_managerdata(query){
         var jsondata = JSON.parse(data); 
         for(var x = 0; x < jsondata.length; x++){
             var idx = jsondata[x]['id'];
-            var deletebutton = $('<button/>',
-                {
-                    id: idx,
-                    class: 'delete btn-link',
-                    text: 'Delete',
-                    click: function() {
-                        x = this.id; 
-                        $.ajax({
-                            type:"GET",
-                            url:"/timeclock/timeclock/PHP-folder/tables/manager_table/delete.php",
-                            data:{id: x},
-                            success:function()
-                            {
-                                $(this).parent().parent().remove();
-                            }
-                        });
-                    }
-                });
                 $("#managertablebody").append('<tr>'
-                + '<td>' + jsondata[x]['name'] + '</td>'
-                + '<td>' + jsondata[x]['email'] + '</td>'
-                + '<td>' + jsondata[x]['level'] + '</td>'
-                + '<td>' + jsondata[x]['create_date'] + '</td>'
-                + '<td>' + jsondata[x]['create_by'] + '</td>'
-                + '<td>' + jsondata[x]['lastmodify_date'] + '</td>'
-                + '<td>' + jsondata[x]['lastmodify_by'] + '</td>'
-                + '<td>' + jsondata[x]['expire_date'] + '</td>'
-                + '<td></td></tr>');
-                $("#managertablebody").find('td').last().append(deletebutton);
+                + '<td class="col-md-2">' + jsondata[x]['name'] + '</td>'
+                + '<td class="col-md-3">' + jsondata[x]['email'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['level'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['create_date'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['create_by'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['lastmodify_date'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['lastmodify_by'] + '</td>'
+                + '<td class="col-md-1">' + jsondata[x]['expire_date'] + '</td>'
+                + '<td class="col-md-1"> <Button class="deletemanager btn-link" id="'+idx+'"> Delete </button> </td> </tr>');
         }        
     }
   });
@@ -446,38 +259,14 @@ function loadreporttable(){
             console.log(jsondata);
             for(var x = 0; x < jsondata.length; x++){
                 var idx = jsondata[x]['id'];
-                var test = $('<button/>',
-                    {
-                        id: idx,
-                        class: 'btn-link',
-                        text: 'Delete',
-                        click: function() { 
-                            x = this.id;
-                            console.log(x);
-                            $.ajax({
-                                type:"GET",
-                                url:"/timeclock/timeclock/PHP-folder/tables/clockin_table/delete_money.php",
-                                data:{id: x},
-                                success:function()
-                                {
-                                    
-                                }
-                                
-                        });
-                        $(this).parent().parent().remove();
-                        }
-
-                    });
-                    $("#reporttablebody").append('<tr>'
-                    + '<td>' + jsondata[x]['status'] + '</td>'
-                    + '<td>' + jsondata[x]['punch_timestamp'] + '</td>'
-                    + '<td></td></tr>');
-                    $("#reporttablebody").find('td').last().append(test);
+                $("#reporttablebody").append('<tr>'
+                    + '<td class="col-md-4">' + jsondata[x]['status'] + '</td>'
+                    + '<td class="col-md-4">' + jsondata[x]['punch_timestamp'] + '</td>'
+                    + '<td class="col-md-4"><Button class="deleterecord btn-link" id="' + idx + '">Delete</button></td></tr>');
             }        
         }
-    });// end DEFAULT REPORTS TABLE
-
-}
+    });
+}// end DEFAULT REPORTS TABLE
 function quicksearchReports(){
     var startdate = $('#quickstart').val();
     var enddate = $('#quickend').val();
@@ -491,33 +280,13 @@ function quicksearchReports(){
         {
             console.log(startdate);
             var jsondata2 = JSON.parse(data);
-            //console.log(jsondata2);
         for(var x = 0; x < jsondata2.length; x++){
             var idx = jsondata2[x]['id'];
-            var test = $('<button/>',
-                {
-                    id: idx,
-                    class: 'btn-link',
-                    text: 'Delete',
-                    click: function() { 
-                        x = this.id;   
-                        $.ajax({
-                            type:"GET",
-                            url:"PHP-folder/tables/clockin_table/delete_money.php",
-                            data:{id: x},
-                            success:function()
-                            {
-                                $(this).parent().parent().remove();
-                            }
-                        });
-                    }
-                });
-                $("#reporttablebody").append('<tr class="row100">'
-                + '<td>' + jsondata2[x]['status'] + '</td>'
-                + '<td>' + jsondata2[x]['punch_timestamp'] + '</td>'
-                + '<td></td></tr>');
-                $("#reporttablebody").find('td').last().append(test);
+            $("#reporttablebody").append('<tr>'
+                + '<td class="col-md-4">' + jsondata2[x]['status'] + '</td>'
+                + '<td class="col-md-4">' + jsondata2[x]['punch_timestamp'] + '</td>'
+                + '<td class="col-md-4"><Button class="deleterecord btn-link" id="' + idx + '">Delete</button></td></tr>');
             }
         }
     });
-}
+}//end quicksearchreports function

@@ -75,25 +75,24 @@
                     </nav>
                         <!--MANAGER AND EMPLOYEE TABLES-->
                         <!--EMPLOYEES-->
-                        <div class="table-responsive-md">
-                            <table class="table">
-                                <thead class="table-dark" id="employeetableheader">
+                        <div class="table-responsive-md emptable">
+                            <table class="table table-fixed">
+                                <thead class="" id="employeetableheader">
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Pin</th>
-                                        <th>Email</th>
-                                        <th>Dept</th>
-                                        <th>Create Date</th>
-                                        <th>Create By</th>
-                                        <th>Modify Date</th>
-                                        <th>Modify By</th>
-                                        <th>Wage</th>
-                                        <th>OTWage</th>
-                                        <th>Action</th>
+                                        <th class="col-md-2">Name</th>
+                                        <th class="col-md-1">Pin</th>
+                                        <th class="col-md-3">Email</th>
+                                        <th class="col-md-1">Dept</th>
+                                        <th class="col-md-1">Modify Date</th>
+                                        <th class="col-md-1">Modify By</th>
+                                        <th class="col-md-1">Wage</th>
+                                        <th class="col-md-1">OTWage</th>
+                                        <th class="col-md-1">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody class="employeetablerow" id="employeetablebody">
-                                </tbody>
+
+                                <tbody class="employeetablerow" id="employeetablebody"></tbody>
+
                             </table>
                                 
                                 </div>
@@ -128,23 +127,25 @@
                             </div>
                     </nav><!-- end MANAGER NAVBAR-->
                         <!--MANAGERS-->
-                        <div class="table-responsive-md">
-                            <table class="table">
-                                <thead class="table-dark"id="managertableheader">
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Level</th>
-                                    <th>Create Date</th>
-                                    <th>Create By</th>
-                                    <th>Modify Date</th>
-                                    <th>Modify By</th>
-                                    <th>Expire Date</th>
-                                    <th>Action</th>
+                        <div class="table-responsive-md mantable">
+                            <table class="table table-fixed ">
+                                <thead class="" id="managertableheader">
+                                    <tr>
+                                        <th class="col-md-2">Name</th>
+                                        <th class="col-md-3">Email</th>
+                                        <th class="col-md-1">Level</th>
+                                        <th class="col-md-1">Created</th>
+                                        <th class="col-md-1">Create By</th>
+                                        <th class="col-md-1">Modified</th>
+                                        <th class="col-md-1">Modify By</th>
+                                        <th class="col-md-1">Expire Date</th>
+                                        <th class="col-md-1">Action</th>
+                                    </tr>
                                 </thead>
-                                <tbody id="managertablebody">
-                                </tbody>
+
+                                <tbody id="managertablebody"></tbody>
+
                             </table>
-                            
 
                         </div>
                     </div><!-- /#home-page-wrapper -->
@@ -187,13 +188,12 @@
                                     </div>
                             </nav>
                             <!--CLOCK HISTORY TABLE-->
-                        <h5>Clock History</h5>
-                        <div class="table-responsive-sm">
-                            <table class="table">
-                                <thead class="table-dark" id="reporttableheader">
-                                    <th>Status</th>
-                                    <th>Timestamp</th>
-                                    <th>Action</th>
+                        <div class="table-responsive-md reptable">
+                            <table class="table table-fixed">
+                                <thead class="table-fixed-dark" id="reporttableheader">
+                                    <th class="col-md-4">Status</th>
+                                    <th class="col-md-4">Timestamp</th>
+                                    <th class="col-md-4">Action</th>
                                 </thead>
                                 <tbody id="reporttablebody">
 
@@ -497,7 +497,7 @@
                 <div class="form-group row">
                     <label for="pin" class="col-sm-2 col-form-label">PIN:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="pin" placeholder="###">
+                        <input type="int" class="form-control" name="pin" placeholder="###">
                     </div>
 
                     <label for="date" class="col-sm-2 col-form-label">Date:</label>
@@ -508,20 +508,17 @@
                     <label for="time" class="col-sm-2 col-form-label">Time:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="time" placeholder="Time" id="newclocktime">
-                    </div>
+                 </div>
 
-                    <label for="note" class="col-sm-2 col-form-label">Note:</label>
+                    <!-- <label for="note" class="col-sm-2 col-form-label">Note:</label>
                     <div class="col-sm-12">
                         <input type="textarea" class="form-control" name="note" placeholder="Note...">
-                    </div>
+                    </div> -->
                 </div>
-                
-            </div>
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-success" name="clockIn" id="clockinbtn">Clock In</button>
-            <button type="submit" class="btn btn-danger" name="clockOut" id="clockoutbtn">Clock Out</button>
+                <button type="submit" class="form-group btn btn-success" name="clockin" id="clockinbtn">Clock In</button>
+            <button type="submit" class="form-group btn btn-danger" name="clockout" id="clockoutbtn">Clock Out</button>
             </form>
-        </div>
+            </div>
         </div>
     </div>
     </div>
