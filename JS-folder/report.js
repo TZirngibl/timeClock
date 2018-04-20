@@ -189,6 +189,7 @@ $(document).ready(function(){
             var mylast_day = moment(first_day, 'YYYY-MM-DD').add(6, 'days').format('YYYY-MM-DD');
             var check_last = moment(first_day, 'YYYY-MM-DD').add(6, 'days')
             var week_total = 0;
+            var week_overtime = 0;
             //INSERT CURRENT TIMESTAMP HERE
             doc.text(10, 10, 'x/x/xxxx x:xx:xx PM');
 
@@ -219,11 +220,46 @@ $(document).ready(function(){
             doc.line(34, 25, 113, 25);
             var date_y = 30;
             for(var y = 0; y < print[i]['history'].length; y++){
-                console.log(y);
                 var date = print[i]['history'][y]['date'];
                 var myDate = moment(date).format('YYYY-MM-DD');
                 var final_date = moment(date).format('dddd');
                 var check_date = moment(date);
+                //check if the day still in week range
+                if(check_date >= check_first && check_date <= check_last){
+                    week_total = week_total + print[i]['history'][y]['calculate'];
+                }
+                else{
+                    week_total = week_total /60/60;
+                    week_overtime = week_total - 40
+                    if(week_overtime > 0)
+                    {
+                        var overtime_string = "OverTime: " + week_total;
+                    }
+                    else{
+                        var overtime_string = "OverTime: " + 0;
+                    }
+                    var week_string = "Total Regular Hours:  " + week_total;
+                    doc.text(35, date_y, week_string);
+                    date_y = date_y + 3;
+                    doc.line(34, date_y, 113, date_y);
+                    date_y = date_y + 4;
+                    doc.text(35, date_y, overtime_string);
+                    date_y = date_y + 3;
+                    week_total = print[i]['history'][y]['calculate'];
+                    check_first = moment(check_last, 'YYYY-MM-DD').add(1, 'days');
+                    check_last = moment(check_first, 'YYYY-MM-DD').add(6, 'days');
+                    var con =moment(check_first).format('YYYY-MM-DD');
+                    var con2 = moment(check_last).format('YYYY-MM-DD');
+                    doc.addPage();
+                    date_y = 30;
+                    var week_range = "Week From: " + con + " To " + con2;
+                    doc.line(25, date_y, 125, date_y);
+                    date_y = date_y + 3;
+                    doc.text(35, date_y, week_range);
+                    date_y = date_y + 3;
+                    doc.line(25, date_y, 125, date_y);
+                    date_y = date_y + 3;
+                }
                 var title = final_date + "        " + date;
                 doc.text(35, date_y, title);
                 date_y = date_y + 3;
@@ -247,32 +283,22 @@ $(document).ready(function(){
                 date_y = date_y + 3;
                 doc.line(34, date_y, 113, date_y);
                 date_y = date_y + 4;
-                //check if the day still in week range
-                if(check_date >= check_first && check_date <= check_last){
-                    week_total = week_total + print[i]['history'][y]['calculate'];
-                }
-                else{
-                    console.log("yes " + myDate);
-                    week_total = week_total /60/60;
-                    var week_string = "total working hour in this week " + week_total;
-                    doc.text(35, date_y, week_string);
-                    date_y = date_y + 3;
-                    doc.line(34, date_y, 113, date_y);
-                    date_y = date_y + 4;
-                    week_total = 0;
-                    doc.addPage();
-                    date_y = 30;
-                    y--;
-                    check_first = moment(check_last, 'YYYY-MM-DD').add(1, 'days');
-                    check_last = moment(check_first, 'YYYY-MM-DD').add(6, 'days');
-                    var con =moment(check_first).format('YYYY-MM-DD');
-                    var con2 = moment(check_last).format('YYYY-MM-DD');
-                    console.log("week " + con + "      " + con2);
-                    console.log(y);
-                }
             }
             week_total = week_total /60/60;
-            var week_string = "total working hour in this week " + week_total;
+            week_overtime = week_total - 40
+            if(week_overtime > 0)
+            {
+                var overtime_string = "OverTime: " + week_total;
+            }
+            else{
+                var overtime_string = "OverTime: " + 0;
+            }
+            var week_string = "Total Regular Hours:  " + week_total;
+            doc.text(35, date_y, week_string);
+            date_y = date_y + 3;
+            doc.line(34, date_y, 113, date_y);
+            date_y = date_y + 4;
+            doc.text(35, date_y, overtime_string);
             date_y = date_y + 3;
             doc.addPage();
         }
