@@ -184,9 +184,12 @@ $(document).ready(function(){
         for(var i = 0; i <print.length; i++)
         {
             var first_day = print[i]['start_date'];
-            var myfirst_day = new Date(first_day);
+            var myfirst_day = moment(first_day).format('YYYY-MM-DD');
+            var check_first = moment(first_day)
+            var mylast_day = moment(first_day, 'YYYY-MM-DD').add(6, 'days').format('YYYY-MM-DD');
+            var check_last = moment(first_day, 'YYYY-MM-DD').add(6, 'days')
             var week_total = 0;
-            var check_date = myfirst_day.getDay();
+            console.log(myfirst_day + "      " +mylast_day);
             //INSERT CURRENT TIMESTAMP HERE
             doc.text(10, 10, 'x/x/xxxx x:xx:xx PM');
 
@@ -218,33 +221,10 @@ $(document).ready(function(){
             var date_y = 30;
             for(var y = 0; y < print[i]['history'].length; y++){
                 var date = print[i]['history'][y]['date'];
-                var myDate = new Date(date);
-                var final_date = myDate.getDay();
-                console.log("clockin day " + final_date + " " + myDate);
-                switch(final_date){
-                    case 6:
-                         weekDay = 'Sunday';
-                        break;
-                    case 0:
-                         weekDay = 'Monday';
-                        break;
-                    case 1:
-                         weekDay = 'Tuesday';
-                        break;
-                    case 2:
-                         weekDay = 'Wednesday';
-                        break;
-                    case 3:
-                         weekDay = 'Thursday';
-                        break;
-                    case 4:
-                         weekDay = 'Friday';
-                        break;
-                    case 5:
-                         weekDay = 'Saturday';
-                        break;
-                }
-                var title = weekDay + "        " + date;
+                var myDate = moment(date).format('YYYY-MM-DD');
+                var final_date = moment(date).format('dddd');
+                var check_date = moment(date);
+                var title = final_date + "        " + date;
                 doc.text(35, date_y, title);
                 date_y = date_y + 3;
                 doc.line(34, date_y, 113, date_y);
@@ -267,28 +247,21 @@ $(document).ready(function(){
                 date_y = date_y + 3;
                 doc.line(34, date_y, 113, date_y);
                 date_y = date_y + 4;
-                for(var a = 0; a <= 6; a++){
-                    var check_date = myfirst_day.getDay();
-                    console.log("enter loop " + check_date);
-                    console.log("current date " + final_date);
-                    console.log("--------------")
-                    if(check_date == final_date){
-                        week_total = week_total + print[i]['history'][y]['calculate'];
-                        console.log(week_total);
-                        break;
-                    }
-                    myfirst_day.setDate(myfirst_day.getDay() + 1);
-                    if(myDate != myfirst_day && a == 6){
-                        console.log("yes");
-                        myfirst_day.setDate(myfirst_day.getDate() + 6);
-                        week_total = week_total /60/60;
-                        var week_string = "total working hour in this week " + week_total;
-                        doc.text(35, date_y, week_string);
-                        date_y = date_y + 3;
-                        doc.line(34, date_y, 113, date_y);
-                        date_y = date_y + 4;
-                        week_total = 0;
-                    }
+                //check if the day still in week range
+                if(check_date >= check_first && check_date <= check_last){
+                    week_total = week_total + print[i]['history'][y]['calculate'];
+                }
+                if(check_date > check_last || y == print[i]['history'].length){
+                    week_total = week_total /60/60;
+                    var week_string = "total working hour in this week " + week_total;
+                    doc.text(35, date_y, week_string);
+                    date_y = date_y + 3;
+                    doc.line(34, date_y, 113, date_y);
+                    date_y = date_y + 4;
+                    week_total = 0;
+                    doc.addPage();
+                    check_first = check_date;
+                    check_last = moment(check_first, 'YYYY-MM-DD').add(6, 'days')
                 }
             }
             doc.addPage();

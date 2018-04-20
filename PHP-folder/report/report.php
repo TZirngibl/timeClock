@@ -36,7 +36,12 @@
     //check if the user want to generate the report of one employee or all//
     $starttimestamp = $startdate;
     $splitTimeStamp = explode(" ",$starttimestamp);
-    $startdate = $splitTimeStamp[0];
+    $startdatesplit = $splitTimeStamp[0];
+    $starttime = $splitTimeStamp[1];
+
+    $endtimestamp = $enddate;
+    $splitTimeStamp = explode(" ",$endtimestamp);
+    $enddatesplit = $splitTimeStamp[0];
     $starttime = $splitTimeStamp[1];
     //create array from database//
     $result = $db-> query($sql);;
@@ -65,8 +70,8 @@
                 }
             }
             $data = array(
-                'start_date' => $startdate,
-                'end_date' => $enddate,
+                'start_date' => $startdatesplit,
+                'end_date' => $enddatesplit,
                 'id' => $row['id'],
                 'type' => $type,
                 'overtime_limit' => $limit,
