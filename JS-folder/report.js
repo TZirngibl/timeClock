@@ -188,8 +188,11 @@ $(document).ready(function(){
             var check_first = moment(first_day)
             var mylast_day = moment(first_day, 'YYYY-MM-DD').add(6, 'days').format('YYYY-MM-DD');
             var check_last = moment(first_day, 'YYYY-MM-DD').add(6, 'days')
+            var con =moment(check_first).format('YYYY-MM-DD');
+            var con2 = moment(check_last).format('YYYY-MM-DD');
             var week_total = 0;
             var week_overtime = 0;
+            var total_hours = 0;
             //INSERT CURRENT TIMESTAMP HERE
             doc.text(10, 10, 'x/x/xxxx x:xx:xx PM');
 
@@ -218,7 +221,10 @@ $(document).ready(function(){
             doc.text(155, 21, private_info);
 
             doc.line(34, 25, 113, 25);
-            var date_y = 30;
+            var week_range = "Week From: " + con + " To " + con2;
+            doc.text(35, 29, week_range);;
+            doc.line(34, 31, 113, 31);
+            var date_y = 34;
             for(var y = 0; y < print[i]['history'].length; y++){
                 var date = print[i]['history'][y]['date'];
                 var myDate = moment(date).format('YYYY-MM-DD');
@@ -227,6 +233,7 @@ $(document).ready(function(){
                 //check if the day still in week range
                 if(check_date >= check_first && check_date <= check_last){
                     week_total = week_total + print[i]['history'][y]['calculate'];
+                    total_hours = total_hours + week_total;
                 }
                 else{
                     week_total = week_total /60/60;
@@ -251,7 +258,7 @@ $(document).ready(function(){
                     var con =moment(check_first).format('YYYY-MM-DD');
                     var con2 = moment(check_last).format('YYYY-MM-DD');
                     doc.addPage();
-                    date_y = 30;
+                    date_y = 25;
                     var week_range = "Week From: " + con + " To " + con2;
                     doc.line(25, date_y, 125, date_y);
                     date_y = date_y + 3;
