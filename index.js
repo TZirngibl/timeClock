@@ -638,9 +638,11 @@ function quicksearchReports(){
         for(var x = 0; x < jsondata2.length; x++){
             var idx = jsondata2[x]['id'];
             $("#reporttablebody").append('<tr>'
-                + '<td class="col-md-4">' + jsondata2[x]['status'] + '</td>'
-                + '<td class="col-md-4">' + jsondata2[x]['punch_timestamp'] + '</td>'
-                + '<td class="col-md-4"><Button class="deleterecord btn-link" id="' + idx + '">Delete</button></td></tr>');
+            + '<td class="col-md-2">' + jsondata2[x]['name'] + '</td>'
+            + '<td class="col-md-2">' + jsondata2[x]['pin'] + '</td>'
+            + '<td class="col-md-2">' + jsondata2[x]['status'] + '</td>'
+            + '<td class="col-md-2">' + jsondata2[x]['time'] + '</td>'
+            + '<td class="col-md-2"><Button class="deleterecord btn-link" id="' + idx + '">Delete</button></td></tr>');
             }
         }
     });
