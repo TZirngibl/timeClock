@@ -25,6 +25,7 @@ $(document).ready(function(){
             {
                 var result = [];
                 var jsondata2 = JSON.parse(data); // conver json file to array
+                console.log(jsondata2);
                 //start the loop with all the employees 
                 for(var y = 0; y < jsondata2.length; y++){ 
                     var pass_arr =[];
