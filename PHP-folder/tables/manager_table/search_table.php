@@ -6,13 +6,13 @@ if(isset($_POST["query"]))
 	$search = mysqli_real_escape_string($connect, $_POST["query"]);
 	$query = "
 	SELECT * FROM manager 
-	WHERE name LIKE '%".$search."%' LIMIT 5
+	WHERE name LIKE '%".$search."%'
 	";
 }
 else
 {
 	$query = "
-	SELECT * FROM manager ORDER BY name LIMIT 5";
+	SELECT * FROM manager ORDER BY name";
 }
 $result = mysqli_query($connect, $query);
 if(mysqli_num_rows($result) > 0)

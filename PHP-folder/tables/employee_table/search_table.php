@@ -12,7 +12,7 @@ if(isset($_POST["query"]))
 else
 {
 	$query = "
-	SELECT * FROM employee ORDER BY name LIMIT 5";
+	SELECT * FROM employee ORDER BY name";
 }
 $result = mysqli_query($connect, $query);
 if(mysqli_num_rows($result) > 0)

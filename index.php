@@ -194,11 +194,10 @@
         </button>
       </div>
       <div class="modal-body">
+                    <label for="pin_generate" class="col-sm-12 col-form-label nopads">PIN:</label>
+                     <input type="text" id="pin_generate" class="form-control" placeholder="###(Empty to generate all)"></input>
                     <div class="input-append date">
-                        PIN: <input type="text" id="pin_generate"></input>
-                    </div>
-                    <div class="input-append date">
-                        Starting Date: <input type="datepicker" id="datetimepicker1"></input>
+                        Starting Date: <input type="datepicker" id="datetimepicker1" placeholder="Date Picker --->"></input>
                         <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
                     </div>
                 <label for="payInt" class="col-sm-12 col-form-label nopads" id="half">Interval:</label>

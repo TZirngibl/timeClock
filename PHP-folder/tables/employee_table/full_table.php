@@ -2,7 +2,7 @@
     session_start();
     $x = 0;
     $db = mysqli_connect("localhost", "root", "", "project1");
-    $sql = "SELECT * FROM employee LIMIT 5";
+    $sql = "SELECT * FROM employee";
     $arr = [];
     $result = $db -> query($sql);
         if($result-> num_rows > 0){
