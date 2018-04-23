@@ -219,7 +219,7 @@
       </div>
       <div class="modal-body">
                     <div class="input-append date">
-                        PIN: <input type="datepicker" id="pin_generate"></input>
+                        PIN: <input type="text" id="pin_generate"></input>
                     </div>
                     <div class="input-append date">
                         Starting Date: <input type="datepicker" id="datetimepicker1"></input>

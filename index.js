@@ -154,7 +154,7 @@ $(function() {
     var id; 
     var startdate;
     //when the button with the id #generate_btn clicked it will collect the start date and the report type 
-    $("#generate_btn").click(function(){
+    $(".modal-content").on("click", "#generate_btn",function(){
         var overtime_type = $("#payInt").val();
         id = $("#pin_generate").val();
         startdate = $("#datetimepicker1").val();
@@ -174,6 +174,7 @@ $(function() {
             {
                 var result = [];
                 var jsondata2 = JSON.parse(data); // conver json file to array
+                console.log(jsondata2);
                 //start the loop with all the employees 
                 for(var y = 0; y < jsondata2.length; y++){ 
                     var pass_arr =[];
