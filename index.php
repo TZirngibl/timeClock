@@ -219,7 +219,10 @@
       </div>
       <div class="modal-body">
                     <div class="input-append date">
-                        Starting Date: <input type="datepicker" id="datetimepicker1"></input>
+                        PIN: <input type="datepicker" id="pin_generate"></input>
+                    </div>
+                    <div class="input-append date">
+                        Starting Date: <input type="datepicker" id="datepicker3"></input>
                         <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
                     </div>
                 <label for="payInt" class="col-sm-12 col-form-label nopads" id="half">Interval:</label>
@@ -228,11 +231,6 @@
                     <option>Bi-Weekly</option>
                     <option>Weekly</option>
                     <option>Monthly</option>
-                    </select>
-                    </div>
-                    <label for="overtimelimit" class="nopads col-form-label">OT Limit:</label>
-                    <div class="col-sm-6 nopads" id="payPeriods">
-                    <input class="form-control" type="int" id="overtimelimit">
                     </select>
                     </div>
       </div>
