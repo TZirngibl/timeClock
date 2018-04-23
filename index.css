@@ -104,7 +104,7 @@ body{
   }/*end of media statement*/
 
   @media(max-width:1920px) {
-
+  
     .mantable{
       max-height: 200px;
       overflow: auto;
@@ -122,6 +122,7 @@ body{
     }
     .table-fixed tbody td, .table-fixed thead > tr> th {
       float: left;
+      border: none;
     }
 
     .paginatorss{
@@ -194,6 +195,7 @@ body{
   border-bottom: none;
   }
   .table{
+    font-size: 10px;
     width: 80vw;
   }
   #employeesearch{
