@@ -46,7 +46,7 @@
             
                 <div id="home-page-wrapper">
                 <!--NAVBAR-->
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="homenavbar">
+                    <nav class="navbar navbar-expand-lg navbar-dark" id="homenavbar">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -55,21 +55,7 @@
                                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#addEmployee">Add Employee <span class="sr-only">(current)</span></a></li>
                                 </ul>
-                                <!-- EMPLOYEE PAGINATOR -->
-                                <ul class="pagination justify-content-end flex-wrap paginatorss">
-                                            <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            </li>
-                                            <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                            </li>
-                                        </ul><!-- end EMPLOYEE PAGINATOR -->
+                                
                                 <form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Search By Name" aria-label="Search" id="employeesearch">
                                 </form>
@@ -99,7 +85,7 @@
                                 
                                 </div>
                                 <!-- MANAGER NAVBAR -->
-                                <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="homenavbar">
+                                <nav class="navbar navbar-expand-lg navbar-dark" id="homenavbar">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -108,21 +94,7 @@
                                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#addManager">Add Manager</a></li>
                                 </ul>
-                                <!-- MANAGER PAGINATOR -->
-                                <ul class="pagination justify-content-end flex-wrap paginatorss">
-                                        <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        </li>
-                                        <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                        </li>
-                                    </ul><!-- end MANAGER PAGINATOR -->
+                                
                                 <form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Search By Name" aria-label="Search" id="managersearch" name="searchmanager">
                                 </form>

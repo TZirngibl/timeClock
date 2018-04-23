@@ -104,6 +104,7 @@ body{
   }/*end of media statement*/
 
   @media(max-width:1920px) {
+
     .mantable{
       max-height: 200px;
       overflow: auto;
@@ -133,17 +134,14 @@ body{
 
  
   #quicksearchy{
-    padding: 5px;
-    width: 100%;
     color: black;
   }
   #quicksearchy:hover{
-    width: 100%;
     color: white;
   }
   #quickSearchs{
-    padding-right: 1em;
-    width: 45%;
+    width: 55%;
+    padding-right: 5em;
     color: rgba(144, 238, 144, 0.645);
   }
   #quicksearch{
@@ -172,6 +170,7 @@ body{
   }
   #homenavbar{
     width: 80vw;
+    background-color: #326DAE;
   }
   #reportnavbar{
     width: 80vw;
