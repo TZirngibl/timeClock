@@ -5,7 +5,6 @@
     $final_arr = [];
     $employee_id = $_GET['id'];
     $type = $_GET['type'];
-    $limit = $_GET['limit'];
     $date = $_GET['startdate'];
     $startdate = new DateTime($date);
     $enddate = new DateTime($date);
@@ -74,7 +73,6 @@
                 'end_date' => $enddatesplit,
                 'id' => $row['id'],
                 'type' => $type,
-                'overtime_limit' => $limit,
                 'dept' => $row['dept'],
                 'name' => $row['name'],
                 'pin' => $row['pin'],

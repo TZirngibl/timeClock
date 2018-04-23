@@ -192,12 +192,11 @@
     <div class="modal">
         <p id="registerform">Generator</p>
             <label for="pin_generate">ID: <input id= "pin_generate" type="text" name="pin"/></label>
-                <p>Start Date: <input type="text" name="startdate" id="datepicker3"></p>
                 <label for="report_type">Type:<select id="type" name="report_type">
                                     <option value="Weekly">Weekly</option>
                                     <option value="Bi-Weekly">Bi-Weekly</option>
                                     <option value="Monthly">Monthly</option>
-                <label for="overtime_amount">Overtime: <input id= "overtime_amount" type="text" name="overtime_amount"/></label>
+                <p>Start Date: <input type="text" name="startdate" id="datepicker3"></p>
                 <input id="generate_btn" type="submit" name="generate" value="Generate"/> 
         <span class="close7" href="#">X</span>
     </div>

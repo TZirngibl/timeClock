@@ -1,45 +1,42 @@
 $(document).ready(function(){
-    $("#overtime_amount").val(80);
+    //Make default as bi-weekly type
     $("#type").val("Bi-Weekly");
-    var id; var startdate;
-    $("#type").on("change",function(){
-        if($("#type").val() == "Weekly"){
-            $("#overtime_amount").val(40);
-        }
-        else if($("#type").val() == "Bi-Weekly"){
-            $("#overtime_amount").val(80);
-        }
-        else if($("#type").val() == "Monthly"){
-            $("#overtime_amount").val(160);
-        }
-    });
+    var id; 
+    var startdate;
+    
+    //when the button with the id #generate_btn clicked it will collect the start date and the report type 
     $("#generate_btn").click(function(){
         var overtime_type = $("#type").val();
-        var overtime_amount = $("#overtime_amount").val();
         id = $("#pin_generate").val();
         startdate = $("#datepicker3").val();
-        //--Ajex call report.php to get the array with the clockin history--//
-        console.log($("#pin_generate").val());
+        //--Ajax call report.php to get the array with the clockin history--//
         $.ajax({
             method: "GET",
             type: "json",
             url:"PHP-folder/report/report.php",
             data:{
-                type: overtime_type, 
-                limit: overtime_amount,
-                id: id,
-                startdate: startdate},
+                type: overtime_type, // type of report 
+                id: id, // id of the employee
+                startdate: startdate // start date
+            },
+            // return back the array with all the information of the employee/employees(if id is emplty)
+            // including the clockin history
             success:function(data)
             {
                 var result = [];
-                var jsondata2 = JSON.parse(data);
-                for(var y = 0; y < jsondata2.length; y++){
+                var jsondata2 = JSON.parse(data); // conver json file to array
+                //start the loop with all the employees 
+                for(var y = 0; y < jsondata2.length; y++){ 
                     var pass_arr =[];
                     var clockin_history = [];
-                    //var result = [];
                     var history = [];
+                    //set current date as a first date the employee clock-in
                     var current_date = jsondata2[y]['history'][0]['date'];
+                    //start the loop the with all the clock-in date the employees made  
                     for(var x = 0; x < jsondata2[y]['history'].length; x++){
+                        // if the next date on the array still the same date add the status and time in the same index
+                        // to the array called clockin_history
+                        // the loop going to do this until the next day
                         while(jsondata2[y]['history'][x]['date'] == current_date){
                             clockin_history.push({
                                 'status': jsondata2[y]['history'][x]['status'],
@@ -50,16 +47,20 @@ $(document).ready(function(){
                                 break;
                             }
                         }
+                        //before going to the next day the code will push all the clock-in history to an array 
+                        // the code also lable the array with the date
                         history.push({
                             'date': current_date,
                             'history': clockin_history
                         });
                         clockin_history = [];
                         if(x < jsondata2[y]['history'].length){
+                            //update the current_date to the next date
                             current_date = jsondata2[y]['history'][x]['date'];
                         }
                         x--;
                     }
+                    //finally push everything to the result array 
                     result.push({
                         'start_date' : jsondata2[y]['start_date'],
                         'end_date' : jsondata2[y]['end_date'],
@@ -70,43 +71,77 @@ $(document).ready(function(){
                         'wage': jsondata2[y]['wage'],
                         'wage_ot': jsondata2[y]['wage_ot'],
                         'type': jsondata2[y]['type'],
-                        'overtime_limit': jsondata2[y]['overtime_limit'],
                         'history': history
                     });
                 }
+                //pass the array to calculation method
                 calculation(result);
             }
         });
     });
+
+    //Caculation Method will calculate the total working-time after eveytime the employee clockin and clockout
     function calculation(result_clockin){
-        var result_time = []; var block = []; var final = [];
-        var name = result_clockin[0]['name'];     var pin = result_clockin[0]['pin']; 
-        var wage = result_clockin[0]['wage'];      var wage_ot= result_clockin[0]['wage_ot'];
-        var pay_type= result_clockin[0]['type'];  var amount_overtime = result_clockin[0]['overtime_limit'];  
-        var time_in; var time_out; 
-        var total_regular_time;
-        var overtime_second = amount_overtime*60*60;                           
+        //varify some variables
+        var result_time = []; 
+        var block = []; 
+        var final = [];
+        var name = result_clockin[0]['name'];     
+        var pin = result_clockin[0]['pin']; 
+        var pay_type= result_clockin[0]['type']; 
+        var time_in; 
+        var time_out; 
+        var total_regular_time; 
+        //start the loop for each of employee                   
         for(var a = 0; a < result_clockin.length; a++){
             var total_time_second = 0;
-            var total_pay_regular = 0;  
-            var total_pay_over = 0;
-            var total_pay = 0;
+            // start loop for each day
             for(var b = 0; b < result_clockin[a]['history'].length; b++){
                 var total_time_date = 0;
                 var count = 0;
+                //all the employees should clock-in when the day start 
+                //so the expect status is "in"
                 var expect_status = 'in';
                 for(var c = 0; c < result_clockin[a]['history'][b]['history'].length; c++){
-                    switch(expect_status){
-                        case 'in':
-                            time_in = result_clockin[a]['history'][b]['history'][c]['time'];
-                            expect_status ='out';
-                            count++;
-                            break;
-                        case 'out':
-                            time_out = result_clockin[a]['history'][b]['history'][c]['time'];
-                            expect_status ='in';
-                            count++;
-                            break;
+                    // if the current the status 
+                    if(result_clockin[a]['history'][b]['history'][c]['status'] == expect_status){
+                        switch(expect_status){
+                            case 'in':
+                                time_in = result_clockin[a]['history'][b]['history'][c]['time'];
+                                expect_status ='out';
+                                count++;
+                                break;
+                            case 'out':
+                                time_out = result_clockin[a]['history'][b]['history'][c]['time'];
+                                expect_status ='in';
+                                count++;
+                                break;
+                        }
+                    }   
+                    else{
+                        count = 1;
+                        switch(expect_status){
+                            case 'in':
+                                time_in = result_clockin[a]['history'][b]['history'][c]['time'];
+                                block.push({
+                                    'status_in': 'in',
+                                    "time_in": time_in,
+                                    'status_out': "empty",
+                                    "time_out": "empty",
+                                    "time-block": 0,
+                                });
+                                break;
+                            case 'out':
+                                time_out = result_clockin[a]['history'][b]['history'][c]['time'];
+                                block.push({
+                                    'status_in': "empty",
+                                    "time_in": "empty",
+                                    'status_out': 'out',
+                                    "time_out": time_out,
+                                    "time-block": 0,
+                                });
+                                break;
+                        }
                     }
                     if(count == 2){
                         var startTime = moment(time_in, 'hh.mm');
@@ -124,8 +159,10 @@ $(document).ready(function(){
                             "time_out": time_out,
                             "time-block": result,
                         });
+                        break;
                     }
-                }//finish punch time for one day
+                }
+                //finish punch time for one day
                 ////////////////////////////////
                 total_regular_time = moment().startOf('day').seconds(total_time_date).format('H.mm');
                 result_time.push({
@@ -137,19 +174,6 @@ $(document).ready(function(){
                 block = [];
             }//finish all days report
             /////////////////////////
-            if(total_time_second > overtime_second){
-                total_overtime = overtime_second - total_time_second;
-            }
-            else{
-                total_overtime = 0;
-            }
-            var total_time_both_second = total_time_second + total_overtime;
-            total_pay_regular = (wage/3600)*total_time_second;
-            total_pay_over = (wage_ot/3600)*total_overtime;
-            var total_time_regular = total_time_second/60/60;
-            var total_time_over = total_overtime/60/60;
-            var total_time_both = total_time_both_second/60/60;
-            total_pay = total_pay_regular + total_pay_over;
             final.push({
                 'start_date' : result_clockin[a]['start_date'],
                 'end_date' : result_clockin[a]['end_date'],
@@ -157,17 +181,10 @@ $(document).ready(function(){
                 'pin': result_clockin[a]['pin'],
                 'dept': result_clockin[a]['dept'],
                 'name': result_clockin[a]['name'],
+                'type': result_clockin[a]['type'],
                 'wage': result_clockin[a]['wage'],
                 'wage_ot': result_clockin[a]['wage_ot'],
-                'type': result_clockin[a]['type'],
-                'overtime_limit': result_clockin[a]['overtime_limit'],
                 'history': result_time ,
-                'total_regular_hour': total_time_regular,
-                'total_pay_regular': total_pay_regular,
-                'total_over_hours': total_time_over,
-                'total_pay_over': total_pay_over,
-                'total_working_hour': total_time_both,
-                'total_pay': total_pay
             });
             result_time = [];
         }//finish report of one person
@@ -194,37 +211,48 @@ $(document).ready(function(){
             var week_overtime = 0;
             var total_hours = 0;
             //INSERT CURRENT TIMESTAMP HERE
-            doc.text(10, 10, 'x/x/xxxx x:xx:xx PM');
 
             doc.setLineWidth(0.5);
-            doc.line(10, 11, 200, 11);
+            doc.line(10, 8, 200, 8);
             doc.setFontSize(12);
+            var type = print[i]['type'];
             var start_date = print[i]['start_date'];
             var end_date = print[i]['end_date'];
-            var range = "Time Cards/Day Report - " + "from " +  start_date + " to " + end_date; 
+            var range = type + " Report: " + "from      " +  start_date + "     to      " + end_date; 
 
             //TIME CARD DATE RANGE HERE
-            doc.text(25, 15, range);
+            doc.text(25, 13, range);
 
             doc.setLineWidth(1);
-            doc.line(10, 17, 200, 17);
+            doc.line(10, 15, 200, 15);
             doc.setLineWidth(.25);
-            doc.line(10, 18, 200, 18);
+            doc.line(10, 17, 200, 17);
 
             var public_info = " Name: " + print[i]['name'] + "   ID: " + print[i]['id'] + "   DEPT: " + print[i]['dept'];
-            doc.setFontSize(8);
+            doc.setFontSize(12);
             //NAME, ID, PIN, DEPT, Default
             doc.text(10, 21, public_info);
 
             var private_info = "Wage:       Reg  " + print[i]['wage'] + "         OT:  " + print[i]['wage_ot'];
             //Wages, Regular total, OT Total
-            doc.text(155, 21, private_info);
+            doc.text(125, 21, private_info);
 
-            doc.line(34, 25, 113, 25);
-            var week_range = "Week From: " + con + " To " + con2;
-            doc.text(35, 29, week_range);;
-            doc.line(34, 31, 113, 31);
-            var date_y = 34;
+            doc.setLineWidth(0.5);
+            doc.line(10, 24, 200, 24);
+            var week_range = print[i]['name']+ "        Week From:      " + con + "     To       " + con2;
+            doc.text(25, 29, week_range);;
+            doc.line(10, 31, 200, 31);
+
+            doc.line(10, 24, 10, 295);
+            doc.line(10, 288, 200, 288);
+            var week_range = print[i]['name']+ "        End Week From:      " + con + "     To       " + con2;
+            doc.text(25, 293, week_range);;
+            doc.line(10, 295, 200, 295);
+            doc.line(200, 24, 200, 295);
+
+            var date_y = 35;
+            doc.setLineWidth(.25);
+            doc.setFontSize(8);
             for(var y = 0; y < print[i]['history'].length; y++){
                 var date = print[i]['history'][y]['date'];
                 var myDate = moment(date).format('YYYY-MM-DD');
@@ -237,10 +265,10 @@ $(document).ready(function(){
                 }
                 else{
                     week_total = week_total /60/60;
-                    week_overtime = week_total - 40
+                    week_overtime = week_total - 40;
                     if(week_overtime > 0)
                     {
-                        var overtime_string = "OverTime: " + week_total;
+                        var overtime_string = "OverTime: " + week_overtime;
                     }
                     else{
                         var overtime_string = "OverTime: " + 0;
@@ -257,25 +285,34 @@ $(document).ready(function(){
                     check_last = moment(check_first, 'YYYY-MM-DD').add(6, 'days');
                     var con =moment(check_first).format('YYYY-MM-DD');
                     var con2 = moment(check_last).format('YYYY-MM-DD');
+
                     doc.addPage();
-                    date_y = 25;
-                    var week_range = "Week From: " + con + " To " + con2;
-                    doc.line(25, date_y, 125, date_y);
-                    date_y = date_y + 3;
+                    doc.setFontSize(12);
+                    date_y = 7;
+                    var week_range = print[i]['name']+ "        Week From:      " + con + "     To       " + con2;
+                    doc.line(10, date_y, 200, date_y);
+                    date_y = date_y + 5;
                     doc.text(35, date_y, week_range);
-                    date_y = date_y + 3;
-                    doc.line(25, date_y, 125, date_y);
-                    date_y = date_y + 3;
+                    date_y = date_y + 2;
+                    doc.line(10, date_y, 200, date_y);
+                    date_y = date_y + 4;
+                    doc.line(10, 7, 10, 295);
+                    doc.line(10, 288, 200, 288);
+                    var week_range = print[i]['name']+ "        End Week From:      " + con + "     To       " + con2;
+                    doc.text(25, 293, week_range);;
+                    doc.line(10, 295, 200, 295);
+                    doc.line(200, 7, 200, 295);
+                    doc.setFontSize(8);
                 }
                 var title = final_date + "        " + date;
                 doc.text(35, date_y, title);
-                date_y = date_y + 3;
+                date_y = date_y + 1;
                 doc.line(34, date_y, 113, date_y);
                 date_y = date_y + 4;
                 for(var x = 0; x < print[i]['history'][y]['blocks'].length; x++)
                 {
                     var info_in =  date + "        " + print[i]['history'][y]['blocks'][x]['status_in'] + "       "  + print[i]['history'][y]['blocks'][x]['time_in'];
-                    var info_out =  date + "                " + print[i]['history'][y]['blocks'][x]['status_out'] + "       "  + print[i]['history'][y]['blocks'][x]['time_out']; 
+                    var info_out =  date + "                    " + print[i]['history'][y]['blocks'][x]['status_out'] + "       "  + print[i]['history'][y]['blocks'][x]['time_out']; 
                     doc.text(35, date_y, info_in);
                     date_y = date_y + 3;
                     doc.text(35, date_y, info_out);
