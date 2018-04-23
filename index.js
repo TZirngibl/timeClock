@@ -598,6 +598,7 @@ function load_managerdata(query){
     }
   });
 }// end MANAGER SEARCH TABLE
+
 // DEFAULT REPORTS TABLE
 function loadreporttable(){
     $.ajax({
@@ -611,13 +612,16 @@ function loadreporttable(){
             for(var x = 0; x < jsondata.length; x++){
                 var idx = jsondata[x]['id'];
                 $("#reporttablebody").append('<tr>'
-                    + '<td class="col-md-4">' + jsondata[x]['status'] + '</td>'
-                    + '<td class="col-md-4">' + jsondata[x]['punch_timestamp'] + '</td>'
-                    + '<td class="col-md-4"><Button class="deleterecord btn-link" id="' + idx + '">Delete</button></td></tr>');
+                    + '<td class="col-md-2">' + jsondata[x]['name'] + '</td>'
+                    + '<td class="col-md-2">' + jsondata[x]['pin'] + '</td>'
+                    + '<td class="col-md-2">' + jsondata[x]['status'] + '</td>'
+                    + '<td class="col-md-2">' + jsondata[x]['time'] + '</td>'
+                    + '<td class="col-md-2"><Button class="deleterecord btn-link" id="' + idx + '">Delete</button></td></tr>');
             }        
         }
     });
 }// end DEFAULT REPORTS TABLE
+
 function quicksearchReports(){
     var startdate = $('#quickstart').val();
     var enddate = $('#quickend').val();

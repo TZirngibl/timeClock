@@ -165,9 +165,11 @@
                         <div class="table-responsive-md reptable">
                             <table class="table table-fixed">
                                 <thead class="table-fixed-dark" id="reporttableheader">
-                                    <th class="col-md-4">Status</th>
-                                    <th class="col-md-4">Timestamp</th>
-                                    <th class="col-md-4">Action</th>
+                                    <th class="col-md-2">Name</th>
+                                    <th class="col-md-2">Pin</th>
+                                    <th class="col-md-2">Status</th>
+                                    <th class="col-md-2">Timestamp</th>
+                                    <th class="col-md-2">Action</th>
                                 </thead>
                                 <tbody id="reporttablebody">
 
