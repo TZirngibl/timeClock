@@ -150,14 +150,14 @@ $(function() {
 
     //REPORT GENERATOR
     //Make default as bi-weekly type
-    $("#type").val("Bi-Weekly");
+    $("#payInt").val("Bi-Weekly");
     var id; 
     var startdate;
     //when the button with the id #generate_btn clicked it will collect the start date and the report type 
     $("#generate_btn").click(function(){
-        var overtime_type = $("#type").val();
+        var overtime_type = $("#payInt").val();
         id = $("#pin_generate").val();
-        startdate = $("#datepicker3").val();
+        startdate = $("#datetimepicker1").val();
         //--Ajax call report.php to get the array with the clockin history--//
         $.ajax({
             method: "GET",

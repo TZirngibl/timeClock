@@ -222,7 +222,7 @@
                         PIN: <input type="datepicker" id="pin_generate"></input>
                     </div>
                     <div class="input-append date">
-                        Starting Date: <input type="datepicker" id="datepicker3"></input>
+                        Starting Date: <input type="datepicker" id="datetimepicker1"></input>
                         <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
                     </div>
                 <label for="payInt" class="col-sm-12 col-form-label nopads" id="half">Interval:</label>
@@ -236,7 +236,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Generate a Report</button>
+        <button type="button" class="btn btn-primary" id="generate_btn">Generate a Report</button>
       </div>
     </div>
   </div>
