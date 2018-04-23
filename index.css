@@ -105,11 +105,11 @@ body{
 
   @media(max-width:1920px) {
     .mantable{
-      max-height: 300px;
+      max-height: 200px;
       overflow: auto;
     }
     .emptable{
-      max-height: 300px;
+      max-height: 200px;
       overflow: auto;
     }
     .reptable{
