@@ -82,6 +82,14 @@ $(function() {
         $("#home-page-wrapper").show();
         $("#reportspage").hide();
     });
+    $("#reset").click(function(){
+        $("#reporttablebody").empty();
+        loadreporttable();
+    });
+    $(".page-content-wrapper").on("click", "#reset", function() {
+        $("#reporttablebody").empty();
+        loadreporttable();
+     });
     //if a delete button is pressed
     $(".container-fluid").on("click", ".deleteemp", function() {
         //alert("Are you sure you want to delete this?");

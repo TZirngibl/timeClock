@@ -143,16 +143,19 @@
                                                 <div class="col-sm-2">
                                                     <h5 id="quicksearch">Quick Search</h5>
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-3">
                                                 <form method="get" action="javascript:quicksearchReports()">
                                                     <input type="text" id="quickstart" class="form-control .align-middle" name="poststart" placeholder="Start Date">  
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-3">
                                                     <input type="text" id="quickend" class="form-control .align-middle" name="postend" placeholder="End Date">
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-1">
                                                 <button type="submit" class="btn btn-outline-dark" id="quicksearchy">Search</button>
                                                 </form>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                <button class="btn btn-outline-dark" id="reset">Reset</button>
                                                 </div>
                                             </div>                                            
                                          </div>
