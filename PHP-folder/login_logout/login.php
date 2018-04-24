@@ -37,10 +37,7 @@
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100">
 				<form method="post" action="login_data.php" class="login100-form validate-form">
-					<span class="login100-form-logo">
-						<i src="" width="50px" height="75px"></i>
-					</span>
-
+						<img src="profile.png" width="100px" height="300px" class="wrap-input100"></img>
 					<span class="login100-form-title p-b-34 p-t-27">
 						CRST Timeclock
                     </span>
