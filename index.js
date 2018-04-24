@@ -378,7 +378,7 @@ $(function() {
             var type = print[i]['type'];
             var start_date = print[i]['start_date'];
             var end_date = print[i]['end_date'];
-            var range = type + " Report: " + "from      " +  start_date + "     to      " + end_date; 
+            var range = type + " Report " + "from      " +  start_date + "     to      " + end_date; 
 
             //TIME CARD DATE RANGE HERE
             doc.text(25, 13, range);
@@ -399,13 +399,13 @@ $(function() {
 
             doc.setLineWidth(0.5);
             doc.line(10, 24, 200, 24);
-            var week_range = print[i]['name']+ "        Week:      " + con + "     to       " + con2;
+            var week_range = print[i]['name']+ "        Week from      " + con + "     to       " + con2;
             doc.text(25, 29, week_range);;
             doc.line(10, 31, 200, 31);
 
             doc.line(10, 24, 10, 295);
             doc.line(10, 288, 200, 288);
-            var week_range = print[i]['name']+ "        End Week:      " + con + "     to       " + con2;
+            var week_range = print[i]['name']+ "        End Week from      " + con + "     to       " + con2;
             doc.text(25, 293, week_range);;
             doc.line(10, 295, 200, 295);
             doc.line(200, 24, 200, 295);
@@ -449,7 +449,7 @@ $(function() {
                     doc.addPage();
                     doc.setFontSize(12);
                     date_y = 7;
-                    var week_range = print[i]['name']+ "        Week:      " + con + "     to       " + con2;
+                    var week_range = print[i]['name']+ "        Week from      " + con + "     to       " + con2;
                     doc.line(10, date_y, 200, date_y);
                     date_y = date_y + 5;
                     doc.text(35, date_y, week_range);
@@ -458,7 +458,7 @@ $(function() {
                     date_y = date_y + 4;
                     doc.line(10, 7, 10, 295);
                     doc.line(10, 288, 200, 288);
-                    var week_range = print[i]['name']+ "        End Week:      " + con + "     to       " + con2;
+                    var week_range = print[i]['name']+ "        End Report from         " + con + "     to       " + con2;
                     doc.text(25, 293, week_range);;
                     doc.line(10, 295, 200, 295);
                     doc.line(200, 7, 200, 295);

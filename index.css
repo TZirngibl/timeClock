@@ -42,6 +42,9 @@
   }
   #quicksearch{
     color:rgb(29, 133, 3);
+    margin: 0 auto;
+    padding-top: .25em;
+    margin-left: .25em;
   }
   .gj-modal{
     z-index: 1100;
@@ -104,9 +107,6 @@
   #reportsearch:hover{
   background: white;
   color: black;
-  }
-  .margbtm{
-    margin-bottom: 1em;
   }
   /*!
   * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)

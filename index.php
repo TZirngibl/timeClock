@@ -150,11 +150,11 @@
                                                 <div class="col-sm-3">
                                                     <input type="text" id="quickend" class="form-control .align-middle" name="postend" placeholder="End Date">
                                                 </div>
-                                                <div class="col-sm-1">
+                                                <div class="col-sm-2">
                                                 <button type="submit" class="btn btn-outline-dark" id="quicksearchy">Search</button>
                                                 </form>
                                                 </div>
-                                                <div class="col-sm-1">
+                                                <div class="col-sm-2">
                                                 <button class="btn btn-outline-dark" id="reset">Reset</button>
                                                 </div>
                                             </div>                                            
@@ -191,7 +191,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Select Date Range</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Generate Report</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -200,20 +200,20 @@
 
          
                 <div class="form-group row">
-                    <label for="pin_generate" class="col-sm-3 col-form-label ">PIN:</label>
-                    <div class="col-sm-9">
-                     <input type="text" id="pin_generate" class="form-control margbtm" placeholder="### (Empty to generate all)"></input>
+                    <label for="pin_generate" class="col-sm-4 col-form-label ">PIN:</label>
+                    <div class="col-sm-8">
+                     <input type="text" id="pin_generate" class="form-control" placeholder="### (Empty to generate all)"></input>
                     </div>
                     
-                    <label for="datetimepicker1" class="col-sm-3 col-form-label">Starting Date:</label>
-                    <div class="col-sm-9 input-append date">
+                    <label for="datetimepicker1" class="col-sm-4 col-form-label">Start Date:</label>
+                    <div class="col-sm-8 input-append date">
                          <input type="datepicker" class="form-control" id="datetimepicker1" placeholder="Date"></input>
                         <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
                     </div>
                 
                     
-                    <label for="payInt" class="col-sm-3 col-form-label">Interval:</label>
-                    <div class="col-sm-9" id="payIntervals">
+                    <label for="payInt" class="col-sm-4 col-form-label">Interval:</label>
+                    <div class="col-sm-8" id="payIntervals">
                     <select class="form-control" id="payInt" >
                     <option>Bi-Weekly</option>
                     <option>Weekly</option>
