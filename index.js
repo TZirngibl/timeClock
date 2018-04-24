@@ -176,56 +176,58 @@ $(function() {
                 var jsondata2 = JSON.parse(data); // conver json file to array
                 console.log(jsondata2);
                 //start the loop with all the employees 
-                for(var y = 0; y < jsondata2.length; y++){ 
-                    var pass_arr =[];
-                    var clockin_history = [];
-                    var history = [];
-                    //set current date as a first date the employee clock-in
-                    var current_date = jsondata2[y]['history'][0]['date'];
-                    //start the loop the with all the clock-in date the employees made  
-                    for(var x = 0; x < jsondata2[y]['history'].length; x++){
-                        // if the next date on the array still the same date add the status and time in the same index
-                        // to the array called clockin_history
-                        // the loop going to do this until the next day
-                        while(jsondata2[y]['history'][x]['date'] == current_date){
-                            clockin_history.push({
-                                'status': jsondata2[y]['history'][x]['status'],
-                                'time': jsondata2[y]['history'][x]['time']
-                            });
-                            x++;
-                            if(x >= jsondata2[y]['history'].length){
-                                break;
+                for(var y = 0; y < jsondata2.length; y++){
+                    if(jsondata2[y]['history'].length > 0){
+                        var pass_arr =[];
+                        var clockin_history = [];
+                        var history = [];
+                        //set current date as a first date the employee clock-in
+                        var current_date = jsondata2[y]['history'][0]['date'];
+                        //start the loop the with all the clock-in date the employees made  
+                        for(var x = 0; x < jsondata2[y]['history'].length; x++){
+                            // if the next date on the array still the same date add the status and time in the same index
+                            // to the array called clockin_history
+                            // the loop going to do this until the next day
+                            while(jsondata2[y]['history'][x]['date'] == current_date){
+                                clockin_history.push({
+                                    'status': jsondata2[y]['history'][x]['status'],
+                                    'time': jsondata2[y]['history'][x]['time']
+                                });
+                                x++;
+                                if(x >= jsondata2[y]['history'].length){
+                                    break;
+                                }
                             }
+                            //before going to the next day the code will push all the clock-in history to an array 
+                            // the code also lable the array with the date
+                            history.push({
+                                'date': current_date,
+                                'history': clockin_history
+                            });
+                            clockin_history = [];
+                            if(x < jsondata2[y]['history'].length){
+                                //update the current_date to the next date
+                                current_date = jsondata2[y]['history'][x]['date'];
+                            }
+                            x--;
                         }
-                        //before going to the next day the code will push all the clock-in history to an array 
-                        // the code also lable the array with the date
-                        history.push({
-                            'date': current_date,
-                            'history': clockin_history
+                        //finally push everything to the result array 
+                        result.push({
+                            'start_date' : jsondata2[y]['start_date'],
+                            'end_date' : jsondata2[y]['end_date'],
+                            'id': jsondata2[y]['id'],
+                            'dept' : jsondata2[y]['dept'],
+                            'pin': jsondata2[y]['pin'],
+                            'name': jsondata2[y]['name'],
+                            'wage': jsondata2[y]['wage'],
+                            'wage_ot': jsondata2[y]['wage_ot'],
+                            'type': jsondata2[y]['type'],
+                            'history': history
                         });
-                        clockin_history = [];
-                        if(x < jsondata2[y]['history'].length){
-                            //update the current_date to the next date
-                            current_date = jsondata2[y]['history'][x]['date'];
-                        }
-                        x--;
                     }
-                    //finally push everything to the result array 
-                    result.push({
-                        'start_date' : jsondata2[y]['start_date'],
-                        'end_date' : jsondata2[y]['end_date'],
-                        'id': jsondata2[y]['id'],
-                        'dept' : jsondata2[y]['dept'],
-                        'pin': jsondata2[y]['pin'],
-                        'name': jsondata2[y]['name'],
-                        'wage': jsondata2[y]['wage'],
-                        'wage_ot': jsondata2[y]['wage_ot'],
-                        'type': jsondata2[y]['type'],
-                        'history': history
-                    });
+                    //pass the array to calculation method
+                    calculation(result);
                 }
-                //pass the array to calculation method
-                calculation(result);
             }
         });
     });
