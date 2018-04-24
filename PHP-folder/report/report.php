@@ -30,7 +30,7 @@
         $sql = "SELECT * FROM employee";
     }
     else{
-        $sql = "SELECT * FROM employee WHERE id = '$employee_id'";
+        $sql = "SELECT * FROM employee WHERE pin = '$employee_id'";
     }
     //check if the user want to generate the report of one employee or all//
     $starttimestamp = $startdate;
