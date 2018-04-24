@@ -70,9 +70,11 @@
   #homenavbar{
     width: 80vw;
     background-color: #326DAE;
+    border-radius: 30px;
   }
   #reportnavbar{
     width: 80vw;
+    border-radius: 30px;
   }
   .moveleft{
     right: 80%;
