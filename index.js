@@ -254,7 +254,8 @@ $(function() {
                 //so the expect status is "in"
                 var expect_status = 'in';
                 for(var c = 0; c < result_clockin[a]['history'][b]['history'].length; c++){
-                    // if the current the status 
+                    // if the current the status match with the expect status then create the time block
+                    // the time block always start with "in" status and end with "out" status
                     if(result_clockin[a]['history'][b]['history'][c]['status'] == expect_status){
                         switch(expect_status){
                             case 'in':
