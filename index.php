@@ -150,13 +150,11 @@
                                                 <div class="col-sm-3">
                                                     <input type="text" id="quickend" class="form-control .align-middle" name="postend" placeholder="End Date">
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="btn-group col-sm-4" role="group" aria-label="Search/Reset for Table">
                                                 <button type="submit" class="btn btn-outline-dark" id="quicksearchy">Search</button>
-                                                </form>
-                                                </div>
-                                                <div class="col-sm-2">
                                                 <button class="btn btn-outline-dark" id="reset">Reset</button>
-                                                </div>
+                                                </div>                                               
+                                                </form>                                                                                   
                                             </div>                                            
                                          </div>
                                         <form class="form-inline my-2 my-lg-0">
