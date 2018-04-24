@@ -133,7 +133,7 @@
                                 <a class="navbar-brand" href="#">Reports</a>
                                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#filterModal">Filter <span class="sr-only">(current)</span></a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#filterModal">Generate Report(s) <span class="sr-only">(current)</span></a></li>
                                         <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#addClock">Add Record(s)</a></li>
                                         </ul>
                                          <div id="quickSearchs">
@@ -197,20 +197,30 @@
         </button>
       </div>
       <div class="modal-body">
-                    <label for="pin_generate" class="col-sm-12 col-form-label nopads">PIN:</label>
-                     <input type="text" id="pin_generate" class="form-control" placeholder="###(Empty to generate all)"></input>
-                    <div class="input-append date">
-                        Starting Date: <input type="datepicker" id="datetimepicker1" placeholder="Date Picker --->"></input>
+
+         
+                <div class="form-group row">
+                    <label for="pin_generate" class="col-sm-3 col-form-label ">PIN:</label>
+                    <div class="col-sm-9">
+                     <input type="text" id="pin_generate" class="form-control margbtm" placeholder="### (Empty to generate all)"></input>
+                    </div>
+                    
+                    <label for="datetimepicker1" class="col-sm-3 col-form-label">Starting Date:</label>
+                    <div class="col-sm-9 input-append date">
+                         <input type="datepicker" class="form-control" id="datetimepicker1" placeholder="Date"></input>
                         <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
                     </div>
-                <label for="payInt" class="col-sm-12 col-form-label nopads" id="half">Interval:</label>
-                    <div class="col-sm-6 nopads" id="payIntervals">
-                    <select class="form-control" id="payInt">
+                
+                    
+                    <label for="payInt" class="col-sm-3 col-form-label">Interval:</label>
+                    <div class="col-sm-9" id="payIntervals">
+                    <select class="form-control" id="payInt" >
                     <option>Bi-Weekly</option>
                     <option>Weekly</option>
                     <option>Monthly</option>
                     </select>
                     </div>
+                </div> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -440,7 +450,7 @@
     </div>
   </div>
 </div>
-<!--ADD CLOCK Modal -->
+<!--ADD RECORDS Modal -->
 <div class="modal fade" id="addClock" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog" role="document">
         <div class="modal-content">

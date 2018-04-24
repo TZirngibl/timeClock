@@ -74,10 +74,6 @@
   .moveleft{
     right: 80%;
   }
-  .nopads{
-  padding-left: 0;
-  padding-right: 0;
-  }
   #everything{
   margin-top: 30px;
   margin-left: 10px;
@@ -109,8 +105,8 @@
   background: white;
   color: black;
   }
-  #half{
-  width:50%;
+  .margbtm{
+    margin-bottom: 1em;
   }
   /*!
   * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
