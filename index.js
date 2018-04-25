@@ -1,7 +1,9 @@
 $(function() {
+    var current_index = 0;
+    var limit = 10;
     loademployeetable();
     loadmanagertable();
-    loadreporttable();
+    loadreporttable(limit, current_index);
     $("#reportspage").hide();
     //Search Employee Table Function
     $('#employeesearch').keyup(function(){
@@ -84,18 +86,17 @@ $(function() {
     });
     $("#reset").click(function(){
         $("#reporttablebody").empty();
-        loadreporttable();
+        loadreporttable(limit, current_index);
     });
     $(".page-content-wrapper").on("click", "#reset", function() {
         $("#reporttablebody").empty();
-        loadreporttable();
+        loadreporttable(limit, current_index);
      });
     //if a delete button is pressed
     $(".container-fluid").on("click", ".deleteemp", function() {
         //alert("Are you sure you want to delete this?");
         x = this.id; 
         $(this).parent().parent().remove();
-        console.log(x);
         $.ajax({
             type:"GET",
             url:"/timeclock/timeclock/PHP-folder/tables/employee_table/delete.php",
@@ -111,7 +112,6 @@ $(function() {
         //alert("Are you sure you want to delete this?");
         x = this.id;
         $(this).parent().parent().remove();
-        console.log(x);
         $.ajax({
             type:"GET",
             url:"/timeclock/timeclock/PHP-folder/tables/clockin_table/delete_money.php",
@@ -182,7 +182,6 @@ $(function() {
             {
                 var result = [];
                 var jsondata2 = JSON.parse(data); // conver json file to array
-                console.log(jsondata2);
                 //start the loop with all the employees 
                 for(var y = 0; y < jsondata2.length; y++){
                     if(jsondata2[y]['history'].length > 0){
@@ -233,9 +232,10 @@ $(function() {
                             'history': history
                         });
                     }
-                    //pass the array to calculation method
-                    calculation(result);
                 }
+                //pass the array to calculation method
+                console.log(result);
+                calculation(result);
             }
         });
     });
@@ -319,7 +319,6 @@ $(function() {
                             "time_out": time_out,
                             "time-block": result,
                         });
-                        break;
                     }
                 }
                 //finish punch time for one day
@@ -611,15 +610,18 @@ function load_managerdata(query){
 }// end MANAGER SEARCH TABLE
 
 // DEFAULT REPORTS TABLE
-function loadreporttable(){
+function loadreporttable(load_limit, current_location){
     $.ajax({
         method: "GET",
+        data:{
+                load_limit: load_limit,
+                current_location: current_location
+            },
         url: "/timeclock/timeclock/PHP-folder/tables/clockin_table/full_money_table.php",
         type: "json",
         success: function(data)
         {
             var jsondata = JSON.parse(data);
-            console.log(jsondata);
             for(var x = 0; x < jsondata.length; x++){
                 var idx = jsondata[x]['id'];
                 $("#reporttablebody").append('<tr>'
@@ -644,7 +646,6 @@ function quicksearchReports(){
         data: {poststart: startdate, postend: enddate},
         success: function(data)
         {
-            console.log(startdate);
             var jsondata2 = JSON.parse(data);
         for(var x = 0; x < jsondata2.length; x++){
             var idx = jsondata2[x]['id'];

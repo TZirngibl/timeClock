@@ -140,9 +140,7 @@
                                             
                                             
                                             <div class="row">
-                                                <div class="col-sm-2">
-                                                    <h5 id="quicksearch">Quick Search</h5>
-                                                </div>
+                                                
                                                 <div class="col-sm-3">
                                                 <form method="get" action="javascript:quicksearchReports()">
                                                     <input type="text" id="quickstart" class="form-control .align-middle" name="poststart" placeholder="Start Date">  
@@ -150,11 +148,17 @@
                                                 <div class="col-sm-3">
                                                     <input type="text" id="quickend" class="form-control .align-middle" name="postend" placeholder="End Date">
                                                 </div>
-                                                <div class="btn-group col-sm-4" role="group" aria-label="Search/Reset for Table">
+                                                <div class="btn-group col-sm-2" role="group" aria-label="Search/Reset for Table">
                                                 <button type="submit" class="btn btn-outline-dark" id="quicksearchy">Search</button>
                                                 <button class="btn btn-outline-dark" id="reset">Reset</button>
-                                                </div>                                               
-                                                </form>                                                                                   
+                                                </div>                                              
+                                                </form>  
+                                                <div class="col-sm-2" id="yer">
+                                                <div class="btn-group col-sm-2" role="group" aria-label="Search/Reset for Table">
+                                                <button class="btn btn-outline-dark" id="previous"><<</button>
+                                                <button class="btn btn-outline-dark" id="next">>></button>
+                                                </div> 
+                                                </div>                                                                                 
                                             </div>                                            
                                          </div>
                                         <form class="form-inline my-2 my-lg-0">
