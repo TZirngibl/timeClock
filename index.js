@@ -1,4 +1,6 @@
 $(function() {
+    var limit;
+    var current;
     loademployeetable();
     loadmanagertable();
     loadreporttable(10, 0);
@@ -617,6 +619,10 @@ function load_managerdata(query){
     }
   });
 }// end MANAGER SEARCH TABLE
+$('#next').on('click', function() {
+    console.log('hi');
+});
+
 
 // DEFAULT REPORTS TABLE
 function loadreporttable(load_limit, current_location){

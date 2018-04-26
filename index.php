@@ -155,8 +155,8 @@
                                                 </form>  
                                                 <div class="col-sm-2" id="yer">
                                                 <div class="btn-group col-sm-2" role="group" aria-label="Search/Reset for Table">
-                                                <button class="btn btn-outline-dark" id="previous"><<</button>
-                                                <button class="btn btn-outline-dark" id="next">>></button>
+                                                <button class="btn btn-outline-dark" id="previous" action="javascript:goBack()"><<</button>
+                                                <button class="btn btn-outline-dark" id="next" >>></button>
                                                 </div> 
                                                 </div>                                                                                 
                                             </div>                                            
