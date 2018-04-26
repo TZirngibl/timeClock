@@ -1,5 +1,7 @@
 <?php
     session_start();
+    // get the id find the employee with the same id 
+    // update their info based on what info being passed
     $db = mysqli_connect("localhost","root","","project1");
     if(isset($_POST['save'])){
         $id = $_POST['id'];

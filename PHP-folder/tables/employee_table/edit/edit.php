@@ -1,4 +1,6 @@
 <?php 
+    // get the id get the employee with the same id 
+    // get their info then put it into an array
     session_start();
     $arr = [];
     $db = mysqli_connect("localhost","root","","project1");

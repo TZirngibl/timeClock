@@ -1,5 +1,9 @@
 <?php
     session_start();
+    //take pin, date and time
+    //combine date and time and create timestamp format 
+    //2 "if" statements depend on user want to clock in or out this person
+    //find the employee's id based on their pin and store it to employee_hours table
     $db = mysqli_connect("localhost","root","","project1");
     $date = $_POST['date'];
     $time = $_POST['time'];

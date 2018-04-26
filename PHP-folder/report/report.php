@@ -42,9 +42,12 @@
     $splitTimeStamp = explode(" ",$endtimestamp);
     $enddatesplit = $splitTimeStamp[0];
     $starttime = $splitTimeStamp[1];
+    
     //create array from database//
     $result = $db-> query($sql);;
     if($result-> num_rows > 0){
+        // get the employee id go the employee_hours table
+        // pick out all the record have same employee id and stay in the date range
         while($row = $result-> fetch_assoc()){
             $arr = [];
             $check_id = $row['id'];
@@ -57,6 +60,8 @@
             if($result_hr-> num_rows > 0){
                 while($row2 = $result_hr-> fetch_assoc()){
                     $timestamp = $row2['punch_timestamp'];
+                    // split timestamp format to date and time
+                    // keet generating array
                     $splitTimeStamp = explode(" ",$timestamp);
                     $date = $splitTimeStamp[0];
                     $time = $splitTimeStamp[1];

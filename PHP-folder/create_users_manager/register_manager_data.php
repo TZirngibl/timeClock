@@ -1,5 +1,8 @@
 <?php
     session_start();
+    //take all the info that passed from the form 
+    //hash the password, check their level
+    //then insert it to database
     $db = mysqli_connect("localhost","root","","project1");
     if(isset($_POST['register'])){
         $name = $_POST['addmname'];

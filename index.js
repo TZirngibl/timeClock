@@ -1,9 +1,7 @@
 $(function() {
-    var current_index = 0;
-    var limit = 10;
     loademployeetable();
     loadmanagertable();
-    loadreporttable(limit, current_index);
+    loadreporttable(10, 0);
     $("#reportspage").hide();
     //Search Employee Table Function
     $('#employeesearch').keyup(function(){
@@ -86,11 +84,11 @@ $(function() {
     });
     $("#reset").click(function(){
         $("#reporttablebody").empty();
-        loadreporttable(limit, current_index);
+        loadreporttable(10, 0);
     });
     $(".page-content-wrapper").on("click", "#reset", function() {
         $("#reporttablebody").empty();
-        loadreporttable(limit, current_index);
+        loadreporttable(10, 0);
      });
     //if a delete button is pressed
     $(".container-fluid").on("click", ".deleteemp", function() {
@@ -303,6 +301,8 @@ $(function() {
                                 break;
                         }
                     }
+                    // when the block is "full" it will calcuate the total time of of that block
+                    // store that number in second and in time format
                     if(count == 2){
                         var startTime = moment(time_in, 'hh.mm');
                         var endTime = moment(time_out, 'hh.mm');
@@ -359,6 +359,9 @@ $(function() {
         console.log(print);
         for(var i = 0; i <print.length; i++)
         {
+            //create the header of an employee
+            //set date range for first week
+            //set all variable relate to time to 0
             var first_day = print[i]['start_date'];
             var myfirst_day = moment(first_day).format('YYYY-MM-DD');
             var check_first = moment(first_day)
@@ -418,10 +421,15 @@ $(function() {
                 var final_date = moment(date).format('dddd');
                 var check_date = moment(date);
                 //check if the day still in week range
+                //if it does add the amount of hour of that week into week_total
+                //and add amount of hour to total_hours 
                 if(check_date >= check_first && check_date <= check_last){
                     week_total = week_total + print[i]['history'][y]['calculate'];
                     total_hours = total_hours + week_total;
                 }
+                //else it's mean the day is fall into next week then
+                //print out the total hour working of that week
+                //calculate overtime, set new date range 
                 else{
                     week_total = week_total /60/60;
                     week_overtime = week_total - 40;
@@ -468,6 +476,7 @@ $(function() {
                 date_y = date_y + 1;
                 doc.line(34, date_y, 113, date_y);
                 date_y = date_y + 4;
+                //print out time clock history
                 for(var x = 0; x < print[i]['history'][y]['blocks'].length; x++)
                 {
                     var info_in =  date + "        " + print[i]['history'][y]['blocks'][x]['status_in'] + "       "  + print[i]['history'][y]['blocks'][x]['time_in'];

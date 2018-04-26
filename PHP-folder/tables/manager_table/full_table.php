@@ -1,4 +1,5 @@
 <?php
+    //take all the info of all the manager and put into an array
     session_start();
     $db = mysqli_connect("localhost", "root", "", "project1");
     $sql = "SELECT * FROM manager";

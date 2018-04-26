@@ -1,4 +1,5 @@
 <?php
+    //take all the info of all the employee and put into an array
     session_start();
     $x = 0;
     $db = mysqli_connect("localhost", "root", "", "project1");

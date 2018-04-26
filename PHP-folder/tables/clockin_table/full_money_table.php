@@ -6,7 +6,7 @@
     $current_location = $_GET['current_location'];
     $min = $current_location;
     $max = $current_location + $load_limit;
-    $sql = "SELECT * FROM employee_hours ORDER BY id DESC LIMIT $load_limit ";  
+    $sql = "SELECT * FROM employee_hours ORDER BY id DESC LIMIT $current_location, $load_limit ";  
     $result = $con -> query($sql);
         if($result-> num_rows > 0){
             while($row = $result -> fetch_assoc()){
