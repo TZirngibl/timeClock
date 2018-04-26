@@ -1,9 +1,10 @@
 $(function() {
-    var limit;
-    var current;
+    var limit = 10;
+    var current = 0;
     loademployeetable();
     loadmanagertable();
     loadreporttable(10, 0);
+    check(current);
     $("#reportspage").hide();
     //Search Employee Table Function
     $('#employeesearch').keyup(function(){
@@ -87,10 +88,14 @@ $(function() {
     $("#reset").click(function(){
         $("#reporttablebody").empty();
         loadreporttable(10, 0);
+        current = 0;
+        check(current);
     });
     $(".page-content-wrapper").on("click", "#reset", function() {
         $("#reporttablebody").empty();
         loadreporttable(10, 0);
+        current = 0;
+        check(current);
      });
     //if a delete button is pressed
     $(".container-fluid").on("click", ".deleteemp", function() {
@@ -519,8 +524,41 @@ $(function() {
     doc.save("EmployeeReport.pdf")
     } //end REPORTS GENERATOR
 
+    //Go to next page
+    $('#next').on('click', function() {
+        current = current + 10;
+        $("#reporttablebody").empty();
+        loadreporttable(10, current);
+        check(current);
 
     });
+    //if current = 0 then you cant go back
+
+    //Go back a page
+    $('#previous').on('click', function() {
+        current = current - 10;
+        $("#reporttablebody").empty();
+        loadreporttable(10, current);
+        check(current);
+    });
+});
+//Check for previous button
+function check(check_current){
+    if(check_current == 0){ 
+        $('#previous').prop('disabled', true); 
+    }
+    else{
+        $('#previous').prop('disabled', false);
+    }
+    $.ajax({
+        method: "GET",
+        url: "/timeclock/timeclock/PHP-folder/tables/clockin_table/paging.php",
+        success: function(data){
+            console.log(data);
+        }
+    });
+}
+
 //DEFAULT EMPLOYEE TABLE
 function loademployeetable(){
     $.ajax({
@@ -619,9 +657,6 @@ function load_managerdata(query){
     }
   });
 }// end MANAGER SEARCH TABLE
-$('#next').on('click', function() {
-    console.log('hi');
-});
 
 
 // DEFAULT REPORTS TABLE
