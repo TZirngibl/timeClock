@@ -1,9 +1,9 @@
 $(function() {
-    var limit = 10;
+    var limit = 12;
     var current = 0;
     loademployeetable();
     loadmanagertable();
-    loadreporttable(10, 0);
+    loadreporttable(12, 0);
     check(current);
     $("#reportspage").hide();
     //Search Employee Table Function
@@ -87,13 +87,13 @@ $(function() {
     });
     $("#reset").click(function(){
         $("#reporttablebody").empty();
-        loadreporttable(10, 0);
+        loadreporttable(12, 0);
         current = 0;
         check(current);
     });
     $(".page-content-wrapper").on("click", "#reset", function() {
         $("#reporttablebody").empty();
-        loadreporttable(10, 0);
+        loadreporttable(12, 0);
         current = 0;
         check(current);
      });
@@ -102,7 +102,7 @@ $(function() {
         //alert("Are you sure you want to delete this?");
         x = this.id; 
         $(this).parent().parent().remove();
-        $.ajax({
+        $.ajax({ // *(1)
             type:"GET",
             url:"/timeclock/timeclock/PHP-folder/tables/employee_table/delete.php",
             data:{id: x},
@@ -117,7 +117,7 @@ $(function() {
         //alert("Are you sure you want to delete this?");
         x = this.id;
         $(this).parent().parent().remove();
-        $.ajax({
+        $.ajax({ // *(2)
             type:"GET",
             url:"/timeclock/timeclock/PHP-folder/tables/clockin_table/delete_money.php",
             data:{id: x},
@@ -129,7 +129,7 @@ $(function() {
      });
      $(".container-fluid").on("click", ".edit", function() { 
         x = this.id;
-        $.ajax({
+        $.ajax({ // *(3)
             type: "GET",
             url:"/timeclock/timeclock/PHP-folder/tables/employee_table/edit/edit.php",
             data:{id: x},
@@ -151,7 +151,7 @@ $(function() {
         $(".container-fluid").on("click", ".deletemanager", function() { 
             x = this.id;
             $(this).parent().parent().remove();
-            $.ajax({
+            $.ajax({ //*(4)
                 type: "GET",
                 url:"/timeclock/timeclock/PHP-folder/tables/manager_table/delete.php",
                 data:{id: x},
@@ -526,38 +526,21 @@ $(function() {
 
     //Go to next page
     $('#next').on('click', function() {
-        current = current + 10;
+        current = current + 12;
         $("#reporttablebody").empty();
-        loadreporttable(10, current);
+        loadreporttable(12, current);
         check(current);
-
     });
+    
     //if current = 0 then you cant go back
-
     //Go back a page
     $('#previous').on('click', function() {
-        current = current - 10;
+        current = current - 12;
         $("#reporttablebody").empty();
-        loadreporttable(10, current);
+        loadreporttable(12, current);
         check(current);
     });
 });
-//Check for previous button
-function check(check_current){
-    if(check_current == 0){ 
-        $('#previous').prop('disabled', true); 
-    }
-    else{
-        $('#previous').prop('disabled', false);
-    }
-    $.ajax({
-        method: "GET",
-        url: "/timeclock/timeclock/PHP-folder/tables/clockin_table/paging.php",
-        success: function(data){
-            console.log(data);
-        }
-    });
-}
 
 //DEFAULT EMPLOYEE TABLE
 function loademployeetable(){
@@ -616,7 +599,7 @@ function loadmanagertable(){
     url: "/timeclock/timeclock/PHP-folder/tables/manager_table/full_table.php",
     type: "json",
     success: function(data){
-        var jsondata = JSON.parse(data);
+        var jsondata = JSON.parse(data); 
         for(var x = 0; x < jsondata.length; x++){
             var idx = jsondata[x]['id'];
             $("#managertablebody").append('<tr>'
@@ -672,6 +655,7 @@ function loadreporttable(load_limit, current_location){
         success: function(data)
         {
             var jsondata = JSON.parse(data);
+            check_end(jsondata.length);
             for(var x = 0; x < jsondata.length; x++){
                 var idx = jsondata[x]['id'];
                 $("#reporttablebody").append('<tr>'
@@ -709,3 +693,23 @@ function quicksearchReports(){
         }
     });
 }//end quicksearchreports function
+
+//Check for previous button
+function check(check_current){
+    if(check_current == 0){ 
+        $('#previous').prop('disabled', true); 
+    }
+    else{
+        $('#previous').prop('disabled', false);
+    }
+}
+//check for the end page
+function check_end(check_current){
+    console.log(check_current);
+    if(check_current < 10){
+        $('#next').prop('disabled', true); 
+    }
+    else{
+        $('#next').prop('disabled', false);
+    }
+}
