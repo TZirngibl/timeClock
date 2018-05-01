@@ -148,6 +148,23 @@ $(function() {
             }
         });
         });
+        $(".container-fluid").on("click", ".editnote", function() { 
+            x = this.id;
+            console.log("The id of the poop ur editing is: " + x);
+            $.ajax({ 
+                type: "GET",
+                url:"/timeclock/timeclock/PHP-folder/tables/clockin_table/edit/edit.php",
+                data:{id: x},
+                success:function(data1)
+                {
+                    var jsondata1 = JSON.parse(data1);
+                    for(var x = 0; x < jsondata1.length; x++){
+                        $("#idchangenote").val(jsondata1[x]['id']);
+                        $("#new_note").val(jsondata1[x]['note']);
+                    }
+                }
+            });
+            });
         $(".container-fluid").on("click", ".deletemanager", function() { 
             x = this.id;
             $(this).parent().parent().remove();
@@ -663,7 +680,8 @@ function loadreporttable(load_limit, current_location){
                     + '<td class="col-md-2">' + jsondata[x]['pin'] + '</td>'
                     + '<td class="col-md-2">' + jsondata[x]['status'] + '</td>'
                     + '<td class="col-md-2">' + jsondata[x]['time'] + '</td>'
-                    + '<td class="col-md-2"><Button class="deleterecord btn-link" id="' + idx + '">Delete</button></td></tr>');
+                    + '<td class="col-md-2">' + jsondata[x]['note'] + '</td>'
+                    + '<td class="col-md-2"><Button class="deleterecord btn-link" id="' + idx + '">Delete</button><Button class="editnote btn-link" data-toggle="modal" data-target="#editNote"  id="' + idx + '">Edit Note</button></td></tr>');
             }        
         }
     });
@@ -688,7 +706,8 @@ function quicksearchReports(){
             + '<td class="col-md-2">' + jsondata2[x]['pin'] + '</td>'
             + '<td class="col-md-2">' + jsondata2[x]['status'] + '</td>'
             + '<td class="col-md-2">' + jsondata2[x]['time'] + '</td>'
-            + '<td class="col-md-2"><Button class="deleterecord btn-link" id="' + idx + '">Delete</button></td></tr>');
+            + '<td class="col-md-2">' + jsondata[x]['note'] + '</td>'
+            + '<td class="col-md-2"><Button class="deleterecord btn-link" id="' + idx + '">Delete</button></td><Button class="editnote btn-link" data-toggle="modal" data-target="#editNote"  id="' + idx + '">Edit Note</button></td></tr>');
             }
         }
     });

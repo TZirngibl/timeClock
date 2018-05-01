@@ -174,6 +174,7 @@
                                     <th class="col-md-2">Pin</th>
                                     <th class="col-md-2">Status</th>
                                     <th class="col-md-2">Timestamp</th>
+                                    <th class="col-md-2">Note</th>
                                     <th class="col-md-2">Action</th>
                                 </thead>
                                 <tbody id="reporttablebody">
@@ -398,60 +399,34 @@
         </div>
     </div>
     </div>
-<!-- CLOCK IN Modal -->
-<div class="modal fade" id="clockIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content moveleft">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Clock In</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-            <div class="form-group row">
-                <label for="pin" class="col-sm-2 col-form-label">PIN:</label>
-                <div class="col-sm-10">
-                <input type="int" class="form-control" id="inpin" placeholder="###">
+    <!--EDIT Record Note Modal -->
+    <div class="modal fade" id="editNote" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+    <div class="modal-dialog modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Edit Note</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form method="post" action="/timeclock/timeclock/PHP-folder/tables/clockin_table/edit/edit_data.php">
+                <div class="form-group row">
+                    <input type="" name="id" id="idchangenote"readonly/>
+                    <label for="newnote" class="col-sm-2 col-form-label">Note:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" name="newnote" id="new_note">
+                    </div>
                 </div>
-            </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Clock In</button>
-      </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" name="savenote">Save changes</button>
+            </form>
+        </div>
+        </div>
     </div>
-  </div>
-</div>
-<!-- CLOCK OUT Modal -->
-<div class="modal fade" id="clockOut" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content moveleft">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Clock Out</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-            <div class="form-group row">
-                <label for="pin" class="col-sm-2 col-form-label">PIN:</label>
-                <div class="col-sm-10">
-                <input type="int" class="form-control" id="outpin" placeholder="###">
-                </div>
-            </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Clock Out</button>
-      </div>
     </div>
-  </div>
-</div>
 <!--ADD RECORDS Modal -->
 <div class="modal fade" id="addClock" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog" role="document">
@@ -479,14 +454,13 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="time" placeholder="Time" id="newclocktime">
                  </div>
-
-                    <!-- <label for="note" class="col-sm-2 col-form-label">Note:</label>
-                    <div class="col-sm-12">
-                        <input type="textarea" class="form-control" name="note" placeholder="Note...">
-                    </div> -->
+                 <label for="note" class="col-sm-2 col-form-label">Note:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="note" placeholder="Note" id="recordnote">
+                 </div>
                 </div>
                 <button type="submit" class="form-group btn btn-success" name="clockin" id="clockinbtn">Clock In</button>
-            <button type="submit" class="form-group btn btn-danger" name="clockout" id="clockoutbtn">Clock Out</button>
+                <button type="submit" class="form-group btn btn-danger" name="clockout" id="clockoutbtn">Clock Out</button>
             </form>
             </div>
         </div>

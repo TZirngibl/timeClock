@@ -7,6 +7,7 @@
     $db = mysqli_connect("localhost","root","","project1");
     $date = $_POST['date'];
     $time = $_POST['time'];
+    $note = $_POST['note'];
     $combinedDT = date('Y-m-d H:i:s', strtotime("$date $time"));
     if(isset($_POST['clockin'])){
         $status = "in";
@@ -19,7 +20,7 @@
                 while($row = $result-> fetch_assoc()){
                     $employeeid = $row['id'];
                 }
-            $sql2 = "INSERT INTO employee_hours(id, employee_id, status, punch_timestamp) VALUES(null, '$employeeid', '$status', '$combinedDT')";
+            $sql2 = "INSERT INTO employee_hours(id, employee_id, status, punch_timestamp, note) VALUES(null, '$employeeid', '$status', '$combinedDT','$note')";
             mysqli_query($db, $sql2);
             }
         }
@@ -35,7 +36,7 @@
                 while($row = $result-> fetch_assoc()){
                     $employeeid = $row['id'];
                 }
-            $sql2 = "INSERT INTO employee_hours(id, employee_id, status, punch_timestamp) VALUES(null, '$employeeid', '$status', '$combinedDT')";
+            $sql2 = "INSERT INTO employee_hours(id, employee_id, status, punch_timestamp, note) VALUES(null, '$employeeid', '$status', '$combinedDT','$note')";
             mysqli_query($db, $sql2);
             }
         }

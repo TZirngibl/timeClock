@@ -29,6 +29,7 @@
                             'pin' => $row2['pin'],
                             'status' => $row['status'],
                             'time' => $row['punch_timestamp'],
+                            'note' => $row['note'],
                         );
                         array_push($final, $arr);
                     }
