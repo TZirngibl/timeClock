@@ -412,7 +412,7 @@
         <div class="modal-body">
             <form method="post" action="/timeclock/timeclock/PHP-folder/tables/clockin_table/edit/edit_data.php">
                 <div class="form-group row">
-                    <input type="" name="id" id="idchangenote"readonly/>
+                    <input type="hidden" name="id" id="idchangenote"readonly/>
                     <label for="newnote" class="col-sm-2 col-form-label">Note:</label>
                     <div class="col-sm-10">
                     <input type="text" class="form-control" name="newnote" id="new_note">

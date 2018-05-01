@@ -100,22 +100,27 @@ $(function() {
     //if a delete button is pressed
     $(".container-fluid").on("click", ".deleteemp", function() {
         //alert("Are you sure you want to delete this?");
-        x = this.id; 
-        $(this).parent().parent().remove();
-        $.ajax({ // *(1)
-            type:"GET",
-            url:"/timeclock/timeclock/PHP-folder/tables/employee_table/delete.php",
-            data:{id: x},
-            success:function()
-            {
-                
-            }
-        });
+        if (confirm("Are you sure you want to delete this employee?")) {
+            x = this.id; 
+            $(this).parent().parent().remove();
+            $.ajax({ // *(1)
+                type:"GET",
+                url:"/timeclock/timeclock/PHP-folder/tables/employee_table/delete.php",
+                data:{id: x},
+                success:function()
+                {
+                    
+                }
+            });
+        } else {
+            return;
+        }
      });
 
      $(".container-fluid").on("click", ".deleterecord", function() { 
         //alert("Are you sure you want to delete this?");
-        x = this.id;
+        if (confirm("Are you sure you want to delete this record?")) {
+            x = this.id;
         $(this).parent().parent().remove();
         $.ajax({ // *(2)
             type:"GET",
@@ -126,6 +131,10 @@ $(function() {
                 
             }
         });
+        } else {
+            return;
+        }
+        
      });
      $(".container-fluid").on("click", ".edit", function() { 
         x = this.id;
@@ -150,7 +159,6 @@ $(function() {
         });
         $(".container-fluid").on("click", ".editnote", function() { 
             x = this.id;
-            console.log("The id of the poop ur editing is: " + x);
             $.ajax({ 
                 type: "GET",
                 url:"/timeclock/timeclock/PHP-folder/tables/clockin_table/edit/edit.php",
@@ -165,8 +173,9 @@ $(function() {
                 }
             });
             });
-        $(".container-fluid").on("click", ".deletemanager", function() { 
-            x = this.id;
+        $(".container-fluid").on("click", ".deletemanager", function() {
+            if (confirm("Are you sure you want to delete this manager?")) {
+                x = this.id;
             $(this).parent().parent().remove();
             $.ajax({ //*(4)
                 type: "GET",
@@ -176,6 +185,9 @@ $(function() {
                 {
                 }
             });
+            } else {
+                return;
+            } 
             });
 
     //REPORT GENERATOR
@@ -680,7 +692,7 @@ function loadreporttable(load_limit, current_location){
                     + '<td class="col-md-2">' + jsondata[x]['pin'] + '</td>'
                     + '<td class="col-md-2">' + jsondata[x]['status'] + '</td>'
                     + '<td class="col-md-2">' + jsondata[x]['time'] + '</td>'
-                    + '<td class="col-md-2">' + jsondata[x]['note'] + '</td>'
+                    + '<td class="notes col-md-2">' + jsondata[x]['note'] + '</td>'
                     + '<td class="col-md-2"><Button class="deleterecord btn-link" id="' + idx + '">Delete</button><Button class="editnote btn-link" data-toggle="modal" data-target="#editNote"  id="' + idx + '">Edit Note</button></td></tr>');
             }        
         }

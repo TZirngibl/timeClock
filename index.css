@@ -1,6 +1,8 @@
 
   @media(max-width:1920px) {
-  
+    .notes{
+      overflow-x: auto;
+    }
     .mantable{
       max-height: 250px;
       overflow: auto;
