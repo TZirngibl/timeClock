@@ -201,7 +201,7 @@ $(function() {
         id = $("#pin_generate").val();
         startdate = $("#datetimepicker1").val();
         //--Ajax call report.php to get the array with the clockin history--//
-        $.ajax({
+        $.ajax({ //*(5)
             method: "GET",
             type: "json",
             url:"PHP-folder/report/report.php",
